@@ -1,0 +1,42 @@
+﻿
+$searcher = [adsisearcher] [adsi] "LDAP://UK"
+
+
+cat C:\_AJ\Scripts\AD\Docs\users.txt | % {
+#$Username = $_.trim(" ")
+$Username = $_.tostring()
+
+$SecuirtyGroup = "UK-SG UKAudit UK"
+
+
+$searcher.filter = "(&(objectClass=User) (displayname=$Username))"          #### user
+#$searcher.filter = "(&(objectClass=User) (CN=$Username))"                  ### user
+$ADSIUsername = $searcher.findone()
+
+
+        If ($ADSIUsername -eq $Null) {"* $ADSIUsername * Users does not exist"}
+                Else {       
+
+                $searcher.filter = "(&(member=$ADSIUsername.dn)(|(name=UK-SG UKAudit VDI)(name=UK-SG UKAudit1 VDI)(name=UK-SG UKAudit2 VDI)(name=UK-SG UKAudit3 VDI)(name=UK-SG UKAudit4 VDI)))"   ### Group
+                $Group = $searcher.findall()            ### check groups
+
+
+                    If ($Group -eq $Null) {"* $Group *  User is not apart of any groups "}
+                                Else {
+                                            $group.member | % {$_ -replace "(CN=)(.*?),.*",'$2'} | Sort-Object | ?{$_ -like "*$Username*"} #  This displays members of this group....
+                                            $group.member.count
+
+                                $ADSIUsername = $ADSIUsername.GetDirectoryEntry()                                                          # Result is the ADSI object username
+                                $Group.Remove($ADSIUsername.ADsPath) 
+                                $Group = [ADSI]$Group.path                                                                                 # Reconnect to AD and refresh SG
+
+                                            $Group.member | % {$_ -replace "(CN=)(.*?),.*",'$2'} | Sort-Object | ?{$_ -like "*$Username*"} #  This displays members of this group....
+                                            $Group.member.count
+                                    }
+
+                    }
+   }
+
+
+
+#$Group.memberof | % {$_ -replace "(CN=)(.*?),.*",'$2'}| Sort-Object # this group is a member of..

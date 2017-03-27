@@ -1,0 +1,18 @@
+﻿$admins = @()
+$results = @()
+
+foreach ($member in $members) {
+
+        $admins = $member.GetType().InvokeMember('Name','GetProperty',$null,$member,$null) 
+        #$obj = new-object psobject -Property @{
+        #$results = $admins
+        # }
+    $results  +=  $admins
+}
+
+$computername = "VDI1"
+
+write-host ("Computer:"+$computername +" " + $results -join "' ")
+
+#[string[]]$recipients = $results.Split()
+#$recipient | %{ $_}

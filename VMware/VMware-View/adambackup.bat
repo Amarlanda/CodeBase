@@ -1,0 +1,1 @@
+copy C:\programdata\VMware\VDM\backups\*.* "\\uknasdata11\ICTSHARED\admin\View CB backup\Temp\"

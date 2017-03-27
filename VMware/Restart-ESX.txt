@@ -1,0 +1,4 @@
+ 
+Get-VMHostService -VMHost wdc-c1-esx00003 | 
+where {$_.Key -eq "vpxa"} | 
+Restart-VMHostService -Confirm:$false -ErrorAction SilentlyContinue 

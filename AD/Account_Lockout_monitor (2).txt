@@ -1,0 +1,43 @@
+﻿ [String[]]$users = "MMenicou", "YeeLi", "Tpatel1", "ukspmdogboe", "mtrimble",
+"GPerikhanyan", "JYankova", "JSelby", "Ivine",
+"OBurton", "TMcGlynn","Jkundel", "aramsay1", "ukspjnarebor", "ukspnodonnell", "Mmavani", "emurrell",
+"Dthakker1","JPerry1", "Kpamulapati", "Sebastianlee", "uktpalanda", "ukspsharris","PEspejo",
+"tng3", "ukspehunt1", "Gbirk", "uktpskhera", "ukspajackson1", "ostevens1","Rhall8", "sharris", "Ssmith8", "lbyrne2" ,
+"uksplshorter", "ukspmslimani", "Wkuan1", "DRios1","lhodges", "idownie", "jyankova", "ukspcwilliams", "NMcguffie", "tmahmood", "ukspamoustakas", "ukspbgower", "Lcoughlin"
+
+$searcher = [adsisearcher] [adsi] "LDAP://UK"
+
+$i = 0
+[bool]$accountlocked = $false
+
+    while($i -lt 9999)
+    {
+       start-sleep -s 1
+
+            $users | % { 
+
+            $searcher.filter = "(&(objectClass=user) (CN=$_))"
+            $ADobj = $searcher.findone().GetDirectoryEntry()
+                            
+            if ($ADobj.psbase.invokeGet("IsAccountLocked")){
+            $ADobj = [ADSI]$ADobj.path
+            $ADobj.lockoutTime = 0
+			$ADobj.CommitChanges()
+			$ADobj.Close() 
+
+            Write-host "$(get-date) $_ locked - loop id $i” -foreground "red"
+            Add-Content $env:userprofile\documents\lockmon.csv "$(get-date) $_ locked - loop id $i”
+
+           
+            
+            } 
+            else {
+               # Write-host "$(get-date) $_ NOT locked - loop id $i”
+                #Add-Content $env:userprofile\documents\lockmon.csv "$(get-date) $_ unlocked - loop id $i”
+
+            }
+
+        #$i++
+    }
+ 
+   }

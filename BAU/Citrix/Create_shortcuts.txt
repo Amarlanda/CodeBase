@@ -1,0 +1,40 @@
+Function Update-Store{
+    Param ([String]$x)
+    $a = gci \\uknasdata04\bpsctxhome$ | sort name
+}
+
+Function Retrive-Fullname{
+Param ( [Object[]]$a)
+Result = ($a| ? { $_.name.contains("ukrcpchandan")}).fullname
+}
+
+
+Function Launch-Explore{
+Param ( [String]$q)
+Start Explorer $q
+}
+
+
+Function test_Int_exmaple
+{
+Param ([int]$x)
+ # Intexample 27
+ #write-host "you are 27"
+}
+
+Function test_String_Array_Example
+{
+Param ([String[]]$sting)
+ # Intexample 27
+ #write-host "you are 27"
+}
+
+Function test_
+{
+Param ([String]$sting,[String]$string1)
+write-host " 1 $sting 2 $string1 "
+ # Intexample 27
+ #write-host "you are 27"
+}
+
+test_ hello bye

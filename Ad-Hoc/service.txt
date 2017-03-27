@@ -1,0 +1,6 @@
+$in = Read-host “enter the data"
+{
+
+Get-WmiObject -credential wycombe\supportamarlanda Win32_Service -ComputerName $in | where-object {$_.startname -like "*admin*"} |Select-Object Name, Description, StartMode, State, Status, StartName
+
+}

@@ -1,0 +1,24 @@
+$DCData = @()
+    ForEach ($RS in $res)
+    {
+		$vmLivestate = $RS.GetDirectoryEntry()
+		[String]$VMname = $rs.properties."pae-displayname"
+		
+          if ($rs.properties.'pae-vmstate' -match "Maintenance"){ 
+
+		$vmLivestate.put("pae-vmstate", "DELETING")
+		$vmLivestate.setinfo()
+
+		$DCData += New-Object PSObject -Property @{
+                            
+                       	     Oldstate= $rs.properties.'pae-vmstate'
+                       	     Name= $VMname.trim("{}")
+				Newstate = $vmLivestate.properties.'pae-vmstate'
+                            } 
+	  }
+	
+            		
+
+            $dcdata |ft -autosize
+      }
+

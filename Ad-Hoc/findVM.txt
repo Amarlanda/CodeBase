@@ -1,0 +1,94 @@
+﻿$a = cat C:\hosts.txt
+ 
+$DCData = @()
+$a | % { 
+            try{
+
+                    $b =@(get-vmhost -name $_ |Sort Name |Get-View)
+                    $hostname = $b.name
+                    $c = $b.Hardware.CpuInfo| Measure-Object -Property NumCpuPackages -sum
+                    
+                    if($c -gt 0 ){
+                     $hostcore = $c 
+                     } 
+                     else
+                     { 
+                     $hostcore = 0
+                     }
+
+                    $hostproc = $b.Hardware.CpuInfo| Measure-Object -Property numcpucores -sum
+                    $hostver = $b.Config.Product.fullname
+                    
+                }
+            catch  {
+                $Error
+                }
+
+                $DCData += New-Object PSObject -Property @{
+                    hostname= $hostname
+                    hostcore= $hostcore
+                    hostproc= $hostproc
+                    hostver = $hostver
+
+                    }
+           
+        }
+
+$VMs = cat C:\VMs.txt
+$VMData = @()
+$VMs | % { 
+            try{
+
+                $k=(get-vm -name $_*)
+                           
+                $j =@(get-vm $_ |Sort Name |Get-View)
+                $vmname = $j.name
+                $vmProc = $j.config.hardware.NumCPU
+                $vmCore = $j.config.hardware.NumCoresPerSocket
+                }
+
+                catch{
+                $errorvm
+                }
+
+                $VMData += New-Object psobject -Property @{
+                vmname = $vmname
+                vmProc = $vmProc
+                vmCore = $vmCore
+                }
+                
+       }
+$DCData | ft -wrap -Property hostname,hostproc,hostcore,hostver
+$VMData | ft -wrap
+  #$DCData.vmname = $vmname
+                    #$DCData.vmProc= $vmProc 
+                    #$DCData.vmCore= $vmCore
+                    #$DCData.
+
+                    #$a.DatastoreIdList | % { $string += $_ + " "}
+                    #get-hardisk -vm $_
+                 
+
+                    <#$HostCount = $VMHosts.count
+                    $physicalcpus = ($a.Hardware.CpuInfo| Measure-Object -Property NumCpuPackages -sum).sum
+                    $ClusterCoreTotal = ($a.Hardware.CpuInfo| Measure-Object -Property numcpucores -sum).sum
+                    #if( $ClusterCoreTotal -gt 0 ) {}
+            
+                    $CPUavgPerHost = $physicalcpus / $HostCount
+                    $CoresPerCPUperHost = $ClusterCoreTotal / $HostCount / $CPUavgPerHost
+                    #$b = $VMHosts |% { $_ + " " + $b}
+                    $DCData += New-Object PSObject -Property @{
+                    clustername= $DC.name
+                    HostCount = $HostCount
+                    CPUavgPerHost= $CPUavgPerHost
+                    CoresPerCPUperHost = $CoresPerCPUperHost
+                    CPUsCluster = $physicalcpus
+                    ClusterCoreTotal = $ClusterCoreTotal
+                    #vm = ($DC |Get-VM).count
+                    hosts = $a.name -join "'"
+                    
+
+                    }
+
+#>
+                    #DatastoreIdList= $string

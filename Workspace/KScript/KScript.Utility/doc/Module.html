@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>HTML TABLE</title>
+</head><body>
+<DIV><P><FONT size=1 color=#969696>Back to [[Module reference]]</FONT></P></DIV>
+<DIV><STRONG><FONT size=4>Contents</FONT></STRONG></DIV>
+&nbsp;
+<DIV>
+<A HREF='http://sites.eu.kworld.kpmg.com/sites/infrastructure/department/itservices/coretechnologies/KScript/KScript.Utility.aspx#ModuleInformation'>Module information</A><BR />
+<A HREF='http://sites.eu.kworld.kpmg.com/sites/infrastructure/department/itservices/coretechnologies/KScript/KScript.Utility.aspx#Functions'>Functions</A><BR />
+</DIV>
+&nbsp;<HR>&nbsp;
+<DIV><A Name='ModuleInformation'></A><STRONG><FONT size=4>Module information</FONT></STRONG></DIV>
+&nbsp;
+<DIV>
+<P>&lt;module&gt;&lt;description&gt;Utility functions.&lt;/description&gt;&lt;type&gt;ToolSet&lt;/type&gt;&lt;/module&gt;</P>
+<UL>
+<LI>Module version: 1.20</LI>
+<LI>Author: Chris Dent</LI>
+<LI>Page updated: Friday 9 January 2015</LI>
+</UL>
+</DIV>
+&nbsp;<HR>&nbsp;
+<DIV><A Name='Functions'></A><STRONG><FONT size=4>Functions</FONT></STRONG></DIV>
+&nbsp;
+<DIV>
+<TABLE style="WIDTH: 100%; BORDER-COLLAPSE: collapse; FONT-SIZE: 1em" border=1>
+<tr><th style="background-color: #98C6F3;">Name</th><th style="background-color: #98C6F3;">Description</th><th style="background-color: #98C6F3;">Author</th><th style="background-color: #98C6F3;">Last modified</th><th style="background-color: #98C6F3;">Modified by</th></tr>
+<tr><td><a href='http://sites.eu.kworld.kpmg.com/sites/infrastructure/department/itservices/coretechnologies/KScript/KScript.Utility.aspx#Compress-KSItem'>Compress-KSItem</a></td><td>Compress a file or directory.</td><td>Chris Dent</td><td>14/07/2014</td><td>Chris Dent</td></tr>
+<tr><td><a href='http://sites.eu.kworld.kpmg.com/sites/infrastructure/department/itservices/coretechnologies/KScript/KScript.Utility.aspx#Expand-KSItem'>Expand-KSItem</a></td><td>Expand the content of a zip file.</td><td>Chris Dent</td><td>14/07/2014</td><td>Chris Dent</td></tr>
+<tr><td><a href='http://sites.eu.kworld.kpmg.com/sites/infrastructure/department/itservices/coretechnologies/KScript/KScript.Utility.aspx#Export-KSExcelWorksheet'>Export-KSExcelWorksheet</a></td><td>Export objects to an Excel Worksheet.</td><td>Chris Dent</td><td>17/10/2014</td><td>Chris Dent</td></tr>
+<tr><td><a href='http://sites.eu.kworld.kpmg.com/sites/infrastructure/department/itservices/coretechnologies/KScript/KScript.Utility.aspx#Import-KSExcelWorksheet'>Import-KSExcelWorksheet</a></td><td>Import from Excel using the Microsoft Access Database Engine.</td><td>Chris Dent</td><td>19/06/2014</td><td>Chris Dent</td></tr>
+<tr><td><a href='http://sites.eu.kworld.kpmg.com/sites/infrastructure/department/itservices/coretechnologies/KScript/KScript.Utility.aspx#Resize-KSImageFile'>Resize-KSImageFile</a></td><td>Resize image an image file.</td><td>Chris Dent</td><td>27/06/2014</td><td>Chris Dent</td></tr>
+<tr><td><a href='http://sites.eu.kworld.kpmg.com/sites/infrastructure/department/itservices/coretechnologies/KScript/KScript.Utility.aspx#Select-KSString'>Select-KSString</a></td><td>Select a matching string from an alphabetically sorted file.</td><td>Chris Dent</td><td>11/08/2014</td><td>Chris Dent</td></tr>
+</table>
+</DIV>
+&nbsp;<HR>&nbsp;
+<DIV><A Name='Compress-KSItem'></A><STRONG><FONT size=4>Compress-KSItem</FONT></STRONG></DIV>
+&nbsp;
+<DIV><STRONG><FONT size=2>Synopsis</FONT></STRONG></DIV>
+<P>Compress a file or directory.</P>
+<DIV><STRONG><FONT size=2>Syntax</FONT></STRONG></DIV>
+<P style='font-family: Consolas'>Compress-KSItem [-ItemName] &lt;String&gt; [-ArchiveName &lt;String&gt;] [-CompressionLevel {Optimal | Fastest | NoCompression}] [-PreserveDirectoryStucture &lt;Boolean&gt;] [-Clobber] [&lt;CommonParameters&gt;]</P>
+<P style='font-family: Consolas'>Compress-KSItem [-ItemName] &lt;String&gt; [-ArchiveName &lt;String&gt;] [-CompressionLevel {Optimal | Fastest | NoCompression}] [-CreateFromDirectory] [&lt;CommonParameters&gt;]</P>
+<DIV><STRONG><FONT size=2>Description</FONT></STRONG></DIV>
+<P>Create a zip file from a collection of files.</P>
+&nbsp;<DIV><STRONG><FONT size=2>Change log</FONT></STRONG></DIV>
+&nbsp;
+<DIV>
+<TABLE style="WIDTH: 70%; BORDER-COLLAPSE: collapse; FONT-SIZE: 1em" border=1>
+<tr><th style="background-color: #98C6F3;">Date</th><th style="background-color: #98C6F3;">Who</th><th style="background-color: #98C6F3;">What</th></tr>
+<tr><td>14/07/2014</td><td>Chris Dent</td><td>First release.</td></tr>
+</table>
+</DIV>
+&nbsp;<HR>&nbsp;
+<DIV><A Name='Expand-KSItem'></A><STRONG><FONT size=4>Expand-KSItem</FONT></STRONG></DIV>
+&nbsp;
+<DIV><STRONG><FONT size=2>Synopsis</FONT></STRONG></DIV>
+<P>Expand the content of a zip file.</P>
+<DIV><STRONG><FONT size=2>Syntax</FONT></STRONG></DIV>
+<P style='font-family: Consolas'>Expand-KSItem [-ArchiveName] &lt;String&gt; [[-Destination] &lt;String&gt;] [&lt;CommonParameters&gt;]</P>
+<DIV><STRONG><FONT size=2>Description</FONT></STRONG></DIV>
+<P>Expand the content of a zip file to the specified directory.</P>
+&nbsp;<DIV><STRONG><FONT size=2>Change log</FONT></STRONG></DIV>
+&nbsp;
+<DIV>
+<TABLE style="WIDTH: 70%; BORDER-COLLAPSE: collapse; FONT-SIZE: 1em" border=1>
+<tr><th style="background-color: #98C6F3;">Date</th><th style="background-color: #98C6F3;">Who</th><th style="background-color: #98C6F3;">What</th></tr>
+<tr><td>14/07/2014</td><td>Chris Dent</td><td>First release.</td></tr>
+</table>
+</DIV>
+&nbsp;<HR>&nbsp;
+<DIV><A Name='Export-KSExcelWorksheet'></A><STRONG><FONT size=4>Export-KSExcelWorksheet</FONT></STRONG></DIV>
+&nbsp;
+<DIV><STRONG><FONT size=2>Synopsis</FONT></STRONG></DIV>
+<P>
+Export-KSExcelWorksheet [-FileName] &lt;string&gt; [[-WorksheetName] &lt;string&gt;] [[-Object] &lt;Object[]&gt;] [-MoveToStart] [-Clobber] [-Append] [&lt;CommonParameters&gt;]
+</P>
+<DIV><STRONG><FONT size=2>Syntax</FONT></STRONG></DIV>
+<P style='font-family: Consolas'>True</P>
+<DIV><STRONG><FONT size=2>Description</FONT></STRONG></DIV>
+&nbsp;&nbsp;<HR>&nbsp;
+<DIV><A Name='Import-KSExcelWorksheet'></A><STRONG><FONT size=4>Import-KSExcelWorksheet</FONT></STRONG></DIV>
+&nbsp;
+<DIV><STRONG><FONT size=2>Synopsis</FONT></STRONG></DIV>
+<P>Import from Excel using the Microsoft Access Database Engine.</P>
+<DIV><STRONG><FONT size=2>Syntax</FONT></STRONG></DIV>
+<P style='font-family: Consolas'>Import-KSExcelWorksheet [-FileName] &lt;String&gt; [-WorksheetName &lt;String&gt;] [-FirstDataRow &lt;UInt32&gt;] [-HeaderRowNumber &lt;UInt32&gt;] [-IgnoreEmptyRows] [&lt;CommonParameters&gt;]</P>
+<P style='font-family: Consolas'>Import-KSExcelWorksheet [-FileName] &lt;String&gt; [-WorksheetName &lt;String&gt;] [-FirstDataRow &lt;UInt32&gt;] -Header &lt;String[]&gt; [-IgnoreEmptyRows] [&lt;CommonParameters&gt;]</P>
+<P style='font-family: Consolas'>Import-KSExcelWorksheet [-FileName] &lt;String&gt; [-WorksheetName &lt;String&gt;] [-FirstDataRow &lt;UInt32&gt;] -TypedHeader &lt;OrderedDictionary&gt; [-IgnoreEmptyRows] [&lt;CommonParameters&gt;]</P>
+<DIV><STRONG><FONT size=2>Description</FONT></STRONG></DIV>
+<P>  Import-KSExcelWorksheet uses the Microsoft Access Database Engine to read from Excel files. The Microsoft Access Database Engine can read from Excel without needing to use the Excel COM Object.</P>
+&nbsp;<DIV><STRONG><FONT size=2>Change log</FONT></STRONG></DIV>
+&nbsp;
+<DIV>
+<TABLE style="WIDTH: 70%; BORDER-COLLAPSE: collapse; FONT-SIZE: 1em" border=1>
+<tr><th style="background-color: #98C6F3;">Date</th><th style="background-color: #98C6F3;">Who</th><th style="background-color: #98C6F3;">What</th></tr>
+<tr><td>19/06/2014</td><td>Chris Dent</td><td>First release</td></tr>
+</table>
+</DIV>
+&nbsp;<HR>&nbsp;
+<DIV><A Name='Resize-KSImageFile'></A><STRONG><FONT size=4>Resize-KSImageFile</FONT></STRONG></DIV>
+&nbsp;
+<DIV><STRONG><FONT size=2>Synopsis</FONT></STRONG></DIV>
+<P>Resize image an image file.</P>
+<DIV><STRONG><FONT size=2>Syntax</FONT></STRONG></DIV>
+<P style='font-family: Consolas'>Resize-KSImageFile [-FileName] &lt;String&gt; -Width &lt;Int32&gt; -Height &lt;Int32&gt; [&lt;CommonParameters&gt;]</P>
+<P style='font-family: Consolas'>Resize-KSImageFile [-FileName] &lt;String&gt; -Width &lt;Int32&gt; -PreserveAspectRatio [&lt;CommonParameters&gt;]</P>
+<P style='font-family: Consolas'>Resize-KSImageFile [-FileName] &lt;String&gt; -Height &lt;Int32&gt; -PreserveAspectRatio [&lt;CommonParameters&gt;]</P>
+<DIV><STRONG><FONT size=2>Description</FONT></STRONG></DIV>
+<P>Resize an existing image file.</P>
+&nbsp;<DIV><STRONG><FONT size=2>Change log</FONT></STRONG></DIV>
+&nbsp;
+<DIV>
+<TABLE style="WIDTH: 70%; BORDER-COLLAPSE: collapse; FONT-SIZE: 1em" border=1>
+<tr><th style="background-color: #98C6F3;">Date</th><th style="background-color: #98C6F3;">Who</th><th style="background-color: #98C6F3;">What</th></tr>
+<tr><td>27/06/2014</td><td>Chris Dent</td><td>Modified to use temporary file: Saving the image to the same file it was constructed from is not allowed and throws an exception. (http://msdn.microsoft.com/en-us/library/ktx83wah.aspx)</td></tr>
+<tr><td>26/06/2014</td><td>Chris Dent</td><td>Forked from original function (KPMG.KScript.Core\Set-KpmgImageFileSize). Only modifies image if size has changed.</td></tr>
+</table>
+</DIV>
+&nbsp;<HR>&nbsp;
+<DIV><A Name='Select-KSString'></A><STRONG><FONT size=4>Select-KSString</FONT></STRONG></DIV>
+&nbsp;
+<DIV><STRONG><FONT size=2>Synopsis</FONT></STRONG></DIV>
+<P>Select a matching string from an alphabetically sorted file.</P>
+<DIV><STRONG><FONT size=2>Syntax</FONT></STRONG></DIV>
+<P style='font-family: Consolas'>Select-KSString [-String] &lt;String&gt; [-FileName] &lt;String&gt; [&lt;CommonParameters&gt;]</P>
+<DIV><STRONG><FONT size=2>Description</FONT></STRONG></DIV>
+<P>Select-KSString is a specialised binary (half interval) searcher designed to find matches in sorted ASCII encoded text files.</P>
+&nbsp;<DIV><STRONG><FONT size=2>Change log</FONT></STRONG></DIV>
+&nbsp;
+<DIV>
+<TABLE style="WIDTH: 70%; BORDER-COLLAPSE: collapse; FONT-SIZE: 1em" border=1>
+<tr><th style="background-color: #98C6F3;">Date</th><th style="background-color: #98C6F3;">Who</th><th style="background-color: #98C6F3;">What</th></tr>
+<tr><td>11/08/2014</td><td>Chris Dent</td><td>First release.</td></tr>
+</table>
+</DIV>
+&nbsp;<HR>&nbsp;
+
+<table>
+</table>
+</body></html>
+

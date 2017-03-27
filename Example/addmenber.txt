@@ -1,0 +1,14 @@
+Add-Member EnhancedKeyUsages -MemberType ScriptProperty -Value { 
+$this.Extensions.EnhancedKeyUsages | 
+ForEach-Object { 
+$_ | Add-Member ToString -MemberType ScriptMethod -Force -Value { 
+"$($this.Value) ($($this.FriendlyName))" 
+} -PassThru 
+} 
+} -PassThru
+
+
+$obj = New-Object Object 
+$obj | Add-Member Value -MemberType NoteProperty 123 
+$obj
+New-Object Object | Add-Member Value -MemberType NoteProperty 123 -PassThru

@@ -1,0 +1,62 @@
+﻿[CmdLetBinding(SupportsShouldProcess = $true)]
+param(
+  [Parameter(Mandatory = $true)]
+  [String]$ComputerName,
+  
+  [PSCredential]$Credential = (Get-Credential)
+)
+
+$Drive = "C"
+
+# Map a network drive
+New-PSDrive "VDI" -PSProvider FileSystem -Root "\\$ComputerName\$Drive$" -Credential $Credential
+if (-not $?) {
+  Write-Host "Unable to connect to the administrative share for $Drive on $ComputerName. Exiting." -ForegroundColor Yellow
+  break
+}
+
+# Before
+
+$DriveBefore = Get-WmiObject Win32_LogicalDisk -Filter "DeviceID='$($Drive):'" -ComputerName $ComputerName -Credential $Credential
+$FreeBefore = "$([Math]::Round(($DriveBefore.FreeSpace / 1MB), 2)) MB"
+$PercentFreeBefore = '{0:P2}' -f ($DriveBefore.FreeSpace / $DriveBefore.Size)
+
+# Delete these folders
+
+"VDI:\Program Files (x86)\KPMG\eAudIT11", "VDI:\ProgramData\eAudIT11" |
+  Where-Object { Test-Path $_ } |
+  ForEach-Object {
+    if ($pscmdlet.ShouldProcess("Deleting $_")) {
+      Remove-Item $_ -Recurse -ErrorAction SilentlyContinue
+    }
+  }
+
+# Delete the content of these
+
+##C:\Windows\SoftwareDistribution\Download
+
+"VDI:\Windows\ccmcache", "VDI:\Windows\Temp" |
+  Where-Object { Test-Path $_ } |
+  ForEach-Object {
+    if ($pscmdlet.ShouldProcess("Deleting $_\*")) {
+      Get-ChildItem $_ | Remove-Item -Recurse -ErrorAction SilentlyContinue
+    }
+  }
+
+# Remove the mapped drive
+Remove-PSDrive "VDI"
+  
+# After
+
+$DriveAfter = Get-WmiObject Win32_LogicalDisk -Filter "DeviceID='$($Drive):'" -ComputerName $ComputerName -Credential $Credential
+$FreeAfter = "$([Math]::Round(($DriveAfter.FreeSpace / 1MB), 2)) MB"
+$PercentFreeAfter = '{0:P2}' -f ($DriveAfter.FreeSpace / $DriveAfter.Size)
+
+New-Object PSObject -Property ([Ordered]@{
+  ComputerName      = $ComputerName
+  Drive             = $Drive
+  FreeBefore        = $FreeBefore
+  PercentFreeBefore = $PercentFreeBefore
+  FreeAfter         = $FreeAfter
+  PercentFreeAfter  = $PercentFreeAfter
+})

@@ -1,0 +1,127 @@
+﻿##AD # find disbaled users ##
+#$searcher = [adsisearcher][adsi]"LDAP://OU=KRC,OU=Function,DC=uk,DC=kworld,DC=kpmg,DC=com" 
+#$searcher.filter = "(&(objectClass=user)(objectCategory=person)(userAccountControl:1.2.840.113556.1.4.803:=2))"
+
+#$DisabledUsers = $searcher.findall() | ForEach-Object {
+#  $_.Properties['samaccountname'][0]
+#}
+
+
+#
+# Capacity reporting
+#
+
+$AllVMs = Get-Pool | ForEach-Object {
+  Write-Host "Getting the pool: $($_.Name)"
+  
+  $_ | Get-DesktopVM
+  
+  Write-Host "Done with the pool"
+  Start-Sleep -Seconds 60
+}
+
+#
+# VMs assigned to disabled users in AD
+#
+
+$DisabledUsers = @{}
+Get-KSADUser -Disabled -Properties SamAccountName | ForEach-Object { $DisabledUsers.Add("UK\$($_.SamAccountName)") }
+$AllVMs |
+  Where-Object { $DisabledUsers.Contains($_.user_displayname) } |
+  Export-KSExcelWorkbook VDIState.xlsx -WorksheetName "Disabled assignee"
+
+#
+# "Stale" VMs, where the assigned user has not been obviously active for 30 days
+#
+
+$AllVMs | Where-Object { -not $DisabledUsers.Contains($_.user_displayname) } | ForEach-Object {
+  $Username = $_.user_displayname -replace '^UK\\'
+
+  Resolve-Path "\\$($_.Name)\c$\users\$Username*\ntuser.dat" | ForEach-Object {
+    $LastModifiedTime = Get-Item $_.Path | Select-Object LastWriteTime
+  }
+
+  if ($LastModifiedTime -lt (Get-Date).AddDays(-30)) {
+    $_
+  }
+} | Export-KSExcelWorkbook VDIState.xlsx -WorksheetName "Stale assignee"
+
+#
+# Pool vs user
+#
+
+$DeptToPoolAssignment = @{
+  "All Tax Thing with Chocolate" = "Pool 99"
+}
+
+$AllVMs |
+  Where-Object { $_.user_displayname -and -not $DisabledUsers.Contains($_.user_displayname) } |
+  ForEach-Object {
+    $_ | Select-Object *, @{n='UserDepartment';e={
+      Get-KSADUser -SamAccountName $($_.user_displayname -replace '^UK\\') | Select-Object -ExpandProperty Department }}
+  } |
+  Where-Object { $_.Pool -ne $DeptToPoolAssignment[$_.Department] } |
+  Export-KSExcelWorkbook "VDIState.$(Get-Date -Format 'yyyyMMdd').xlsx" -WorksheetName "Bad pool assignment"
+
+"stuff.$(Get-Date -Format 'yyyyMMdd').xlsx"
+
+#
+# Cleanup
+#
+
+#
+# User profile cleaning
+#
+
+$AllVMs | ForEach-Object {
+  Resolve-Path "\\$($_.Name)\c$\users\*" |
+    Select-Object Path, @{n='LastModified';e={ Get-Item "$($_.Path)\ntuser.dat" | Select-Object -ExpandProperty LastModifiedTime }} |
+    Where-Object { (Split-Path $_.Path -Leaf) -notin "Administrator", "All Users", "Default", "Default User", "desktopdna", "Public" } |
+    Where-Object { $_.LastModifiedTime -and $_.LastModifiedTime -lt (Get-Date).AddDays(-30) } |
+    ForEach-Object {
+      Remove-Item $_.Path -Recurse -ErrorAction SilentlyContinue -WhatIf
+    }
+}
+
+#
+# Reset administrator password
+#
+
+$AllVMs | ForEach-Object {
+  $AdminUser = [ADSI]"WinNT://$($_.Name)/Administrator"
+  $UserFlags = $AdminUser.UserFlags
+  # Enable the acccount
+  if ($UserFlags -band 2) {
+      $UserFlags = $UserFlags -bxor 2
+  }
+  # Set cannot change pasword
+  if (-bnot ($UserFlags -band 64)) {
+    $UserFlags = $UserFlags -bxor 64
+  }
+  # Set Password Never Expires
+  if (-bnot ($UserFlags -band 65536)) {
+    $UserFlags = $UserFlags -bxor 65536
+  }
+  # Apply the changes
+  if ($AdminUser.UserFlags -ne $UserFlags) {
+    $AdminUser.UserFlags = $UserFlags
+    $AdminUser.SetInfo()
+  }
+  $AdminUser.SetPassword("BobityBob1234567899")
+}
+
+#
+# Available capacity
+#
+
+$AllVMs |
+  Where-Object { -not $_.user_displayname } |
+  Measure-Object
+
+#
+# Clean unnecessary things
+#
+
+$AllVMs | ForEach-Object {
+  Clean-VDIDisk -Name $_.Name
+}

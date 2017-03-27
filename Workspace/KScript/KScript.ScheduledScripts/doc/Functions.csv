@@ -1,0 +1,4 @@
+"Name","Access","Description","Author","Team","LastModified","ModifiedBy"
+"Backup-KSProjectVioletCMS","Public","Project Violet CMS backup script.","Chris Dent","Core Technologies","13/11/2014","Chris Dent"
+"Export-KSHubUser","Public","Export a list of users for the Hub.","Chris Dent","Core Technologies","21/11/2014","Chris Dent"
+"Remove-KSEAuditTempDocuments","Public","Remove files over 14 days old from \\uknasdata400\TempDocuments.","Chris Dent","Core Technologies","13/11/2014","Chris Dent"

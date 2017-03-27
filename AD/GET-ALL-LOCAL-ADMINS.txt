@@ -1,0 +1,34 @@
+﻿$searcher = [adsisearcher] [adsi] "LDAP://UK"
+$searcher.filter = "(&(objectClass=computer) (CN=*ukaudit*))"
+$a = $searcher.findall()
+
+$AdminGroup = @()
+#$AllAdminGroups = @()
+$Results = @()
+
+$a | % {
+write-host $_.properties.name
+
+    $objComputer = $_.properties.name
+    $EnumGrp = "Administrators"
+    $objGroup =[ADSI]"WinNT://$objComputer/$EnumGrp"
+    $members = @($objGroup.psbase.Invoke("Members"))
+
+    $AllAdminGroups = @()
+
+    foreach ($member in $members) { 
+            
+            $AdminGroup = $member.GetType().InvokeMember('Name','GetProperty',$null,$member,$null) 
+            $AllAdminGroups  +=  $AdminGroup
+            }
+
+$c = $AllAdminGroups -join "' "
+
+$b = "Computer: "+$objComputer +"  Groups: " + $c
+$Results += $b 
+$Results
+$Results > c:\test\outforlocaladminVDIsAndrew.csv
+
+}
+
+

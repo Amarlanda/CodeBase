@@ -1,0 +1,95 @@
+﻿Function Get-ServiceData
+{
+	<#
+		.SYNOPSIS
+		Function to get service data for a computer.
+
+		.DESCRIPTION
+		Returns a data array of objects for the services.
+
+		.PARAMETER ComputerName
+		The name of the computer, if no computername is given the local computer is used.
+
+		.PARAMETER Credential
+		An optional PS credential object.
+
+		.PARAMETER AsXml
+		An optional switch to return the data as an xml document instead of a PS array.
+
+		.EXAMPLE
+		PS> Get-ServiceData -ComputerName 'Server22'
+	#>
+
+	[CmdletBinding()]
+	Param
+	(
+		[Parameter(Mandatory=$false)]
+		[ValidateNotNullOrEmpty()]
+		[String]$ComputerName = $env:ComputerName,
+
+		[Parameter(Mandatory=$false)]
+		[ValidateNotNullOrEmpty()]
+		[Management.Automation.PSCredential]$Credential,
+
+		[Parameter()]
+		[Switch]$AsXml
+	)
+	$ErrorActionPreference = 'Stop'
+	Write-Debug $MyInvocation.MyCommand.Name
+
+	try
+	{
+		# --- Set the PSBoundParameters (do not pass a credential to the local machine)
+		[VOID]$PSBoundParameters.Remove('AsXml')
+		if ($ComputerName.Split('.')[0] -eq $env:ComputerName) {[VOID]$PSBoundParameters.Remove('Credential')}
+
+		# --- Get the services
+		$Services = Get-WmiObject -Class Win32_Service @PSBoundParameters
+		$TargetProperties = ('SystemName,Name,DisplayName,StartName,StartMode,State,PathName').Split(',')
+		$ServiceData = @($Services | Select-Object $TargetProperties)
+
+		# --- Cast as an xml doc if required
+		if ($AsXml)
+		{
+			# --- Create an xml string writer
+			$MemoryStream = New-Object IO.MemoryStream
+			$XmlWriter = [Xml.XmlWriter]::Create($MemoryStream)
+
+			# --- Write the root element
+			$XmlWriter.WriteStartElement('ServiceData')
+			$XmlWriter.WriteAttributeString('ComputerName',$ComputerName)
+
+			# --- Write the service nodes
+			ForEach ($Service in $ServiceData)
+			{
+				$XmlWriter.WriteStartElement('Service')
+				ForEach ($TargetProperty in $TargetProperties) {$XmlWriter.WriteElementString($TargetProperty,$Service.$TargetProperty)}
+				$XmlWriter.WriteEndElement()
+			}
+
+			# --- End the doc
+			$XmlWriter.WriteEndElement()
+
+			# --- Close the writer
+			$XmlWriter.Close()
+
+			# --- Get the xml string
+			$MemoryStream.Position=0
+			$Xml = (New-Object IO.StreamReader $MemoryStream).ReadToEnd()
+
+			# --- Cast as an xml object
+			$ServiceData = [xml]$Xml
+		}
+
+		# --- Return the data
+		return $ServiceData
+	}
+	catch [Exception]
+	{
+		throw "Failed to get service data from computer '$ComputerName'"
+	}
+}
+
+Get-ServiceData -ComputerName 'UKVMSWTS001' -asXml
+
+$servicedata.xml.info

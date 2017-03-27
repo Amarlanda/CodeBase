@@ -1,0 +1,170 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>HTML TABLE</title>
+</head><body>
+<DIV><P><FONT size=1 color=#969696>Back to [[Module reference]]</FONT></P></DIV>
+<DIV><STRONG><FONT size=4>Contents</FONT></STRONG></DIV>
+&nbsp;
+<DIV>
+<A HREF='http://sites.eu.kworld.kpmg.com/sites/infrastructure/department/itservices/coretechnologies/KScript/KScript.DnsResolver.aspx#ModuleInformation'>Module information</A><BR />
+<A HREF='http://sites.eu.kworld.kpmg.com/sites/infrastructure/department/itservices/coretechnologies/KScript/KScript.DnsResolver.aspx#Functions'>Functions</A><BR />
+</DIV>
+&nbsp;<HR>&nbsp;
+<DIV><A Name='ModuleInformation'></A><STRONG><FONT size=4>Module information</FONT></STRONG></DIV>
+&nbsp;
+<DIV>
+<P>&lt;module&gt;&lt;description&gt;DNS resolver.&lt;/description&gt;&lt;type&gt;ToolSet&lt;/type&gt;&lt;/module&gt;</P>
+<UL>
+<LI>Module version: 1.0</LI>
+<LI>Author: Chris Dent</LI>
+<LI>Page updated: Friday 16 January 2015</LI>
+</UL>
+</DIV>
+&nbsp;<HR>&nbsp;
+<DIV><A Name='Functions'></A><STRONG><FONT size=4>Functions</FONT></STRONG></DIV>
+&nbsp;
+<DIV>
+<TABLE style="WIDTH: 100%; BORDER-COLLAPSE: collapse; FONT-SIZE: 1em" border=1>
+<tr><th style="background-color: #98C6F3;">Name</th><th style="background-color: #98C6F3;">Description</th><th style="background-color: #98C6F3;">Author</th><th style="background-color: #98C6F3;">Last modified</th><th style="background-color: #98C6F3;">Modified by</th></tr>
+<tr><td><a href='http://sites.eu.kworld.kpmg.com/sites/infrastructure/department/itservices/coretechnologies/KScript/KScript.DnsResolver.aspx#Add-KSInternalDnsCacheRecord'>Add-KSInternalDnsCacheRecord</a></td><td>Add a new CacheRecord to the DNS cache object.</td><td>Chris Dent</td><td>13/01/2015</td><td>Chris Dent</td></tr>
+<tr><td><a href='http://sites.eu.kworld.kpmg.com/sites/infrastructure/department/itservices/coretechnologies/KScript/KScript.DnsResolver.aspx#Get-KSDns'>Get-KSDns</a></td><td>Get a DNS resource record from a DNS server.</td><td>Chris Dent</td><td>13/01/2015</td><td>Chris Dent</td></tr>
+<tr><td><a href='http://sites.eu.kworld.kpmg.com/sites/infrastructure/department/itservices/coretechnologies/KScript/KScript.DnsResolver.aspx#Get-KSDnsServerList'>Get-KSDnsServerList</a></td><td>Gets a list of network interfaces and attempts to return a list of DNS server IP addresses.</td><td>Chris Dent</td><td>13/01/2015</td><td>Chris Dent</td></tr>
+<tr><td><a href='http://sites.eu.kworld.kpmg.com/sites/infrastructure/department/itservices/coretechnologies/KScript/KScript.DnsResolver.aspx#Get-KSInternalDnsCacheRecord'>Get-KSInternalDnsCacheRecord</a></td><td>Get the content of the internal DNS cache used by Get-KSDns.</td><td>Chris Dent</td><td>13/01/2015</td><td>Chris Dent</td></tr>
+<tr><td><a href='http://sites.eu.kworld.kpmg.com/sites/infrastructure/department/itservices/coretechnologies/KScript/KScript.DnsResolver.aspx#Initialize-KSInternalDnsCache'>Initialize-KSInternalDnsCache</a></td><td>Initializes a basic DNS cache for use by Get-KSDns.</td><td>Chris Dent</td><td>13/01/2015</td><td>Chris Dent</td></tr>
+<tr><td><a href='http://sites.eu.kworld.kpmg.com/sites/infrastructure/department/itservices/coretechnologies/KScript/KScript.DnsResolver.aspx#Remove-KSInternalDnsCacheRecord'>Remove-KSInternalDnsCacheRecord</a></td><td>Remove an entry from the DNS cache object.</td><td>Chris Dent</td><td>13/01/2015</td><td>Chris Dent</td></tr>
+<tr><td><a href='http://sites.eu.kworld.kpmg.com/sites/infrastructure/department/itservices/coretechnologies/KScript/KScript.DnsResolver.aspx#Update-KSInternalRootHints'>Update-KSInternalRootHints</a></td><td>Updates the root hints file from InterNIC then re-initializes the internal cache.</td><td>Chris Dent</td><td>13/01/2015</td><td>Chris Dent</td></tr>
+</table>
+</DIV>
+&nbsp;<HR>&nbsp;
+<DIV><A Name='Add-KSInternalDnsCacheRecord'></A><STRONG><FONT size=4>Add-KSInternalDnsCacheRecord</FONT></STRONG></DIV>
+&nbsp;
+<DIV><STRONG><FONT size=2>Synopsis</FONT></STRONG></DIV>
+<P>Add a new CacheRecord to the DNS cache object.</P>
+<DIV><STRONG><FONT size=2>Syntax</FONT></STRONG></DIV>
+<P style='font-family: Consolas'>Add-KSInternalDnsCacheRecord -CacheRecord &lt;Object&gt; [-ResourceType &lt;String&gt;] [-Permanent] [&lt;CommonParameters&gt;]</P>
+<P style='font-family: Consolas'>Add-KSInternalDnsCacheRecord -ResourceRecord &lt;Object&gt; [-ResourceType &lt;String&gt;] [-Permanent] [&lt;CommonParameters&gt;]</P>
+<DIV><STRONG><FONT size=2>Description</FONT></STRONG></DIV>
+<P>Cache records must expose the following property members:</P>
+&nbsp;- Name<BR />&nbsp;- TTL<BR />&nbsp;- RecordType<BR />&nbsp;- IPAddress<BR />&nbsp;<DIV><STRONG><FONT size=2>Change log</FONT></STRONG></DIV>
+&nbsp;
+<DIV>
+<TABLE style="WIDTH: 70%; BORDER-COLLAPSE: collapse; FONT-SIZE: 1em" border=1>
+<tr><th style="background-color: #98C6F3;">Date</th><th style="background-color: #98C6F3;">Who</th><th style="background-color: #98C6F3;">What</th></tr>
+<tr><td>13/01/2015</td><td>Chris Dent</td><td>Forked from source module.</td></tr>
+</table>
+</DIV>
+&nbsp;<HR>&nbsp;
+<DIV><A Name='Get-KSDns'></A><STRONG><FONT size=4>Get-KSDns</FONT></STRONG></DIV>
+&nbsp;
+<DIV><STRONG><FONT size=2>Synopsis</FONT></STRONG></DIV>
+<P>Get a DNS resource record from a DNS server.</P>
+<DIV><STRONG><FONT size=2>Syntax</FONT></STRONG></DIV>
+<P style='font-family: Consolas'>Get-KSDns [[-Name] &lt;String&gt;] [[-RecordType] {EMPTY | A | NS | MD | MF | CNAME | SOA | MB | MG | MR | NULL | WKS | PTR | HINFO | MINFO | MX | TXT | RP | AFSDB | X25 | ISDN | RT | NSAP | NSAPPTR | SIG | KEY | PX | GPOS | AAAA | LOC | NXT | EID | NIMLOC | SRV | ATMA | NAPTR | KX | CERT | A6 | DNAME | SINK | OPT | APL | DS | SSHFP | IPSECKEY | RRSIG | NSEC | DNSKEY | DHCID | NSEC3 | NSEC3PARAM | HIP | NINFO | RKEY | SPF | UINFO | UID | GID | UNSPEC | TKEY | TSIG | IXFR | AXFR | MAILB | MAILA | ANY | TA | DLV | WINS | WINSR}] [-RecordClass {IN | CH | HS | NONE | ANY}] [-NoRecursion] [-DnsSec] [-NoEDns] [-EDnsBufferSize &lt;UInt16&gt;] [-NoTcpFallback] [-SearchList &lt;String[]&gt;] [-NoSearchList] [-SerialNumber &lt;UInt32&gt;] [-Server &lt;String&gt;] [-Tcp] [-Port &lt;UInt16&gt;] [-Timeout &lt;Byte&gt;] [-IPv6] [-DnsDebug] [&lt;CommonParameters&gt;]</P>
+<P style='font-family: Consolas'>Get-KSDns [[-Name] &lt;String&gt;] -ZoneTransfer [-SerialNumber &lt;UInt32&gt;] [-Server &lt;String&gt;] [-Timeout &lt;Byte&gt;] [-IPv6] [-DnsDebug] [&lt;CommonParameters&gt;]</P>
+<P style='font-family: Consolas'>Get-KSDns [[-Name] &lt;String&gt;] [[-RecordType] {EMPTY | A | NS | MD | MF | CNAME | SOA | MB | MG | MR | NULL | WKS | PTR | HINFO | MINFO | MX | TXT | RP | AFSDB | X25 | ISDN | RT | NSAP | NSAPPTR | SIG | KEY | PX | GPOS | AAAA | LOC | NXT | EID | NIMLOC | SRV | ATMA | NAPTR | KX | CERT | A6 | DNAME | SINK | OPT | APL | DS | SSHFP | IPSECKEY | RRSIG | NSEC | DNSKEY | DHCID | NSEC3 | NSEC3PARAM | HIP | NINFO | RKEY | SPF | UINFO | UID | GID | UNSPEC | TKEY | TSIG | IXFR | AXFR | MAILB | MAILA | ANY | TA | DLV | WINS | WINSR}] -NSSearch [-DnsSec] [-NoEDns] [-EDnsBufferSize &lt;UInt16&gt;] [-NoTcpFallback] [-Timeout &lt;Byte&gt;] [-DnsDebug] [&lt;CommonParameters&gt;]</P>
+<P style='font-family: Consolas'>Get-KSDns [[-Name] &lt;String&gt;] [[-RecordType] {EMPTY | A | NS | MD | MF | CNAME | SOA | MB | MG | MR | NULL | WKS | PTR | HINFO | MINFO | MX | TXT | RP | AFSDB | X25 | ISDN | RT | NSAP | NSAPPTR | SIG | KEY | PX | GPOS | AAAA | LOC | NXT | EID | NIMLOC | SRV | ATMA | NAPTR | KX | CERT | A6 | DNAME | SINK | OPT | APL | DS | SSHFP | IPSECKEY | RRSIG | NSEC | DNSKEY | DHCID | NSEC3 | NSEC3PARAM | HIP | NINFO | RKEY | SPF | UINFO | UID | GID | UNSPEC | TKEY | TSIG | IXFR | AXFR | MAILB | MAILA | ANY | TA | DLV | WINS | WINSR}] -Iterative [-RecordClass {IN | CH | HS | NONE | ANY}] [-DnsSec] [-NoEDns] [-EDnsBufferSize &lt;UInt16&gt;] [-NoTcpFallback] [-Timeout &lt;Byte&gt;] [-DnsDebug] [&lt;CommonParameters&gt;]</P>
+<P style='font-family: Consolas'>Get-KSDns -Version [-Server &lt;String&gt;] [-Tcp] [-Port &lt;UInt16&gt;] [-Timeout &lt;Byte&gt;] [-IPv6] [-DnsDebug] [&lt;CommonParameters&gt;]</P>
+<DIV><STRONG><FONT size=2>Description</FONT></STRONG></DIV>
+<P>Get-KSDns is a debugging resolver tool similar to dig and nslookup.</P>
+&nbsp;<DIV><STRONG><FONT size=2>Change log</FONT></STRONG></DIV>
+&nbsp;
+<DIV>
+<TABLE style="WIDTH: 70%; BORDER-COLLAPSE: collapse; FONT-SIZE: 1em" border=1>
+<tr><th style="background-color: #98C6F3;">Date</th><th style="background-color: #98C6F3;">Who</th><th style="background-color: #98C6F3;">What</th></tr>
+<tr><td>13/01/2015</td><td>Chris Dent</td><td>Forked from source module.</td></tr>
+</table>
+</DIV>
+&nbsp;<HR>&nbsp;
+<DIV><A Name='Get-KSDnsServerList'></A><STRONG><FONT size=4>Get-KSDnsServerList</FONT></STRONG></DIV>
+&nbsp;
+<DIV><STRONG><FONT size=2>Synopsis</FONT></STRONG></DIV>
+<P>Gets a list of network interfaces and attempts to return a list of DNS server IP addresses.</P>
+<DIV><STRONG><FONT size=2>Syntax</FONT></STRONG></DIV>
+<P style='font-family: Consolas'>Get-KSDnsServerList [-IPv6] [&lt;CommonParameters&gt;]</P>
+<DIV><STRONG><FONT size=2>Description</FONT></STRONG></DIV>
+<P>Get-KSDnsServerList uses System.Net.NetworkInformation to return a list of operational ethernet or wireless interfaces. IP properties are returned, and an attempt to return a list of DNS server addresses is made. If successful, the DNS server list is returned.</P>
+&nbsp;<DIV><STRONG><FONT size=2>Change log</FONT></STRONG></DIV>
+&nbsp;
+<DIV>
+<TABLE style="WIDTH: 70%; BORDER-COLLAPSE: collapse; FONT-SIZE: 1em" border=1>
+<tr><th style="background-color: #98C6F3;">Date</th><th style="background-color: #98C6F3;">Who</th><th style="background-color: #98C6F3;">What</th></tr>
+<tr><td>13/01/2015</td><td>Chris Dent</td><td>Forked from source module.</td></tr>
+</table>
+</DIV>
+&nbsp;<HR>&nbsp;
+<DIV><A Name='Get-KSInternalDnsCacheRecord'></A><STRONG><FONT size=4>Get-KSInternalDnsCacheRecord</FONT></STRONG></DIV>
+&nbsp;
+<DIV><STRONG><FONT size=2>Synopsis</FONT></STRONG></DIV>
+<P>Get the content of the internal DNS cache used by Get-KSDns.</P>
+<DIV><STRONG><FONT size=2>Syntax</FONT></STRONG></DIV>
+<P style='font-family: Consolas'>Get-KSInternalDnsCacheRecord [[-Name] &lt;String&gt;] [[-RecordType] {EMPTY | A | NS | MD | MF | CNAME | SOA | MB | MG | MR | NULL | WKS | PTR | HINFO | MINFO | MX | TXT | RP | AFSDB | X25 | ISDN | RT | NSAP | NSAPPTR | SIG | KEY | PX | GPOS | AAAA | LOC | NXT | EID | NIMLOC | SRV | ATMA | NAPTR | KX | CERT | A6 | DNAME | SINK | OPT | APL | DS | SSHFP | IPSECKEY | RRSIG | NSEC | DNSKEY | DHCID | NSEC3 | NSEC3PARAM | HIP | NINFO | RKEY | SPF | UINFO | UID | GID | UNSPEC | TKEY | TSIG | IXFR | AXFR | MAILB | MAILA | ANY | TA | DLV | WINS | WINSR}] [-IPAddress &lt;IPAddress&gt;] [-ResourceType &lt;String&gt;] [&lt;CommonParameters&gt;]</P>
+<DIV><STRONG><FONT size=2>Description</FONT></STRONG></DIV>
+<P>Get-KSInternalDnsCacheRecord displays records held in the cache.</P>
+&nbsp;<DIV><STRONG><FONT size=2>Change log</FONT></STRONG></DIV>
+&nbsp;
+<DIV>
+<TABLE style="WIDTH: 70%; BORDER-COLLAPSE: collapse; FONT-SIZE: 1em" border=1>
+<tr><th style="background-color: #98C6F3;">Date</th><th style="background-color: #98C6F3;">Who</th><th style="background-color: #98C6F3;">What</th></tr>
+<tr><td>13/01/2015</td><td>Chris Dent</td><td>Forked from source module.</td></tr>
+</table>
+</DIV>
+&nbsp;<HR>&nbsp;
+<DIV><A Name='Initialize-KSInternalDnsCache'></A><STRONG><FONT size=4>Initialize-KSInternalDnsCache</FONT></STRONG></DIV>
+&nbsp;
+<DIV><STRONG><FONT size=2>Synopsis</FONT></STRONG></DIV>
+<P>Initializes a basic DNS cache for use by Get-KSDns.</P>
+<DIV><STRONG><FONT size=2>Syntax</FONT></STRONG></DIV>
+<P style='font-family: Consolas'>Initialize-KSInternalDnsCache [&lt;CommonParameters&gt;]</P>
+<DIV><STRONG><FONT size=2>Description</FONT></STRONG></DIV>
+<P>Get-KSDns maintains a limited DNS cache, capturing A and AAAA records, to assist name server resolution (for values passed using the Server parameter).</P>
+<P>The cache may be manipulated using *-InternalDnsCacheRecord CmdLets.</P>
+&nbsp;<DIV><STRONG><FONT size=2>Change log</FONT></STRONG></DIV>
+&nbsp;
+<DIV>
+<TABLE style="WIDTH: 70%; BORDER-COLLAPSE: collapse; FONT-SIZE: 1em" border=1>
+<tr><th style="background-color: #98C6F3;">Date</th><th style="background-color: #98C6F3;">Who</th><th style="background-color: #98C6F3;">What</th></tr>
+<tr><td>13/01/2015</td><td>Chris Dent</td><td>Forked from source module.</td></tr>
+</table>
+</DIV>
+&nbsp;<HR>&nbsp;
+<DIV><A Name='Remove-KSInternalDnsCacheRecord'></A><STRONG><FONT size=4>Remove-KSInternalDnsCacheRecord</FONT></STRONG></DIV>
+&nbsp;
+<DIV><STRONG><FONT size=2>Synopsis</FONT></STRONG></DIV>
+<P>Remove an entry from the DNS cache object.</P>
+<DIV><STRONG><FONT size=2>Syntax</FONT></STRONG></DIV>
+<P style='font-family: Consolas'>Remove-KSInternalDnsCacheRecord -CacheRecord &lt;Object&gt; [&lt;CommonParameters&gt;]</P>
+<P style='font-family: Consolas'>Remove-KSInternalDnsCacheRecord -AllExpired [&lt;CommonParameters&gt;]</P>
+<DIV><STRONG><FONT size=2>Description</FONT></STRONG></DIV>
+<P>Remove-KSInternalDnsCacheRecord allows the removal of individual records from the cache, or removal of all records which expired.</P>
+&nbsp;<DIV><STRONG><FONT size=2>Change log</FONT></STRONG></DIV>
+&nbsp;
+<DIV>
+<TABLE style="WIDTH: 70%; BORDER-COLLAPSE: collapse; FONT-SIZE: 1em" border=1>
+<tr><th style="background-color: #98C6F3;">Date</th><th style="background-color: #98C6F3;">Who</th><th style="background-color: #98C6F3;">What</th></tr>
+<tr><td>13/01/2015</td><td>Chris Dent</td><td>Forked from source module.</td></tr>
+</table>
+</DIV>
+&nbsp;<HR>&nbsp;
+<DIV><A Name='Update-KSInternalRootHints'></A><STRONG><FONT size=4>Update-KSInternalRootHints</FONT></STRONG></DIV>
+&nbsp;
+<DIV><STRONG><FONT size=2>Synopsis</FONT></STRONG></DIV>
+<P>Updates the root hints file from InterNIC then re-initializes the internal cache.</P>
+<DIV><STRONG><FONT size=2>Syntax</FONT></STRONG></DIV>
+<P style='font-family: Consolas'>Update-KSInternalRootHints [[-Source] &lt;Object&gt;] [&lt;CommonParameters&gt;]</P>
+<DIV><STRONG><FONT size=2>Description</FONT></STRONG></DIV>
+<P>The root hints file is used as the basis of an internal DNS cache. The content of the root hints file is used during iterative name resolution.</P>
+&nbsp;<DIV><STRONG><FONT size=2>Change log</FONT></STRONG></DIV>
+&nbsp;
+<DIV>
+<TABLE style="WIDTH: 70%; BORDER-COLLAPSE: collapse; FONT-SIZE: 1em" border=1>
+<tr><th style="background-color: #98C6F3;">Date</th><th style="background-color: #98C6F3;">Who</th><th style="background-color: #98C6F3;">What</th></tr>
+<tr><td>13/01/2015</td><td>Chris Dent</td><td>Forked from source module.</td></tr>
+</table>
+</DIV>
+&nbsp;<HR>&nbsp;
+
+<table>
+</table>
+</body></html>
+

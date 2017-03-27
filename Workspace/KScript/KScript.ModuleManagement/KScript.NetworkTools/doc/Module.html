@@ -1,0 +1,188 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>HTML TABLE</title>
+</head><body>
+<DIV><P><FONT size=1 color=#969696>Back to [[Module reference]]</FONT></P></DIV>
+<DIV><STRONG><FONT size=4>Contents</FONT></STRONG></DIV>
+&nbsp;
+<DIV>
+<A HREF='http://sites.eu.kworld.kpmg.com/sites/infrastructure/department/itservices/coretechnologies/KScript/KScript.NetworkTools.aspx#ModuleInformation'>Module information</A><BR />
+<A HREF='http://sites.eu.kworld.kpmg.com/sites/infrastructure/department/itservices/coretechnologies/KScript/KScript.NetworkTools.aspx#Functions'>Functions</A><BR />
+</DIV>
+&nbsp;<HR>&nbsp;
+<DIV><A Name='ModuleInformation'></A><STRONG><FONT size=4>Module information</FONT></STRONG></DIV>
+&nbsp;
+<DIV>
+<P>&lt;module&gt;&lt;description&gt;Network tools.&lt;/description&gt;&lt;type&gt;ToolSet&lt;/type&gt;&lt;/module&gt;</P>
+<UL>
+<LI>Module version: 0.1</LI>
+<LI>Author: Chris Dent</LI>
+<LI>Page updated: Wednesday 14 January 2015</LI>
+</UL>
+</DIV>
+&nbsp;<HR>&nbsp;
+<DIV><A Name='Functions'></A><STRONG><FONT size=4>Functions</FONT></STRONG></DIV>
+&nbsp;
+<DIV>
+<TABLE style="WIDTH: 100%; BORDER-COLLAPSE: collapse; FONT-SIZE: 1em" border=1>
+<tr><th style="background-color: #98C6F3;">Name</th><th style="background-color: #98C6F3;">Description</th><th style="background-color: #98C6F3;">Author</th><th style="background-color: #98C6F3;">Last modified</th><th style="background-color: #98C6F3;">Modified by</th></tr>
+<tr><td><a href='http://sites.eu.kworld.kpmg.com/sites/infrastructure/department/itservices/coretechnologies/KScript/KScript.NetworkTools.aspx#Connect-KSSocket'>Connect-KSSocket</a></td><td>Connect a TCP socket to a remote IP address and port.</td><td>Chris Dent</td><td>13/01/2015</td><td>Chris Dent</td></tr>
+<tr><td><a href='http://sites.eu.kworld.kpmg.com/sites/infrastructure/department/itservices/coretechnologies/KScript/KScript.NetworkTools.aspx#Disconnect-KSSocket'>Disconnect-KSSocket</a></td><td>Disconnect a connected TCP socket.</td><td>Chris Dent</td><td>13/01/2015</td><td>Chris Dent</td></tr>
+<tr><td><a href='http://sites.eu.kworld.kpmg.com/sites/infrastructure/department/itservices/coretechnologies/KScript/KScript.NetworkTools.aspx#New-KSBinaryReader'>New-KSBinaryReader</a></td><td>Create a new extended instance of a System.IO.BinaryReader class from a Byte Array.</td><td>Chris Dent</td><td>13/01/2015</td><td>Chris Dent</td></tr>
+<tr><td><a href='http://sites.eu.kworld.kpmg.com/sites/infrastructure/department/itservices/coretechnologies/KScript/KScript.NetworkTools.aspx#New-KSSocket'>New-KSSocket</a></td><td>Creates a new network socket to use to send and receive packets over a network.</td><td>Chris Dent</td><td>13/01/2015</td><td>Chris Dent</td></tr>
+<tr><td><a href='http://sites.eu.kworld.kpmg.com/sites/infrastructure/department/itservices/coretechnologies/KScript/KScript.NetworkTools.aspx#Receive-KSBytes'>Receive-KSBytes</a></td><td>Receive bytes using a TCP or UDP socket.</td><td>Chris Dent</td><td>13/01/2015</td><td>Chris Dent</td></tr>
+<tr><td><a href='http://sites.eu.kworld.kpmg.com/sites/infrastructure/department/itservices/coretechnologies/KScript/KScript.NetworkTools.aspx#Remove-KSSocket'>Remove-KSSocket</a></td><td>Removes a socket, releasing all resources.</td><td>Chris Dent</td><td>13/01/2015</td><td>Chris Dent</td></tr>
+<tr><td><a href='http://sites.eu.kworld.kpmg.com/sites/infrastructure/department/itservices/coretechnologies/KScript/KScript.NetworkTools.aspx#Send-KSBytes'>Send-KSBytes</a></td><td>Sends bytes using a TCP or UDP socket.</td><td>Chris Dent</td><td>13/01/2015</td><td>Chris Dent</td></tr>
+<tr><td><a href='http://sites.eu.kworld.kpmg.com/sites/infrastructure/department/itservices/coretechnologies/KScript/KScript.NetworkTools.aspx#Test-KSTcpPort'>Test-KSTcpPort</a></td><td>Test a TCP Port using System.Net.Sockets.TcpClient.</td><td>Chris Dent</td><td>09/01/2015</td><td>Chris Dent</td></tr>
+</table>
+</DIV>
+&nbsp;<HR>&nbsp;
+<DIV><A Name='Connect-KSSocket'></A><STRONG><FONT size=4>Connect-KSSocket</FONT></STRONG></DIV>
+&nbsp;
+<DIV><STRONG><FONT size=2>Synopsis</FONT></STRONG></DIV>
+<P>Connect a TCP socket to a remote IP address and port.</P>
+<DIV><STRONG><FONT size=2>Syntax</FONT></STRONG></DIV>
+<P style='font-family: Consolas'>Connect-KSSocket [-Socket] &lt;Socket&gt; -RemoteIPAddress &lt;IPAddress&gt; -RemotePort &lt;UInt16&gt; [&lt;CommonParameters&gt;]</P>
+<DIV><STRONG><FONT size=2>Description</FONT></STRONG></DIV>
+<P>If a TCP socket is being used as a network client it must first connect to a server before Send-Bytes and Receive-Bytes can be used.</P>
+&nbsp;<DIV><STRONG><FONT size=2>Change log</FONT></STRONG></DIV>
+&nbsp;
+<DIV>
+<TABLE style="WIDTH: 70%; BORDER-COLLAPSE: collapse; FONT-SIZE: 1em" border=1>
+<tr><th style="background-color: #98C6F3;">Date</th><th style="background-color: #98C6F3;">Who</th><th style="background-color: #98C6F3;">What</th></tr>
+<tr><td>13/01/2015</td><td>Chris Dent</td><td>Forked from source module.</td></tr>
+</table>
+</DIV>
+&nbsp;<HR>&nbsp;
+<DIV><A Name='Disconnect-KSSocket'></A><STRONG><FONT size=4>Disconnect-KSSocket</FONT></STRONG></DIV>
+&nbsp;
+<DIV><STRONG><FONT size=2>Synopsis</FONT></STRONG></DIV>
+<P>Disconnect a connected TCP socket.</P>
+<DIV><STRONG><FONT size=2>Syntax</FONT></STRONG></DIV>
+<P style='font-family: Consolas'>Disconnect-KSSocket [-Socket] &lt;Socket&gt; [-Shutdown &lt;Boolean&gt;] [&lt;CommonParameters&gt;]</P>
+<DIV><STRONG><FONT size=2>Description</FONT></STRONG></DIV>
+<P>A TCP socket which has been connected using Connect-Socket may be disconnected using this CmdLet.</P>
+&nbsp;<DIV><STRONG><FONT size=2>Change log</FONT></STRONG></DIV>
+&nbsp;
+<DIV>
+<TABLE style="WIDTH: 70%; BORDER-COLLAPSE: collapse; FONT-SIZE: 1em" border=1>
+<tr><th style="background-color: #98C6F3;">Date</th><th style="background-color: #98C6F3;">Who</th><th style="background-color: #98C6F3;">What</th></tr>
+<tr><td>13/01/2015</td><td>Chris Dent</td><td>Forked from source module.</td></tr>
+</table>
+</DIV>
+&nbsp;<HR>&nbsp;
+<DIV><A Name='New-KSBinaryReader'></A><STRONG><FONT size=4>New-KSBinaryReader</FONT></STRONG></DIV>
+&nbsp;
+<DIV><STRONG><FONT size=2>Synopsis</FONT></STRONG></DIV>
+<P>Create a new extended instance of a System.IO.BinaryReader class from a Byte Array.</P>
+<DIV><STRONG><FONT size=2>Syntax</FONT></STRONG></DIV>
+<P style='font-family: Consolas'>New-KSBinaryReader [-ByteArray] &lt;Byte[]&gt; [&lt;CommonParameters&gt;]</P>
+<DIV><STRONG><FONT size=2>Description</FONT></STRONG></DIV>
+<P>System.IO.BinaryReader reads all multi-byte values as little endian, to address this the following methods have been added to the object:</P>
+<UL><LI>ReadBEUInt16</LI><LI>ReadBEInt32</LI><LI>ReadBEUInt32</LI><LI>ReadBEUInt64</LI></UL><P>In addition to handling big endian values, the following utility methods have been implemented:</P>
+<UL><LI>PeakByte</LI><LI>ReadIPv4Address</LI><LI>ReadIPv6Address</LI><LI>SetPositionMarker</LI></UL><P>SetPositionMarker populates the PositionMarker property which is associated with the BytesFromMarker property.</P>
+&nbsp;<DIV><STRONG><FONT size=2>Change log</FONT></STRONG></DIV>
+&nbsp;
+<DIV>
+<TABLE style="WIDTH: 70%; BORDER-COLLAPSE: collapse; FONT-SIZE: 1em" border=1>
+<tr><th style="background-color: #98C6F3;">Date</th><th style="background-color: #98C6F3;">Who</th><th style="background-color: #98C6F3;">What</th></tr>
+<tr><td>13/01/2015</td><td>Chris Dent</td><td>Forked from source module.</td></tr>
+</table>
+</DIV>
+&nbsp;<HR>&nbsp;
+<DIV><A Name='New-KSSocket'></A><STRONG><FONT size=4>New-KSSocket</FONT></STRONG></DIV>
+&nbsp;
+<DIV><STRONG><FONT size=2>Synopsis</FONT></STRONG></DIV>
+<P>Creates a new network socket to use to send and receive packets over a network.</P>
+<DIV><STRONG><FONT size=2>Syntax</FONT></STRONG></DIV>
+<P style='font-family: Consolas'>New-KSSocket [-ProtocolType {IPv6HopByHopOptions | IP | Unspecified | Icmp | Igmp | Ggp | IPv4 | Tcp | Pup | Udp | Idp | IPv6 | IPv6RoutingHeader | IPv6FragmentHeader | IPSecEncapsulatingSecurityPayload | IPSecAuthenticationHeader | IcmpV6 | IPv6NoNextHeader | IPv6DestinationOptions | ND | Raw | Ipx | Spx | SpxII | Unknown}] [-EnableBroadcast] [-IPv6] [-NoTimeout] [-ReceiveTimeOut &lt;Int32&gt;] [-SendTimeOut &lt;Int32&gt;] [&lt;CommonParameters&gt;]</P>
+<P style='font-family: Consolas'>New-KSSocket [-ProtocolType {IPv6HopByHopOptions | IP | Unspecified | Icmp | Igmp | Ggp | IPv4 | Tcp | Pup | Udp | Idp | IPv6 | IPv6RoutingHeader | IPv6FragmentHeader | IPSecEncapsulatingSecurityPayload | IPSecAuthenticationHeader | IcmpV6 | IPv6NoNextHeader | IPv6DestinationOptions | ND | Raw | Ipx | Spx | SpxII | Unknown}] [-LocalIPAddress &lt;IPAddress&gt;] -LocalPort &lt;UInt16&gt; [-IPv6] [-NoTimeout] [-ReceiveTimeOut &lt;Int32&gt;] [-SendTimeOut &lt;Int32&gt;] [&lt;CommonParameters&gt;]</P>
+<DIV><STRONG><FONT size=2>Description</FONT></STRONG></DIV>
+<P>New-KSSocket creates an instance of System.Net.Sockets.Socket for use with Send-KSBytes and Receive-KSBytes.</P>
+&nbsp;<DIV><STRONG><FONT size=2>Change log</FONT></STRONG></DIV>
+&nbsp;
+<DIV>
+<TABLE style="WIDTH: 70%; BORDER-COLLAPSE: collapse; FONT-SIZE: 1em" border=1>
+<tr><th style="background-color: #98C6F3;">Date</th><th style="background-color: #98C6F3;">Who</th><th style="background-color: #98C6F3;">What</th></tr>
+<tr><td>13/01/2015</td><td>Chris Dent</td><td>Forked from source module.</td></tr>
+</table>
+</DIV>
+&nbsp;<HR>&nbsp;
+<DIV><A Name='Receive-KSBytes'></A><STRONG><FONT size=4>Receive-KSBytes</FONT></STRONG></DIV>
+&nbsp;
+<DIV><STRONG><FONT size=2>Synopsis</FONT></STRONG></DIV>
+<P>Receive bytes using a TCP or UDP socket.</P>
+<DIV><STRONG><FONT size=2>Syntax</FONT></STRONG></DIV>
+<P style='font-family: Consolas'>Receive-KSBytes [-Socket] &lt;Socket&gt; [[-BufferSize] &lt;UInt32&gt;] [&lt;CommonParameters&gt;]</P>
+<DIV><STRONG><FONT size=2>Description</FONT></STRONG></DIV>
+<P>Receive-KSBytes is used to accept inbound TCP or UDP packets as a client exepcting a response from a server, or as a server waiting for incoming connections.</P>
+<P>Receive-KSBytes will listen for bytes sent to broadcast addresses provided the socket has been created using EnableBroadcast.</P>
+&nbsp;<DIV><STRONG><FONT size=2>Change log</FONT></STRONG></DIV>
+&nbsp;
+<DIV>
+<TABLE style="WIDTH: 70%; BORDER-COLLAPSE: collapse; FONT-SIZE: 1em" border=1>
+<tr><th style="background-color: #98C6F3;">Date</th><th style="background-color: #98C6F3;">Who</th><th style="background-color: #98C6F3;">What</th></tr>
+<tr><td>13/01/2015</td><td>Chris Dent</td><td>Forked from source module.</td></tr>
+</table>
+</DIV>
+&nbsp;<HR>&nbsp;
+<DIV><A Name='Remove-KSSocket'></A><STRONG><FONT size=4>Remove-KSSocket</FONT></STRONG></DIV>
+&nbsp;
+<DIV><STRONG><FONT size=2>Synopsis</FONT></STRONG></DIV>
+<P>Removes a socket, releasing all resources.</P>
+<DIV><STRONG><FONT size=2>Syntax</FONT></STRONG></DIV>
+<P style='font-family: Consolas'>Remove-KSSocket [-Socket] &lt;Socket&gt; [&lt;CommonParameters&gt;]</P>
+<DIV><STRONG><FONT size=2>Description</FONT></STRONG></DIV>
+<P>A socket may be removed using Remove-KSSocket if it is no longer required.</P>
+&nbsp;<DIV><STRONG><FONT size=2>Change log</FONT></STRONG></DIV>
+&nbsp;
+<DIV>
+<TABLE style="WIDTH: 70%; BORDER-COLLAPSE: collapse; FONT-SIZE: 1em" border=1>
+<tr><th style="background-color: #98C6F3;">Date</th><th style="background-color: #98C6F3;">Who</th><th style="background-color: #98C6F3;">What</th></tr>
+<tr><td>13/01/2015</td><td>Chris Dent</td><td>Forked from source module.</td></tr>
+</table>
+</DIV>
+&nbsp;<HR>&nbsp;
+<DIV><A Name='Send-KSBytes'></A><STRONG><FONT size=4>Send-KSBytes</FONT></STRONG></DIV>
+&nbsp;
+<DIV><STRONG><FONT size=2>Synopsis</FONT></STRONG></DIV>
+<P>Sends bytes using a TCP or UDP socket.</P>
+<DIV><STRONG><FONT size=2>Syntax</FONT></STRONG></DIV>
+<P style='font-family: Consolas'>Send-KSBytes [-Socket] &lt;Socket&gt; -Data &lt;Byte[]&gt; [&lt;CommonParameters&gt;]</P>
+<P style='font-family: Consolas'>Send-KSBytes [-Socket] &lt;Socket&gt; -RemoteIPAddress &lt;IPAddress&gt; -RemotePort &lt;UInt16&gt; -Data &lt;Byte[]&gt; [&lt;CommonParameters&gt;]</P>
+<P style='font-family: Consolas'>Send-KSBytes [-Socket] &lt;Socket&gt; -Broadcast -RemotePort &lt;UInt16&gt; -Data &lt;Byte[]&gt; [&lt;CommonParameters&gt;]</P>
+<DIV><STRONG><FONT size=2>Description</FONT></STRONG></DIV>
+<P>Send-KSBytes is used to send outbound TCP or UDP packets as a server responding to a cilent, or as a client sending to a server.</P>
+&nbsp;<DIV><STRONG><FONT size=2>Change log</FONT></STRONG></DIV>
+&nbsp;
+<DIV>
+<TABLE style="WIDTH: 70%; BORDER-COLLAPSE: collapse; FONT-SIZE: 1em" border=1>
+<tr><th style="background-color: #98C6F3;">Date</th><th style="background-color: #98C6F3;">Who</th><th style="background-color: #98C6F3;">What</th></tr>
+<tr><td>13/01/2015</td><td>Chris Dent</td><td>Forked from source module.</td></tr>
+</table>
+</DIV>
+&nbsp;<HR>&nbsp;
+<DIV><A Name='Test-KSTcpPort'></A><STRONG><FONT size=4>Test-KSTcpPort</FONT></STRONG></DIV>
+&nbsp;
+<DIV><STRONG><FONT size=2>Synopsis</FONT></STRONG></DIV>
+<P>Test a TCP Port using System.Net.Sockets.TcpClient.</P>
+<DIV><STRONG><FONT size=2>Syntax</FONT></STRONG></DIV>
+<P style='font-family: Consolas'>Test-KSTcpPort [-IPAddress] &lt;IPAddress&gt; [-Port] &lt;UInt16&gt; [&lt;CommonParameters&gt;]</P>
+<DIV><STRONG><FONT size=2>Description</FONT></STRONG></DIV>
+<P>Test-TcpPort establishes a TCP connection to the sepecified port then immediately closes the connection, returning whether or not the connection succeeded.</P>
+<P>This function fully opens TCP connections (3-way handshake), it does not half-open connections.</P>
+&nbsp;<DIV><STRONG><FONT size=2>Change log</FONT></STRONG></DIV>
+&nbsp;
+<DIV>
+<TABLE style="WIDTH: 70%; BORDER-COLLAPSE: collapse; FONT-SIZE: 1em" border=1>
+<tr><th style="background-color: #98C6F3;">Date</th><th style="background-color: #98C6F3;">Who</th><th style="background-color: #98C6F3;">What</th></tr>
+<tr><td>09/01/2015</td><td>Chris Dent</td><td>Forked from source module.</td></tr>
+</table>
+</DIV>
+&nbsp;<HR>&nbsp;
+
+<table>
+</table>
+</body></html>
+

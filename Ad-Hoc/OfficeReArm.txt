@@ -1,0 +1,3 @@
+CMD /C "%ProgramFiles(x86)%\Microsoft Office\Office15\ospprearm.exe" 
+cscript.exe "%ProgramFiles(x86)%\Microsoft Office\Office15\ospp.vbs" /act
+

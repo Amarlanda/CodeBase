@@ -1,0 +1,4 @@
+"Name","Access","Description","Author","Team","LastModified","ModifiedBy"
+"Add-KSESXHost","Public","Add an ESX host to a connected vCenter server.","Chris Dent","Core Technologies","15/01/2015","Chris Dent"
+"Add-KSESXLicense","Public","Add licences to an ESX host.","Amar Landa & Chris Dent","Core Technologies","15/01/2015","Chris Dent"
+"Restart-KSESXHost","Public","Add an ESX host to a connected vCenter server.","Amar Landa","Core Technologies","15/01/2015","Chris Dent"

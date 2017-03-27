@@ -1,0 +1,221 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>HTML TABLE</title>
+</head><body>
+<DIV><P><FONT size=1 color=#969696>Back to [[Module reference]]</FONT></P></DIV>
+<DIV><STRONG><FONT size=4>Contents</FONT></STRONG></DIV>
+&nbsp;
+<DIV>
+<A HREF='http://sites.eu.kworld.kpmg.com/sites/infrastructure/department/itservices/coretechnologies/KScript/KScript.VirtualInfrastructure.aspx#ModuleInformation'>Module information</A><BR />
+<A HREF='http://sites.eu.kworld.kpmg.com/sites/infrastructure/department/itservices/coretechnologies/KScript/KScript.VirtualInfrastructure.aspx#Functions'>Functions</A><BR />
+</DIV>
+&nbsp;<HR>&nbsp;
+<DIV><A Name='ModuleInformation'></A><STRONG><FONT size=4>Module information</FONT></STRONG></DIV>
+&nbsp;
+<DIV>
+<P>Virtual infrastructure platform abstraction.</P>
+<UL>
+<LI>Module version: 2.13</LI>
+<LI>Author: Chris Dent</LI>
+<LI>Page updated: Monday 1 December 2014</LI>
+</UL>
+</DIV>
+&nbsp;<HR>&nbsp;
+<DIV><A Name='Functions'></A><STRONG><FONT size=4>Functions</FONT></STRONG></DIV>
+&nbsp;
+<DIV>
+<TABLE style="WIDTH: 100%; BORDER-COLLAPSE: collapse; FONT-SIZE: 1em" border=1>
+<tr><th style="background-color: #98C6F3;">Name</th><th style="background-color: #98C6F3;">Description</th><th style="background-color: #98C6F3;">Author</th><th style="background-color: #98C6F3;">Last modified</th><th style="background-color: #98C6F3;">Modified by</th></tr>
+<tr><td><a href='http://sites.eu.kworld.kpmg.com/sites/infrastructure/department/itservices/coretechnologies/KScript/KScript.VirtualInfrastructure.aspx#Export-KSVMOwner'>Export-KSVMOwner</a></td><td>Export virtual machine owner information (custom properties) to an Excel file.</td><td>Chris Dent</td><td>01/12/2014</td><td>Chris Dent</td></tr>
+<tr><td><a href='http://sites.eu.kworld.kpmg.com/sites/infrastructure/department/itservices/coretechnologies/KScript/KScript.VirtualInfrastructure.aspx#Get-KSClusterSharedVolume'>Get-KSClusterSharedVolume</a></td><td>Get cluster shared volumes.</td><td>Chris Dent</td><td>23/09/2014</td><td>Chris Dent</td></tr>
+<tr><td><a href='http://sites.eu.kworld.kpmg.com/sites/infrastructure/department/itservices/coretechnologies/KScript/KScript.VirtualInfrastructure.aspx#Get-KSVIEntity'>Get-KSVIEntity</a></td><td>Get VI (virtual infrastructure) entities registered for use with this module.</td><td>Chris Dent</td><td>23/09/2014</td><td>Chris Dent</td></tr>
+<tr><td><a href='http://sites.eu.kworld.kpmg.com/sites/infrastructure/department/itservices/coretechnologies/KScript/KScript.VirtualInfrastructure.aspx#Get-KSVM'>Get-KSVM</a></td><td>Search for a virtual machine across all known platforms.</td><td>Chris Dent</td><td>17/11/2014</td><td>Chris Dent</td></tr>
+<tr><td><a href='http://sites.eu.kworld.kpmg.com/sites/infrastructure/department/itservices/coretechnologies/KScript/KScript.VirtualInfrastructure.aspx#Get-KSVMDiskUsage'>Get-KSVMDiskUsage</a></td><td>Get the disk space used by a virtual machine managed by a vCenter server.</td><td>Chris Dent</td><td>04/09/2014</td><td>Chris Dent</td></tr>
+<tr><td><a href='http://sites.eu.kworld.kpmg.com/sites/infrastructure/department/itservices/coretechnologies/KScript/KScript.VirtualInfrastructure.aspx#Get-KSVMSnapshot'>Get-KSVMSnapshot</a></td><td>Get VM snapshots from SCVMM.</td><td>Chris Dent</td><td>30/07/2014</td><td>Chris Dent</td></tr>
+<tr><td><a href='http://sites.eu.kworld.kpmg.com/sites/infrastructure/department/itservices/coretechnologies/KScript/KScript.VirtualInfrastructure.aspx#Set-KSVMCustomProperty'>Set-KSVMCustomProperty</a></td><td>Set a custom property on a Virtual Machine managed by SCVMM.</td><td>Chris Dent</td><td>31/10/2014</td><td>Chris Dent</td></tr>
+<tr><td><a href='http://sites.eu.kworld.kpmg.com/sites/infrastructure/department/itservices/coretechnologies/KScript/KScript.VirtualInfrastructure.aspx#Set-KSVMOwner'>Set-KSVMOwner</a></td><td>Set owner information for a specific virtual machine.</td><td>Chris Dent</td><td>31/10/2014</td><td>Chris Dent</td></tr>
+<tr><td><a href='http://sites.eu.kworld.kpmg.com/sites/infrastructure/department/itservices/coretechnologies/KScript/KScript.VirtualInfrastructure.aspx#Test-KSESXCredential'>Test-KSESXCredential</a></td><td>Test a set of credentials against an ESX server.</td><td>Chris Dent</td><td>03/10/2014</td><td>Chris Dent</td></tr>
+</table>
+</DIV>
+&nbsp;<HR>&nbsp;
+<DIV><A Name='Export-KSVMOwner'></A><STRONG><FONT size=4>Export-KSVMOwner</FONT></STRONG></DIV>
+&nbsp;
+<DIV><STRONG><FONT size=2>Synopsis</FONT></STRONG></DIV>
+<P>Export virtual machine owner information (custom properties) to an Excel file.</P>
+<DIV><STRONG><FONT size=2>Syntax</FONT></STRONG></DIV>
+<P style='font-family: Consolas'>Export-KSVMOwner [[-VIEntity] &lt;Object&gt;] [[-ExportPath] &lt;String&gt;] [[-FileAgeLimit] &lt;TimeSpan&gt;] [[-DateStampFormat] &lt;String&gt;] [&lt;CommonParameters&gt;]</P>
+<DIV><STRONG><FONT size=2>Description</FONT></STRONG></DIV>
+<P>Export virtual machine owner information from SCVMM servers to an Excel file.</P>
+<P>Owner information is stored in a number of custom properties:</P>
+<UL><LI>Service Name</LI><LI>Service Owner</LI><LI>Server Role</LI><LI>Business Function</LI></UL><P>All information is written to an Excel spreadsheet stored under the ExportPath.</P>
+&nbsp;<DIV><STRONG><FONT size=2>Change log</FONT></STRONG></DIV>
+&nbsp;
+<DIV>
+<TABLE style="WIDTH: 70%; BORDER-COLLAPSE: collapse; FONT-SIZE: 1em" border=1>
+<tr><th style="background-color: #98C6F3;">Date</th><th style="background-color: #98C6F3;">Who</th><th style="background-color: #98C6F3;">What</th></tr>
+<tr><td>01/12/2014</td><td>Chris Dent</td><td>Added ClusterName, added HostGroupName.</td></tr>
+<tr><td>16/10/2014</td><td>Chris Dent</td><td>Added ComputerName to output properties to capture Name / ComputerName mismatches.</td></tr>
+<tr><td>29/09/2014</td><td>Chris Dent</td><td>Reordered output properties.</td></tr>
+<tr><td>26/09/2014</td><td>Chris Dent</td><td>Added Business Function custom property.</td></tr>
+<tr><td>25/09/2014</td><td>Chris Dent</td><td>BugFix: Typo in CSV property name.</td></tr>
+<tr><td>23/09/2014</td><td>Chris Dent</td><td>First release.</td></tr>
+</table>
+</DIV>
+&nbsp;<HR>&nbsp;
+<DIV><A Name='Get-KSClusterSharedVolume'></A><STRONG><FONT size=4>Get-KSClusterSharedVolume</FONT></STRONG></DIV>
+&nbsp;
+<DIV><STRONG><FONT size=2>Synopsis</FONT></STRONG></DIV>
+<P>Get cluster shared volumes.</P>
+<DIV><STRONG><FONT size=2>Syntax</FONT></STRONG></DIV>
+<P style='font-family: Consolas'>Get-KSClusterSharedVolume [[-VIEntity] &lt;Object&gt;] [&lt;CommonParameters&gt;]</P>
+<DIV><STRONG><FONT size=2>Description</FONT></STRONG></DIV>
+<P>Get cluster shared volumes along with the World-Wide-Name (WWN) for the volume.</P>
+<P>Get-KSClusterSharedVolume requires access to SCVMM using the virtualmachinemanager module as well as any Host Clusters. The Host Clusters are accessed using the failoverclusters module.</P>
+&nbsp;<DIV><STRONG><FONT size=2>Change log</FONT></STRONG></DIV>
+&nbsp;
+<DIV>
+<TABLE style="WIDTH: 70%; BORDER-COLLAPSE: collapse; FONT-SIZE: 1em" border=1>
+<tr><th style="background-color: #98C6F3;">Date</th><th style="background-color: #98C6F3;">Who</th><th style="background-color: #98C6F3;">What</th></tr>
+<tr><td>23/09/2014</td><td>Chris Dent</td><td>Modified to use and accept a pipeline from Get-KSVIEntity.</td></tr>
+<tr><td>18/09/2014</td><td>Chris Dent</td><td>First release.</td></tr>
+</table>
+</DIV>
+&nbsp;<HR>&nbsp;
+<DIV><A Name='Get-KSVIEntity'></A><STRONG><FONT size=4>Get-KSVIEntity</FONT></STRONG></DIV>
+&nbsp;
+<DIV><STRONG><FONT size=2>Synopsis</FONT></STRONG></DIV>
+<P>Get VI (virtual infrastructure) entities registered for use with this module.</P>
+<DIV><STRONG><FONT size=2>Syntax</FONT></STRONG></DIV>
+<P style='font-family: Consolas'>Get-KSVIEntity [[-Name] &lt;String&gt;] [[-Description] &lt;String&gt;] [[-FileName] &lt;String&gt;] [&lt;CommonParameters&gt;]</P>
+<DIV><STRONG><FONT size=2>Description</FONT></STRONG></DIV>
+<P>Get VI (virtual infrastructure) entities registered for use with this module.</P>
+<P>A VI entity is typically a management server such as a VMWare vSphere server, or a Microsoft SCVMM server.</P>
+&nbsp;<DIV><STRONG><FONT size=2>Change log</FONT></STRONG></DIV>
+&nbsp;
+<DIV>
+<TABLE style="WIDTH: 70%; BORDER-COLLAPSE: collapse; FONT-SIZE: 1em" border=1>
+<tr><th style="background-color: #98C6F3;">Date</th><th style="background-color: #98C6F3;">Who</th><th style="background-color: #98C6F3;">What</th></tr>
+<tr><td>23/09/2014</td><td>Chris Dent</td><td>Modified to reflect the changes to vi-entities.csv. Added ManagementDomain.</td></tr>
+<tr><td>22/09/2014</td><td>Chris Dent</td><td>First release.</td></tr>
+</table>
+</DIV>
+&nbsp;<HR>&nbsp;
+<DIV><A Name='Get-KSVM'></A><STRONG><FONT size=4>Get-KSVM</FONT></STRONG></DIV>
+&nbsp;
+<DIV><STRONG><FONT size=2>Synopsis</FONT></STRONG></DIV>
+<P>Search for a virtual machine across all known platforms.</P>
+<DIV><STRONG><FONT size=2>Syntax</FONT></STRONG></DIV>
+<P style='font-family: Consolas'>Get-KSVM [[-VMName] &lt;String&gt;] [[-VIEntity] &lt;Object&gt;] [&lt;CommonParameters&gt;]</P>
+<DIV><STRONG><FONT size=2>Description</FONT></STRONG></DIV>
+<P>Get-KSVM attempts to find a virtual machine by name across all platforms.</P>
+&nbsp;<DIV><STRONG><FONT size=2>Change log</FONT></STRONG></DIV>
+&nbsp;
+<DIV>
+<TABLE style="WIDTH: 70%; BORDER-COLLAPSE: collapse; FONT-SIZE: 1em" border=1>
+<tr><th style="background-color: #98C6F3;">Date</th><th style="background-color: #98C6F3;">Who</th><th style="background-color: #98C6F3;">What</th></tr>
+<tr><td>17/11/2014</td><td>Chris Dent</td><td>Modified to include search of VDI estate.</td></tr>
+<tr><td>30/09/2014</td><td>Chris Dent</td><td>Modified wildcard handling.</td></tr>
+<tr><td>02/07/2014</td><td>Chris Dent</td><td>First release.</td></tr>
+</table>
+</DIV>
+&nbsp;<HR>&nbsp;
+<DIV><A Name='Get-KSVMDiskUsage'></A><STRONG><FONT size=4>Get-KSVMDiskUsage</FONT></STRONG></DIV>
+&nbsp;
+<DIV><STRONG><FONT size=2>Synopsis</FONT></STRONG></DIV>
+<P>Get the disk space used by a virtual machine managed by a vCenter server.</P>
+<DIV><STRONG><FONT size=2>Syntax</FONT></STRONG></DIV>
+<P style='font-family: Consolas'>Get-KSVMDiskUsage [[-VMName] &lt;String&gt;] [[-VIEntity] &lt;Object&gt;] [&lt;CommonParameters&gt;]</P>
+<DIV><STRONG><FONT size=2>Description</FONT></STRONG></DIV>
+<P>Get the disk space used by a virtual machine managed by a vCenter server (including space used by snapshot images).</P>
+&nbsp;<DIV><STRONG><FONT size=2>Change log</FONT></STRONG></DIV>
+&nbsp;
+<DIV>
+<TABLE style="WIDTH: 70%; BORDER-COLLAPSE: collapse; FONT-SIZE: 1em" border=1>
+<tr><th style="background-color: #98C6F3;">Date</th><th style="background-color: #98C6F3;">Who</th><th style="background-color: #98C6F3;">What</th></tr>
+<tr><td>04/09/2014</td><td>Chris Dent</td><td>First release.</td></tr>
+</table>
+</DIV>
+&nbsp;<HR>&nbsp;
+<DIV><A Name='Get-KSVMSnapshot'></A><STRONG><FONT size=4>Get-KSVMSnapshot</FONT></STRONG></DIV>
+&nbsp;
+<DIV><STRONG><FONT size=2>Synopsis</FONT></STRONG></DIV>
+<P>Get VM snapshots from SCVMM.</P>
+<DIV><STRONG><FONT size=2>Syntax</FONT></STRONG></DIV>
+<P style='font-family: Consolas'>Get-KSVMSnapshot [[-Name] &lt;String&gt;] [[-SnapshotType] &lt;String[]&gt;] [&lt;CommonParameters&gt;]</P>
+<DIV><STRONG><FONT size=2>Description</FONT></STRONG></DIV>
+<P>Get-KSVMSnapshot is built to request VMCheckPoints from SCVMM.</P>
+<P>Each Snapshot is tagged with a simple type based on the description and creation date.</P>
+<P>The description is loosely parsed, it looks for the following keywords:</P>
+<UL><LI>After Migration</LI><LI>App Migration</LI><LI>Application Migration</LI><LI>Post Migration</LI></UL><P>If any of the combinations above are present the snapshot is tagged as &quot;AppMigration&quot;.</P>
+<P>If a description is not set, but the snapshot was created within 24 hours of the VM it is tagged as DayOne.</P>
+<P>If all tests above fail the snapshot will be tagged as BAU (Business As Usual).</P>
+&nbsp;<DIV><STRONG><FONT size=2>Change log</FONT></STRONG></DIV>
+&nbsp;
+<DIV>
+<TABLE style="WIDTH: 70%; BORDER-COLLAPSE: collapse; FONT-SIZE: 1em" border=1>
+<tr><th style="background-color: #98C6F3;">Date</th><th style="background-color: #98C6F3;">Who</th><th style="background-color: #98C6F3;">What</th></tr>
+<tr><td>30/07/2014</td><td>Chris Dent</td><td>First release.</td></tr>
+</table>
+</DIV>
+&nbsp;<HR>&nbsp;
+<DIV><A Name='Set-KSVMCustomProperty'></A><STRONG><FONT size=4>Set-KSVMCustomProperty</FONT></STRONG></DIV>
+&nbsp;
+<DIV><STRONG><FONT size=2>Synopsis</FONT></STRONG></DIV>
+<P>Get VM snapshots from SCVMM.</P>
+<DIV><STRONG><FONT size=2>Syntax</FONT></STRONG></DIV>
+<P style='font-family: Consolas'>Get-KSVMSnapshot [[-Name] &lt;String&gt;] [[-SnapshotType] &lt;String[]&gt;] [&lt;CommonParameters&gt;]</P>
+<DIV><STRONG><FONT size=2>Description</FONT></STRONG></DIV>
+<P>Get-KSVMSnapshot is built to request VMCheckPoints from SCVMM.</P>
+<P>Each Snapshot is tagged with a simple type based on the description and creation date.</P>
+<P>The description is loosely parsed, it looks for the following keywords:</P>
+<UL><LI>After Migration</LI><LI>App Migration</LI><LI>Application Migration</LI><LI>Post Migration</LI></UL><P>If any of the combinations above are present the snapshot is tagged as &quot;AppMigration&quot;.</P>
+<P>If a description is not set, but the snapshot was created within 24 hours of the VM it is tagged as DayOne.</P>
+<P>If all tests above fail the snapshot will be tagged as BAU (Business As Usual).</P>
+&nbsp;<DIV><STRONG><FONT size=2>Change log</FONT></STRONG></DIV>
+&nbsp;
+<DIV>
+<TABLE style="WIDTH: 70%; BORDER-COLLAPSE: collapse; FONT-SIZE: 1em" border=1>
+<tr><th style="background-color: #98C6F3;">Date</th><th style="background-color: #98C6F3;">Who</th><th style="background-color: #98C6F3;">What</th></tr>
+<tr><td>30/07/2014</td><td>Chris Dent</td><td>First release.</td></tr>
+</table>
+</DIV>
+&nbsp;<HR>&nbsp;
+<DIV><A Name='Set-KSVMOwner'></A><STRONG><FONT size=4>Set-KSVMOwner</FONT></STRONG></DIV>
+&nbsp;
+<DIV><STRONG><FONT size=2>Synopsis</FONT></STRONG></DIV>
+<P>Set owner information for a specific virtual machine.</P>
+<DIV><STRONG><FONT size=2>Syntax</FONT></STRONG></DIV>
+<P style='font-family: Consolas'>Set-KSVMOwner [[-VMName] &lt;String&gt;] [[-ServiceName] &lt;String&gt;] [[-ServiceOwner] &lt;String&gt;] [[-ServerRole] &lt;String&gt;] [[-VIEntity] &lt;Object&gt;] [&lt;CommonParameters&gt;]</P>
+<DIV><STRONG><FONT size=2>Description</FONT></STRONG></DIV>
+<P>Set-KSVMOwner adds information to the following custom properties:</P>
+<UL><LI>Service Name</LI><LI>Service Owner</LI><LI>Server Role</LI></UL>&nbsp;<DIV><STRONG><FONT size=2>Change log</FONT></STRONG></DIV>
+&nbsp;
+<DIV>
+<TABLE style="WIDTH: 70%; BORDER-COLLAPSE: collapse; FONT-SIZE: 1em" border=1>
+<tr><th style="background-color: #98C6F3;">Date</th><th style="background-color: #98C6F3;">Who</th><th style="background-color: #98C6F3;">What</th></tr>
+<tr><td>31/10/2014</td><td>Chris Dent</td><td>First release.</td></tr>
+</table>
+</DIV>
+&nbsp;<HR>&nbsp;
+<DIV><A Name='Test-KSESXCredential'></A><STRONG><FONT size=4>Test-KSESXCredential</FONT></STRONG></DIV>
+&nbsp;
+<DIV><STRONG><FONT size=2>Synopsis</FONT></STRONG></DIV>
+<P>Test a set of credentials against an ESX server.</P>
+<DIV><STRONG><FONT size=2>Syntax</FONT></STRONG></DIV>
+<P style='font-family: Consolas'>Test-KSESXCredential [-ComputerName] &lt;String&gt; [[-Username] &lt;String&gt;] [-Password] &lt;String[]&gt; [&lt;CommonParameters&gt;]</P>
+<DIV><STRONG><FONT size=2>Description</FONT></STRONG></DIV>
+&nbsp;<DIV><STRONG><FONT size=2>Change log</FONT></STRONG></DIV>
+&nbsp;
+<DIV>
+<TABLE style="WIDTH: 70%; BORDER-COLLAPSE: collapse; FONT-SIZE: 1em" border=1>
+<tr><th style="background-color: #98C6F3;">Date</th><th style="background-color: #98C6F3;">Who</th><th style="background-color: #98C6F3;">What</th></tr>
+<tr><td>03/10/2014</td><td>Chris Dent</td><td>First release.</td></tr>
+</table>
+</DIV>
+&nbsp;<HR>&nbsp;
+
+<table>
+</table>
+</body></html>
+

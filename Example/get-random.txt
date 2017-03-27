@@ -1,0 +1,7 @@
+$vmlist | Sort-Object { [Guid]::NewGuid() } 
+
+### get random object back no mater what the object is
+
+
+@("a", "b", "c", "d", "e", "f") | Sort-Object {
+    [Guid]::NewGuid() } | Select-Object -First 3

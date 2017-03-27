@@ -1,0 +1,74 @@
+<?xml version='1.0'?>
+<Policies>
+  <Policy>
+    <Name>Exceptions</Name>
+    <!-- -->
+    <StopPolicyProcessing>TRUE</StopPolicyProcessing>
+  </Policy>
+  <Policy>
+    
+  
+  </Policy>
+  <Policy>
+    <Name>KGS users</Name>
+    <!--
+      Policy filtering type can be:
+    
+       * LdapFilter
+       * SearchRoot
+       * PatternMatch
+    
+      Note: PatternMatch is the least efficient method as it can only be applied after a directory search has been completed.
+    -->
+    <Filters>
+      <Filter>
+        <Type>SearchRoot</Type>
+        <Value><![CDATA[ OU=KRC,OU=Function,DC=uk,DC=kworld,DC=kpmg,DC=com ]]></Value>
+      </Filter>
+      <!--
+      <Filter>
+        <Type>LdapFilter</Type>
+        <Value><![CDATA[ (&(title=SomeValue)(department=SomeDepartment)) ]]></Value>
+      </Filter>
+      <Filter>
+        <Type>PatternMatch</Type>
+        <Property>distinguishedName</Property>
+        <Pattern><![CDATA[ OU=Users,OU=(Value1|Value2) ]]></Pattern>
+      </Filter>
+      -->
+    </Filters>
+    <!-- Commands determine the result of the policy -->
+    <Commands>
+      <Command>
+        <Name>Set-CsUser</Name>
+        <Parameters>
+          <Parameter>
+            <Name>AudioVideoDisabled</Name>
+            <Value>true</Value>
+          </Parameter>
+          <Parameter>
+            <Name>RemoteCallControlTelephonyEnabled</Name>
+            <Value>false</Value>
+          </Parameter>
+          <Parameter>
+            <Name>LineURI</Name>
+            <Value>null</Value>
+          </Parameter>
+          <Parameter>
+            <Name>LineServerURI</Name>
+            <Value>null</Value>
+          </Parameter>
+        </Parameters>
+      </Command>
+      <Command>
+        <Name>Grant-CsConferencingPolicy</Name>
+        <Parameters>
+          <Parameter>
+            <Name>PolicyName</Name>
+            <Value>UK-U-LOW-01</Value>
+          </Parameter>
+        </Parameters>
+      </Command>
+    </Commands>
+  </Policy>
+</Policies>

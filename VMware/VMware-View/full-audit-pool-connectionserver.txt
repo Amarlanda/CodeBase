@@ -1,0 +1,67 @@
+﻿# Get events for each user. Sort by date and pick the newest event.
+# Pick apart the userdisplayname field and make it match SamAccountName
+$Events |
+  Group-Object userdisplayname | 
+  ForEach-Object {
+    # Get all the events for a single user ("current" user in the pipeline)
+    $_.Group | 
+      Sort-Object Time -Descending | 
+      Select-Object -First 1 | 
+      Select-Object @{n='Username';e={ $_.userdisplayname -replace '^.+\\' }}, Time
+  }
+
+# Get the remote sessions (which have a username)
+$Users = Get-RemoteSession |
+  Where-Object { $_.UserName } |
+  ForEach-Object {
+    # Trim down the username to match the SamAccountName
+    $Username = $_.Username -replace '^.+\\'
+
+    # Get the events for this user
+    $UserEvents = $events | Where-Object { $_.Username -eq $Username }
+
+    # If there are events, record the Time
+    if ($UserEvents) {
+      $Time = $UserEvents.Time
+    } else {
+      # Otherwise set Time to N/A.
+      $Time = "N/A"
+    }
+
+    # Prepare the output
+    New-Object PSObject ([Ordered]@{
+      Username    = $Username
+      DNSName     = $_.DNSName
+      Time        = $Time
+      Name        = ""
+      DisplayName = ""
+      Email       = ""
+    })
+  }
+
+# Make a directory searcher
+$Searcher = New-Object DirectoryServices.DirectorySearcher
+
+# Ammend the values in $Users, tagging on a bit of information from AD
+$Users | Group-Object Username | ForEach-Object {
+  $Searcher.Filter = "(samAccountName=$($_.Name))"
+  $ADUser = $Searcher.FindOne()
+
+  $_.Group | ForEach-Object {
+    $_.Name = $ADUser.Properties['name'][0]
+    $_.Displayname = $ADUser.Properties['displayname'][0]
+    $_.Email = $ADUser.Properties['mail'][0]
+  }
+}
+
+# Return the results (to the output pipeline).
+$Users
+
+
+
+$searcher = [ADSIsearcher][ADSI] "LDAP://UK"
+$Searcher.filter = "(&(objectcatorgrey=user))"
+$ADres = $searcher.FindOne()
+
+$Adres | select name, name display, email
+

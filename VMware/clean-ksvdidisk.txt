@@ -1,0 +1,102 @@
+# .SYNOPSIS
+#   Clean (remove) the content of specific folders on the target machine.
+# .DESCRIPTION
+#   Clean-KSVDIDisk completely removes the following folders:
+#
+#     * C:\Program Files (x86)\KPMG\eAudIT11
+#     * C:\ProgramData\eAudIT11
+#
+#   The content of the following folders is removed:
+#
+#     * C:\Windows\ccmcache
+#     * C:\Windows\Temp
+#
+# .PARAMETER ComputerName
+#   The name of the computer to operate against. ComputerName is mandatory, the operator must have permission to make the changes specified here on the computer.
+# .PARAMETER Credential
+#   A user with rights to connect to an administrative share and read WMI. This user should be an administrator on the specified ComputerName, but it does not have to be a domain user.
+# .INPUTS
+#   System.String
+# .OUTPUTS
+#   System.Object
+# .EXAMPLE
+#   .\Clean-KSVDIDisk.ps1 -ComputerName "AComputer"
+#
+#   Run the script from the current working directory.
+# .EXAMPLE
+#   C:\Scripts\Clean-KSVDIDisk.ps1 -ComputerName "AnotherComputer"
+#
+#   Run the script from the C:\Scripts folder.
+# .EXAMPLE
+#   C:\Scripts\Clean-KSVDIDisk.ps1 -ComputerName "AnotherComputer" -WhatIf
+# 
+#   Test the script, show the affected folders only (does not show size).
+# .NOTES
+#   Author: Chris Dent
+#   Team:   Core Technologies
+#
+#   Change log:
+#     14/08/2014 - Chris Dent - First release.
+
+[CmdLetBinding(SupportsShouldProcess = $true)]
+param(
+  [Parameter(Mandatory = $true)]
+  [String]$ComputerName,
+  
+  [PSCredential]$Credential = (Get-Credential)
+)
+
+$Drive = "C"
+
+# Map a network drive
+New-PSDrive "VDI" -PSProvider FileSystem -Root "\\$ComputerName\$Drive$" -Credential $Credential
+if (-not $?) {
+  Write-Host "Unable to connect to the administrative share for $Drive on $ComputerName. Exiting." -ForegroundColor Yellow
+  break
+}
+
+# Before
+
+$DriveBefore = Get-WmiObject Win32_LogicalDisk -Filter "DeviceID='$($Drive):'" -ComputerName $ComputerName -Credential $Credential
+$FreeBefore = "$([Math]::Round(($DriveBefore.FreeSpace / 1MB), 2)) MB"
+$PercentFreeBefore = '{0:P2}' -f ($DriveBefore.FreeSpace / $DriveBefore.Size)
+
+# Delete these folders
+
+"VDI:\Program Files (x86)\KPMG\eAudIT11", "VDI:\ProgramData\eAudIT11" |
+  Where-Object { Test-Path $_ } |
+  ForEach-Object {
+    if ($pscmdlet.ShouldProcess("Deleting $_")) {
+      Remove-Item $_ -Recurse -ErrorAction SilentlyContinue
+    }
+  }
+
+#%username%\documents\eaudit\backup
+
+# Delete the content of these
+
+"VDI:\Windows\ccmcache", "VDI:\Windows\Temp" |
+  Where-Object { Test-Path $_ } |
+  ForEach-Object {
+    if ($pscmdlet.ShouldProcess("Deleting $_\*")) {
+      Get-ChildItem $_ | Remove-Item -Recurse -ErrorAction SilentlyContinue
+    }
+  }
+
+# Remove the mapped drive
+Remove-PSDrive "VDI"
+  
+# After
+
+$DriveAfter = Get-WmiObject Win32_LogicalDisk -Filter "DeviceID='$($Drive):'" -ComputerName $ComputerName -Credential $Credential
+$FreeAfter = "$([Math]::Round(($DriveAfter.FreeSpace / 1MB), 2)) MB"
+$PercentFreeAfter = '{0:P2}' -f ($DriveAfter.FreeSpace / $DriveAfter.Size)
+
+New-Object PSObject -Property ([Ordered]@{
+  ComputerName      = $ComputerName
+  Drive             = $Drive
+  FreeBefore        = $FreeBefore
+  PercentFreeBefore = $PercentFreeBefore
+  FreeAfter         = $FreeAfter
+  PercentFreeAfter  = $PercentFreeAfter
+})

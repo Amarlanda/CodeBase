@@ -1,0 +1,47 @@
+
+
+
+$username = "wycombe\supportamarlanda"
+$password = "Dragoncontrol101"
+$secstr = New-Object -TypeName System.Security.SecureString
+$password.ToCharArray() | ForEach-Object {$secstr.AppendChar($_)}
+$cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $secstr
+
+
+$a = Get-Content "C:\VMs.txt"
+#$obj = new-object PSObject
+$p = 1
+#$t = 0
+#$k = 0
+
+$RS = @()
+
+foreach ($i in $a){ 
+
+    $k = (Get-WmiObject -credential $cred Win32_Service -ComputerName $i | where-object {$_.DisplayName -like "*EMS*"})
+    
+    $RS[$p] = $i
+        #(RS[][][] += $K.state)
+      # ( RS[][][] += $K.SystemName)
+    $p++
+#($i + " "+  $K.state +" " + $K.SystemName) >> c:\Netcool_output.txt
+
+#$K.state, $K.SystemName | ConvertTo-Csv c:\sample.csv -notypeinformation
+
+#$obj | add-member -membertype NoteProperty -name "Name" -value $K.state
+#$obj | add-member -membertype NoteProperty -name "State" -value $K.SystemName
+
+
+  }
+
+
+
+#foreach ($p in $a){ 
+Echo $RS | select *
+#$obj | export-csv c:\sample.csv -notypeinformation -Force -PassThru
+
+
+#$c++
+
+#}
+#start c:\output.txt

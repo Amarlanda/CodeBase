@@ -1,0 +1,26 @@
+﻿$computers = "ukr9x34ow", #unkown
+"ukr9z0nmz",
+"ukr9zm1y0", #5
+"ukpk12e75", # 1front desk Jane's computer
+"UKR9XFK9N",
+"ukr92m1ya",
+"ukr9z0npk"
+#$ErrorActionPreference = "Stop";
+$b = @()
+$computers | % { 
+           
+    if (Test-Connection $_ -quiet){
+        $a = gci "\\$_\c$\users" -Recurse -Force | ? {$_.name -like "desktop"}                                                    
+            $b += New-Object PSObject -Property @{
+            desktop = $a
+            }
+        }
+            
+    $b | select *
+    
+    }
+
+ #   (get-hotfix).count
+#get-ciminstance win32_userprofile | select localpath, lastusetime
+
+#ukr9z0npk

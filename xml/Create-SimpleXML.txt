@@ -1,0 +1,46 @@
+﻿# this is where the document will be saved:
+$Path =  "C:\users\Administrator.LPT01\powershell\xml.xml"
+ 
+# get an XMLTextWriter to create the XML
+$XmlWriter = New-Object System.XMl.XmlTextWriter($Path,$Null)
+ 
+# choose a pretty formatting:
+$xmlWriter.Formatting = 'Indented'
+$xmlWriter.Indentation = 1
+$XmlWriter.IndentChar = "`t"
+ 
+# write the header
+$xmlWriter.WriteStartDocument()
+ 
+# set XSL statements
+$xmlWriter.WriteProcessingInstruction("xml-stylesheet", "type='text/xsl' href='style.xsl'")
+ 
+# Write Root Element
+$xmlWriter.WriteStartElement("Root")
+$xmlWriter.WriteAttributeString('manager', 'Tobias')
+ 
+# Write the Document
+$xmlWriter.WriteStartElement("Servers")
+$xmlWriter.WriteElementString("Name","SERVER01")
+$xmlWriter.WriteElementString("IP","10.30.23.45")
+$xmlWriter.WriteElementString("Path","\\bla docuemts")
+$xmlWriter.WriteEndElement() # <-- Closing Servers
+
+
+$xmlWriter.WriteStartElement("Server2")
+$xmlWriter.WriteElementString("Name","SERVER02")
+$xmlWriter.WriteElementString("IP","22.30.23.22")
+$xmlWriter.WriteElementString("Path","\\bla docuemts")
+$xmlWriter.WriteEndElement() # <-- Closing Servers
+# close the "machine" node:
+    
+ 
+# close the "machines" node:
+$xmlWriter.WriteEndElement()
+ 
+# finalize the document:
+$xmlWriter.WriteEndDocument()
+$xmlWriter.Flush()
+$xmlWriter.Close()
+ 
+notepad $path

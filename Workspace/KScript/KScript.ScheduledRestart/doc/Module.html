@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>HTML TABLE</title>
+</head><body>
+<DIV><P><FONT size=1 color=#969696>Back to [[Module reference]]</FONT></P></DIV>
+<DIV><STRONG><FONT size=4>Contents</FONT></STRONG></DIV>
+&nbsp;
+<DIV>
+<A HREF='http://sites.eu.kworld.kpmg.com/sites/infrastructure/department/itservices/coretechnologies/KScript/KScript.ScheduledRestart.aspx#ModuleInformation'>Module information</A><BR />
+<A HREF='http://sites.eu.kworld.kpmg.com/sites/infrastructure/department/itservices/coretechnologies/KScript/KScript.ScheduledRestart.aspx#Functions'>Functions</A><BR />
+</DIV>
+&nbsp;<HR>&nbsp;
+<DIV><A Name='ModuleInformation'></A><STRONG><FONT size=4>Module information</FONT></STRONG></DIV>
+&nbsp;
+<DIV>
+<P>Scheduled restart management functions.</P>
+<UL>
+<LI>Module version: 1.9</LI>
+<LI>Author: Chris Dent</LI>
+<LI>Page updated: Monday 3 November 2014</LI>
+</UL>
+</DIV>
+&nbsp;<HR>&nbsp;
+<DIV><A Name='Functions'></A><STRONG><FONT size=4>Functions</FONT></STRONG></DIV>
+&nbsp;
+<DIV>
+<TABLE style="WIDTH: 100%; BORDER-COLLAPSE: collapse; FONT-SIZE: 1em" border=1>
+<tr><th style="background-color: #98C6F3;">Name</th><th style="background-color: #98C6F3;">Description</th><th style="background-color: #98C6F3;">Author</th><th style="background-color: #98C6F3;">Last modified</th><th style="background-color: #98C6F3;">Modified by</th></tr>
+<tr><td><a href='http://sites.eu.kworld.kpmg.com/sites/infrastructure/department/itservices/coretechnologies/KScript/KScript.ScheduledRestart.aspx#Add-KSScheduledRestart'>Add-KSScheduledRestart</a></td><td>Add a scheduled restart to the schedule file.</td><td>Chris Dent</td><td>08/10/2014</td><td>Chris Dent</td></tr>
+<tr><td><a href='http://sites.eu.kworld.kpmg.com/sites/infrastructure/department/itservices/coretechnologies/KScript/KScript.ScheduledRestart.aspx#Get-KSScheduledRestart'>Get-KSScheduledRestart</a></td><td>Get scheduled restart operations.</td><td>Chris Dent</td><td>08/10/2014</td><td>Chris Dent</td></tr>
+<tr><td><a href='http://sites.eu.kworld.kpmg.com/sites/infrastructure/department/itservices/coretechnologies/KScript/KScript.ScheduledRestart.aspx#Remove-KSScheduledRestart'>Remove-KSScheduledRestart</a></td><td>Remove an existing scheduled restart.</td><td>Chris Dent</td><td>14/10/2014</td><td>Chris Dent</td></tr>
+<tr><td><a href='http://sites.eu.kworld.kpmg.com/sites/infrastructure/department/itservices/coretechnologies/KScript/KScript.ScheduledRestart.aspx#Start-KSScheduledRestart'>Start-KSScheduledRestart</a></td><td>Start a scheduled restart process of the computers specified in a schedule file.</td><td>Chris Dent</td><td>14/10/2014</td><td>Chris Dent</td></tr>
+<tr><td><a href='http://sites.eu.kworld.kpmg.com/sites/infrastructure/department/itservices/coretechnologies/KScript/KScript.ScheduledRestart.aspx#Update-KSScheduledRestart'>Update-KSScheduledRestart</a></td><td>Update the NextRestart value of a specific scheduled restart entry.</td><td>Chris Dent</td><td>10/10/2014</td><td>Chris Dent</td></tr>
+</DIV>
+&nbsp;<HR>&nbsp;
+<DIV><A Name='Add-KSScheduledRestart'></A><STRONG><FONT size=4>Add-KSScheduledRestart</FONT></STRONG></DIV>
+&nbsp;
+<DIV><STRONG><FONT size=2>Synopsis</FONT></STRONG></DIV>
+<P>Add a scheduled restart to the schedule file.</P>
+<DIV><STRONG><FONT size=2>Syntax</FONT></STRONG></DIV>
+<P style='font-family: Consolas'>Add-KSScheduledRestart [-ComputerName] &lt;String&gt; [-Service] &lt;String&gt; [[-Comment] &lt;String&gt;] [-Frequency] &lt;String&gt; [-HourOfDay] &lt;Byte&gt; [[-Order] &lt;Byte&gt;] [[-ServiceProbe] &lt;String&gt;] [[-FirstRestart] &lt;DateTime&gt;] [[-ScheduleFile] &lt;String&gt;] [&lt;CommonParameters&gt;]</P>
+<DIV><STRONG><FONT size=2>Description</FONT></STRONG></DIV>
+<P>Add a scheduled restart to the schedule file.</P>
+&nbsp;<DIV><STRONG><FONT size=2>Change log</FONT></STRONG></DIV>
+&nbsp;
+<DIV>
+<TABLE style="WIDTH: 70%; BORDER-COLLAPSE: collapse; FONT-SIZE: 1em" border=1>
+<tr><th style="background-color: #98C6F3;">Date</th><th style="background-color: #98C6F3;">Who</th><th style="background-color: #98C6F3;">What</th></tr>
+<tr><td>08/10/2014</td><td>Chris Dent</td><td>First release.</td></tr>
+</DIV>
+&nbsp;<HR>&nbsp;
+<DIV><A Name='Get-KSScheduledRestart'></A><STRONG><FONT size=4>Get-KSScheduledRestart</FONT></STRONG></DIV>
+&nbsp;
+<DIV><STRONG><FONT size=2>Synopsis</FONT></STRONG></DIV>
+<P>Get scheduled restart operations.</P>
+<DIV><STRONG><FONT size=2>Syntax</FONT></STRONG></DIV>
+<P style='font-family: Consolas'>Get-KSScheduledRestart [[-ComputerName] &lt;String&gt;] [[-ScheduleFile] &lt;String&gt;] [&lt;CommonParameters&gt;]</P>
+<DIV><STRONG><FONT size=2>Description</FONT></STRONG></DIV>
+<P>Get and validate the computers configured to restart on a schedule.</P>
+&nbsp;<DIV><STRONG><FONT size=2>Change log</FONT></STRONG></DIV>
+&nbsp;
+<DIV>
+<TABLE style="WIDTH: 70%; BORDER-COLLAPSE: collapse; FONT-SIZE: 1em" border=1>
+<tr><th style="background-color: #98C6F3;">Date</th><th style="background-color: #98C6F3;">Who</th><th style="background-color: #98C6F3;">What</th></tr>
+<tr><td>08/10/2014</td><td>Chris Dent</td><td>First release.</td></tr>
+</DIV>
+&nbsp;<HR>&nbsp;
+<DIV><A Name='Remove-KSScheduledRestart'></A><STRONG><FONT size=4>Remove-KSScheduledRestart</FONT></STRONG></DIV>
+&nbsp;
+<DIV><STRONG><FONT size=2>Synopsis</FONT></STRONG></DIV>
+<P>Remove an existing scheduled restart.</P>
+<DIV><STRONG><FONT size=2>Syntax</FONT></STRONG></DIV>
+<P style='font-family: Consolas'>Remove-KSScheduledRestart [-ComputerName] &lt;String&gt; [[-ScheduleFile] &lt;String&gt;] [-WhatIf] [-Confirm] [&lt;CommonParameters&gt;]</P>
+<DIV><STRONG><FONT size=2>Description</FONT></STRONG></DIV>
+<P>Removes a scheduled restart entry from the schedule file.</P>
+&nbsp;<DIV><STRONG><FONT size=2>Change log</FONT></STRONG></DIV>
+&nbsp;
+<DIV>
+<TABLE style="WIDTH: 70%; BORDER-COLLAPSE: collapse; FONT-SIZE: 1em" border=1>
+<tr><th style="background-color: #98C6F3;">Date</th><th style="background-color: #98C6F3;">Who</th><th style="background-color: #98C6F3;">What</th></tr>
+<tr><td>14/10/2014</td><td>Chris Dent</td><td>BugFix: Cannot read and change CSV in the same pipeline.</td></tr>
+<tr><td>08/10/2014</td><td>Chris Dent</td><td>First release.</td></tr>
+</DIV>
+&nbsp;<HR>&nbsp;
+<DIV><A Name='Start-KSScheduledRestart'></A><STRONG><FONT size=4>Start-KSScheduledRestart</FONT></STRONG></DIV>
+&nbsp;
+<DIV><STRONG><FONT size=2>Synopsis</FONT></STRONG></DIV>
+<P>Start a scheduled restart process of the computers specified in a schedule file.</P>
+<DIV><STRONG><FONT size=2>Syntax</FONT></STRONG></DIV>
+<P style='font-family: Consolas'>Start-KSScheduledRestart [[-ServiceProbeTimeout] &lt;TimeSpan&gt;] [&lt;CommonParameters&gt;]</P>
+<DIV><STRONG><FONT size=2>Description</FONT></STRONG></DIV>
+<P>Start-KSScheduledRestart attempts to restart the servers defined in the default schedule file used by Get-KSScheduledRestart.</P>
+<P>Start-KSScheduledRestart supports ordered restarts and dependency chains. If a server earlier in a dependency fails to restart the rest of the chain is dropped.</P>
+&nbsp;<DIV><STRONG><FONT size=2>Change log</FONT></STRONG></DIV>
+&nbsp;
+<DIV>
+<TABLE style="WIDTH: 70%; BORDER-COLLAPSE: collapse; FONT-SIZE: 1em" border=1>
+<tr><th style="background-color: #98C6F3;">Date</th><th style="background-color: #98C6F3;">Who</th><th style="background-color: #98C6F3;">What</th></tr>
+<tr><td>14/10/2014</td><td>Chris Dent</td><td>Swapped shutdown.exe for Restart-Computer.</td></tr>
+<tr><td>13/10/2014</td><td>Chris Dent</td><td>BugFix: Daylight saving time adjustment.</td></tr>
+<tr><td>10/10/2014</td><td>Chris Dent</td><td>Changed datetime string format.</td></tr>
+<tr><td>09/10/2014</td><td>Chris Dent</td><td>BugFix: Return value from shutdown command.</td></tr>
+<tr><td>08/10/2014</td><td>Chris Dent</td><td>First release</td></tr>
+</DIV>
+&nbsp;<HR>&nbsp;
+<DIV><A Name='Update-KSScheduledRestart'></A><STRONG><FONT size=4>Update-KSScheduledRestart</FONT></STRONG></DIV>
+&nbsp;
+<DIV><STRONG><FONT size=2>Synopsis</FONT></STRONG></DIV>
+<P>Update the NextRestart value of a specific scheduled restart entry.</P>
+<DIV><STRONG><FONT size=2>Syntax</FONT></STRONG></DIV>
+<P style='font-family: Consolas'>Update-KSScheduledRestart [-ComputerName] &lt;String&gt; [[-NextRestart] &lt;String&gt;] [[-ScheduleFile] &lt;String&gt;] [&lt;CommonParameters&gt;]</P>
+<DIV><STRONG><FONT size=2>Description</FONT></STRONG></DIV>
+<P>Internal use only.</P>
+<P>Update-KSScheduledRestart updates the LastRestart value and the hash for a specific entry in the schedule file.</P>
+&nbsp;<DIV><STRONG><FONT size=2>Change log</FONT></STRONG></DIV>
+&nbsp;
+<DIV>
+<TABLE style="WIDTH: 70%; BORDER-COLLAPSE: collapse; FONT-SIZE: 1em" border=1>
+<tr><th style="background-color: #98C6F3;">Date</th><th style="background-color: #98C6F3;">Who</th><th style="background-color: #98C6F3;">What</th></tr>
+<tr><td>10/10/2014</td><td>Chris Dent</td><td>BugFix: DateTime culture. Changed date time to a universal string format.</td></tr>
+<tr><td>08/10/2014</td><td>Chris Dent</td><td>First release.</td></tr>
+</DIV>
+&nbsp;<HR>&nbsp;
+
+</body></html>
+

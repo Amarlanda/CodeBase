@@ -1,0 +1,13 @@
+<?xml version='1.0'?>
+<Settings>
+  <Item>
+    <Name>KSGlobalSettings</Name>
+    <Value>\\ukvmssrv143\KPMG.KScript\Settings\global-settings.xml</Value>
+    <ExportGlobalVariable>FALSE</ExportGlobalVariable>
+  </Item>
+  <Item>
+    <Name>KSModuleAutoUpdate</Name>
+    <Value>FALSE</Value>
+    <ExportGlobalVariable>FALSE</ExportGlobalVariable>
+  </Item>
+</Settings>

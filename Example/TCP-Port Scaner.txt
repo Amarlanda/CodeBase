@@ -1,0 +1,8 @@
+$ComputerName = "ukvmssrv122.uk.kworld.kpmg.com" 
+
+5986, 5985 | % { 
+$Port = $_
+ [Net.Dns]::GetHostEntry($ComputerName).AddressList | ForEach-Object {
+   Write-Host "Testing $_ and port $Port" (New-Object Net.Sockets.TcpClient).Connect($_, $Port) 
+   }
+}

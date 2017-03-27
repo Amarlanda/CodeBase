@@ -1,0 +1,37 @@
+﻿## EXAMPLE how to bulid jagged array
+## USE CASE - adds folders to VMware invetory script
+
+$DCdata = @()
+$b=0
+
+ForEach ($DC in $(get-folder)) {
+
+    ForEach ($ESXiHost in $($DC|get-vmhost)) {
+
+        $DCdata += ,@($b, "$ESXiHost", "$DC")
+        $b++
+    }
+}
+
+
+## normal display all
+
+
+ForEach ($Hello in $DCFolders) {
+
+    write-host "$Hello"
+          
+}
+
+## EXAMPLE display value jagged array
+## USE CASE - only pulls valed ESXI host element 
+
+foreach ($B in $DCdata) {
+    #[string]$str = $b
+    
+    if (($str.contains("")) -and (-not ($str.contains("Datacenters"))) -and (-not ($str.contains("host")))){
+        
+        Write-host "$b[2]"
+        }
+}
+

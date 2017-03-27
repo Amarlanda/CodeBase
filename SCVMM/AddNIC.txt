@@ -1,0 +1,35 @@
+import-module virtualmachinemanager
+
+$vm = Get-SCVirtualMachine 'UKVMSDB039.uk.kworld.kpmg.com'
+
+$ippool = Get-SCStaticIPAddressPool 'BackOffice_Database_IPPool'
+
+$vnic = New-SCVirtualNetworkAdapter -IPv4AddressType Static -Synthetic -VM $vm
+
+$vnic | Set-SCVirtualNetworkAdapter -VMNetwork (Get-SCVMNetwork 'Production_Payload_VM_Network')
+
+$vnic | Set-SCVirtualNetworkAdapter -VLanEnabled $true -VLanID 1802
+
+Grant-SCIPAddress -StaticIPAddressPool $ippool -GrantToObjectType VirtualNetworkAdapter -GrantToObjectID $vnic.ID -Description $vm.Name
+
+
+
+import-module virtualmachinemanager 
+
+$name = "ukp00papp0023.ukapps.kpmg.com"
+
+$vm = get-vm -name $name 
+
+$vm.name
+
+$ippool = Get-SCStaticIPAddressPool | ? { $_.name -like "SIH_DB_DEALCOM" }
+
+$payload = Get-SCVMNetwork | ?{ $_.name -like "ProdDMZ Client vLAN 3338 SIH_DB_DEALCOM" }
+
+$vnic = New-SCVirtualNetworkAdapter -IPv4AddressType Static -Synthetic -VM $vm
+
+$vnic | Set-SCVirtualNetworkAdapter -VMNetwork $payload 
+
+$vnic | Set-SCVirtualNetworkAdapter -VLanEnabled $true -VLanID $($ippool.vlanid)
+
+Grant-SCIPAddress -StaticIPAddressPool $ippool -GrantToObjectType VirtualNetworkAdapter -GrantToObjectID $($vnic.ID) -Description $($vm.Name)

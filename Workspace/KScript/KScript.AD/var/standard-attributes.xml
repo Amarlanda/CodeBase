@@ -1,0 +1,391 @@
+<?xml version='1.0'?>
+<Attributes>
+  <!-- iADSLargeInteger -->
+
+  <Attribute>
+   <Name>accountExpires</Name>
+   <Type>LargeIntegerDate</Type>
+  </Attribute>
+  <Attribute>
+    <Name>badPasswordTime</Name>
+    <Type>LargeIntegerDate</Type>
+  </Attribute>
+  <Attribute>
+    <Name>creationTime</Name>
+    <Type>LargeIntegerDate</Type>
+  </Attribute>
+  <Attribute>
+    <Name>lastLogon</Name>
+    <Type>LargeIntegerDate</Type>
+  </Attribute>
+  <Attribute>
+    <Name>lastLogonTimeStamp</Name>
+    <Type>LargeIntegerDate</Type>
+  </Attribute>
+  <Attribute>
+    <Name>lastLogoff</Name>
+    <Type>LargeIntegerDate</Type>
+  </Attribute>
+  <Attribute>
+    <Name>lockoutDuration</Name>
+    <Type>LargeIntegerTimespan</Type>
+  </Attribute>
+  <Attribute>
+    <Name>lockoutObservationWindow</Name>
+    <Type>LargeIntegerTimespan</Type>
+  </Attribute>
+  <Attribute>
+    <Name>lockoutTime</Name>
+    <Type>LargeIntegerDate</Type>
+  </Attribute>
+  <Attribute>
+    <Name>maxPwdAge</Name>
+    <Type>LargeIntegerTimespan</Type>
+  </Attribute>
+  <Attribute>
+    <Name>minPwdAge</Name>
+    <Type>LargeIntegerTimespan</Type>
+  </Attribute>
+  <Attribute>
+    <Name>pwdLastSet</Name>
+    <Type>LargeIntegerDate</Type>
+  </Attribute>
+
+  <!-- SecondTimespan (WinNT interface) -->
+  
+  <Attribute>
+    <Name>AutoUnlockInterval</Name>
+    <Type>SecondTimespan</Type>
+  </Attribute>
+  <Attribute>
+    <Name>LockoutObservationInterval</Name>
+    <Type>SecondTimespan</Type>
+  </Attribute>
+  <Attribute>
+    <Name>MaxPasswordAge</Name>
+    <Type>SecondTimespan</Type>
+  </Attribute>
+  <Attribute>
+    <Name>MinPasswordAge</Name>
+    <Type>SecondTimespan</Type>
+  </Attribute>
+  <Attribute>
+    <Name>PasswordAge</Name>
+    <Type>SecondTimespan</Type>
+  </Attribute>
+  
+  <!-- GUIDObject -->
+  
+  <Attribute>
+    <Name>attributeSecurityGUID</Name>
+    <Type>GUIDObject</Type>
+  </Attribute>
+  <Attribute>
+    <Name>msExchMailboxGUID</Name>
+    <Type>GUIDObject</Type>
+  </Attribute>
+  <Attribute>
+    <Name>objectGUID</Name>
+    <Type>GUIDObject</Type>
+  </Attribute>
+  <Attribute>
+    <Name>schemaIDGUID</Name>
+    <Type>GUIDObject</Type>
+  </Attribute>
+  
+  <!-- SIDObject -->
+  
+  <Attribute>
+    <Name>objectSID</Name>
+    <Type>SIDObject</Type>
+  </Attribute>
+  
+  <!-- Enumerations -->
+
+  <Attribute>
+    <Name>BehaviorVersion</Name>
+    <Aliases>
+      <Alias>domainFunctionality</Alias>
+      <Alias>forestFunctionality</Alias>
+      <Alias>domainControllerFunctionality</Alias>
+    </Aliases>
+    <Type>Enum</Type>
+    <ValueType>System.UInt32</ValueType>
+    <Values>
+      <Value Name='Windows2000'>0</Value>
+      <Value Name='Windows2003Mixed'>1</Value>
+      <Value Name='Windows2003'>2</Value>
+      <Value Name='Windows2008'>3</Value>
+      <Value Name='Windows2008R2'>4</Value>
+      <Value Name='Windows2012'>5</Value>
+      <Value Name='Windows2012R2'>6</Value>
+    </Values>
+  </Attribute>
+  <Attribute>
+    <Name>gpoptions</Name>
+    <Type>Enum</Type>
+    <ValueType>System.UInt32</ValueType>
+    <Values>
+      <Value Name='NoGPOBlocking'>0</Value>
+      <Value Name='BlockNonEnforcedGPO'>1</Value>
+    </Values>
+  </Attribute>
+  <Attribute>
+    <Name>groupType</Name>
+    <Type>Enum</Type>
+    <Flags>TRUE</Flags>
+    <ValueType>System.UInt32</ValueType>
+    <Values>
+      <Value Name='System'>1</Value>
+      <Value Name='Global'>2</Value>
+      <Value Name='DomainLocal'>4</Value>
+      <Value Name='Universal'>8</Value>
+      <Value Name='AppBasic'>16</Value>
+      <Value Name='AppQuery'>32</Value>
+      <Value Name='Security'>2147483648</Value>
+    </Values>
+  </Attribute>
+  <Attribute>
+    <Name>instanceType</Name>
+    <Type>Enum</Type>
+    <Flags>TRUE</Flags>
+    <ValueType>System.UInt32</ValueType>
+    <Values>
+      <Value Name='HeadOfNamingContext'>1</Value>
+      <Value Name='ReplicaNotInstantiated'>2</Value>
+      <Value Name='ObjectIsWriteableOnDirectory'>4</Value>
+      <Value Name='NamingContextAboveIsHeld'>8</Value>
+      <Value Name='NamingContextBeingConstructed'>16</Value>
+      <Value Name='NamingContextBeingRemoved'>32</Value>
+    </Values>
+  </Attribute>
+  <Attribute>
+    <Name>msexchomaadminwirelessenable</Name>
+    <Type>Enum</Type>
+    <ValueType>System.UInt32</ValueType>
+    <Values>
+      <Value Name='AllMobileFeaturesEnabled'>0</Value>
+      <Value Name='OMAEnabledEASDisabled'>5</Value>
+      <Value Name='AllMobileFeaturesDisabled'>7</Value>
+    </Values>
+  </Attribute>
+  <Attribute>
+    <Name>msExchRecipientDisplayType</Name>
+    <Type>Enum</Type>
+    <ValueType>System.UInt32</ValueType>
+    <Values>
+      <Value Name='DistributionGroup'>1</Value>
+      <Value Name='RemoteMailUser'>2</Value>
+      <Value Name='DynamicDistributionGroup'>3</Value>
+      <Value Name='Organization'>4</Value>
+      <Value Name='PrivateDistributionList'>5</Value>
+      <Value Name='MailUserOrContact'>6</Value>
+      <Value Name='ConferenceRoomMailbox'>7</Value>
+      <Value Name='EquipmentMailbox'>8</Value>
+      <Value Name='MicrosoftExchangeMailbox'>10</Value>
+      <Value Name='ExchangeOnlineApplicationAccount'>12</Value>
+      <Value Name='ACLableMailboxUser'>1073741824</Value>
+      <Value Name='SecurityDistributionGroup'>1073741833</Value>
+    </Values>
+  </Attribute>
+  <Attribute>
+    <Name>msExchRecipientTypeDetails</Name>
+    <Type>Enum</Type>
+    <Flags>FALSE</Flags>
+    <ValueType>System.UInt64</ValueType>
+    <Values>
+      <Value Name='UserMailbox'>1</Value>
+      <Value Name='LinkedMailbox'>2</Value>
+      <Value Name='SharedMailbox'>4</Value>
+      <Value Name='LegacyMailbox'>8</Value>
+      <Value Name='RoomMailbox'>16</Value>
+      <Value Name='EquipmentMailbox'>32</Value>
+      <Value Name='MailContact'>64</Value>
+      <Value Name='MailUser'>128</Value>
+      <Value Name='MailUniversalDistributionGroup'>256</Value>
+      <Value Name='MailNonUniversalGroup'>512</Value>
+      <Value Name='MailUniversalSecurityGroup'>1024</Value>
+      <Value Name='DynamicDistributionGroup'>2048</Value>
+      <Value Name='PublicFolder'>4096</Value>
+      <Value Name='SystemAttendantMailbox'>8192</Value>
+      <Value Name='SystemMailbox'>16384</Value>
+      <Value Name='MailForestContact'>32768</Value>
+      <Value Name='User'>65536</Value>
+      <Value Name='Contact'>131072</Value>
+      <Value Name='UniversalDistributionGroup'>262144</Value>
+      <Value Name='UniversalSecurityGroup'>524288</Value>
+      <Value Name='NonUniversalGroup'>1048576</Value>
+      <Value Name='DisabledUser'>2097152</Value>
+      <Value Name='MicrosoftExchange'>4194304</Value>
+      <Value Name='ArbitrationMailbox'>8388608</Value>
+      <Value Name='MailboxPlan'>16777216</Value>
+      <Value Name='LinkedUser'>33554432</Value>
+      <Value Name='RoomList'>268435456</Value>
+      <Value Name='DiscoveryMailbox'>536870912</Value>
+      <Value Name='RoleGroup'>1073741824</Value>
+      <Value Name='RemoteMailbox'>2147483648</Value>
+      <Value Name='TeamMailbox'>137438953472</Value>
+    </Values>
+  </Attribute>
+  <Attribute>
+    <Name>msExchUserAccountControl</Name>
+    <Type>Enum</Type>
+    <ValueType>System.UInt64</ValueType>
+    <Values>
+      <Value Name='EnabledUser'>0</Value>
+      <Value Name='DisabledUser'>2</Value>
+    </Values>
+  </Attribute>
+  <Attribute>
+    <Name>msExchVersion</Name>
+    <Type>Enum</Type>
+    <Flags>TRUE</Flags>
+    <ValueType>System.UInt64</ValueType>
+    <Values>
+      <Value Name='Exchange2007'>4535486012416</Value>
+      <Value Name='Exchange2010'>44220983382016</Value>
+    </Values>
+  </Attribute>
+  <Attribute>
+    <Name>msRTCSIPOptionFlags</Name>
+    <Aliases>
+      <Alias>msRTCSIP-OptionFlags</Alias>
+    </Aliases>
+    <Type>Enum</Type>
+    <Flags>TRUE</Flags>
+    <ValueType>System.UInt32</ValueType>
+    <Values>
+      <Value Name='EnabledForPublicIMConnectivity'>1</Value>
+      <Value Name='RCCEnabled'>16</Value>
+      <Value Name='AllowOrganizeMeetingWithAnonymousParticipants'>64</Value>
+      <Value Name='UCEnabled'>128</Value>
+      <Value Name='EnabledForEnhancedPresence'>256</Value>
+      <Value Name='RemoteCallControlDualMode'>512</Value>
+      <Value Name='EnabledAutoAttendant'>1024</Value>
+    </Values>
+  </Attribute>
+  <Attribute>
+    <Name>nTMixedDomain</Name>
+    <Type>Enum</Type>
+    <Flags>TRUE</Flags>
+    <ValueType>System.UInt32</ValueType>
+    <Values>
+      <Value Name='Disabled'>0</Value>
+      <Value Name='Enabled'>1</Value>
+    </Values>
+  </Attribute>
+  <Attribute>
+    <Name>pwdProperties</Name>
+    <Type>Enum</Type>
+    <Flags>TRUE</Flags>
+    <ValueType>System.UInt32</ValueType>
+    <Values>
+      <Value Name='Complex'>1</Value>
+      <Value Name='NoAnonymousChange'>2</Value>
+      <Value Name='NoClearChange'>4</Value>
+      <Value Name='LockoutAdmins'>8</Value>
+      <Value Name='StoreClearText'>16</Value>
+      <Value Name='RefusePasswordChange'>32</Value>
+    </Values>
+  </Attribute>
+  <Attribute>
+    <Name>sAMAccountType</Name>
+    <Type>Enum</Type>
+    <ValueType>System.UInt32</ValueType>
+    <Values>
+      <Value Name='DomainObject'>0</Value>
+      <Value Name='GroupObject'>268435456</Value>
+      <Value Name='NonSecurityGroupObject'>268435457</Value>
+      <Value Name='AliasObject'>536870912</Value>
+      <Value Name='NonSecurityAliasObject'>536870913</Value>
+      <Value Name='UserObject'>805306368</Value>
+      <Value Name='MachineAccount'>805306369</Value>
+      <Value Name='TrustAccount'>805306370</Value>
+      <Value Name='AppBasicGroup'>1073741824</Value>
+      <Value Name='AppQueryGroup'>1073741825</Value>
+      <Value Name='AccountTypeMax'>2147483647</Value>
+    </Values>
+  </Attribute>
+  <Attribute>
+    <Name>searchFlags</Name>
+    <Type>Enum</Type>
+    <Flags>TRUE</Flags>
+    <ValueType>System.UInt32</ValueType>
+    <Values>
+      <Value Name='Indexed'>1</Value>
+      <Value Name='ContainerIndexed'>2</Value>
+      <Value Name='ANRSet'>4</Value>
+      <Value Name='IncludeInTombstone'>8</Value>
+      <Value Name='IncludeWhenCopied'>16</Value>
+      <Value Name='TupleIndexed'>32</Value>
+      <Value Name='VLVIndexed'>64</Value>
+      <Value Name='Confidential'>128</Value>
+      <Value Name='NeverAudit'>256</Value>
+      <Value Name='RODCFiltered'>512</Value>
+      <Value Name='ExtendedLinkTracking'>1024</Value>
+      <Value Name='BaseOnly'>2048</Value>
+      <Value Name='PartitionSecret'>4096</Value>
+    </Values>
+  </Attribute>  
+  <Attribute>
+    <Name>serverState</Name>
+    <Type>Enum</Type>
+    <Flags>TRUE</Flags>
+    <ValueType>System.UInt32</ValueType>
+    <Values>
+      <Value Name='Enabled'>1</Value>
+      <Value Name='Disabled'>2</Value>
+    </Values>
+  </Attribute>
+  <Attribute>
+    <Name>systemFlags</Name>
+    <Type>Enum</Type>
+    <Flags>TRUE</Flags>
+    <ValueType>System.UInt32</ValueType>
+    <Values>
+      <Value Name='NotReplicated'>1</Value>
+      <Value Name='Domain'>2</Value>
+      <Value Name='Constructed'>4</Value>
+      <Value Name='Category1Object'>16</Value>
+      <Value Name='DeletedImmediately'>33554432</Value>
+      <Value Name='CannotBeMoved'>67108864 </Value>
+      <Value Name='CannotBeRenamed'>134217728</Value>
+      <Value Name='CanBeMovedWithRestrictions'>268435456</Value>
+      <Value Name='CanBeMoved'>536870912</Value>
+      <Value Name='CanBeRenamed'>1073741824</Value>
+      <Value Name='CannotBeDeleted'>2147483648</Value>
+    </Values>
+  </Attribute>
+  <Attribute>
+    <Name>userAccountControl</Name>
+    <Aliases>
+      <Alias>userFlags</Alias>
+    </Aliases>    
+    <Type>Enum</Type>
+    <Flags>TRUE</Flags>
+    <ValueType>System.UInt32</ValueType>
+    <Values>
+      <Value Name='Script'>1</Value>
+      <Value Name='AccountDisable'>2</Value>
+      <Value Name='HomeDirectoryRequired'>8</Value>
+      <Value Name='LockedOut'>16</Value>
+      <Value Name='PasswordNotRequired'>32</Value>
+      <Value Name='PasswordCannotChange'>64</Value>
+      <Value Name='EncryptedTextPasswordAllowed'>128</Value>
+      <Value Name='TemporaryDuplicateAccount'>256</Value>
+      <Value Name='NormalAccount'>512</Value>
+      <Value Name='InterdomainTrustAccount'>2048</Value>
+      <Value Name='WorkstationTrustAccount'>4096</Value>
+      <Value Name='ServerTrustAccount'>8192</Value>
+      <Value Name='DoNotExpirePassword'>65536</Value>
+      <Value Name='MNSLogonAccount'>131072</Value>
+      <Value Name='SmartcardRequired'>262144</Value>
+      <Value Name='TrustedForDelegation'>524288</Value>
+      <Value Name='NotDelegated'>1048576</Value>
+      <Value Name='UseDESKeyOnly'>2097152</Value>
+      <Value Name='DoNotRequirePreAuth'>4194304</Value>
+      <Value Name='PasswordExpired'>8388608</Value>
+      <Value Name='TrustedToAuthenticateForDelegation'>16777216</Value>
+    </Values>
+  </Attribute>
+</Attributes>

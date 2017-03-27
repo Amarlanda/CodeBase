@@ -1,0 +1,13 @@
+$DCData = @()
+    ForEach ($RS in $res)
+    {
+
+          
+            $DCData += New-Object PSObject -Property @{
+                            
+                            VMstate= $res.properties.'pae-vmstate'
+                            VMname= $properties."pae-displayname"
+                            }
+            $dcdata |ft
+      }
+

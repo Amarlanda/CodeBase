@@ -1,0 +1,53 @@
+$DCdata1 = @()
+$DCdata1.gettype()
+$DCdata1
+$DCdata1 += ,@(0, "axg","bgdf")
+$DCdata1 += ,@(1, "cdfgdf","dfdg")
+$DCdata1 += ,@(2, "edfgdf","ffdgdf","gdfgdf")
+$DCdata1
+
+$DCdata1 += ,@(3, 'g','h')
+$DCdata1
+foreach ($a in $dcdata1) { write-host ($a) }
+
+$Dcdata1 | % { $_}
+
+$dcdata1[0][1]
+$dcdata1[0][2]
+$dcdata1[0][3]
+$dcdata1[0][0]
+
+$DCdata1 += ,@(4, 'gdslf', ' sdfsdf')
+$DCdata1[4][2]
+
+sort by column
+$employee_list_by_wage = $employee_list | sort-object @{Expression={$_[2]}; Ascending=$true}  
+
+delete element
+
+42.$employee_list_temp = @()  
+ 43.Foreach($employee2 in $employee_list)  
+ 44.    {  
+ 45.    If($employee2[1] –notmatch "Tommy") # Index 1 is for the employee’s name  
+ 46.        {  
+ 47.        $employee_list_temp += ,($employee2) # ... bye-bye Tommy  
+ 48.        }  
+ 49.    }   
+ 50.$employee_list = $employee_list_temp # Updating array content   
+ 51.write-host "==============================="  
+ 52.write-host "Tommy has left… ;-)"  
+ 53.write-host "==============================="  
+
+
+
+Search for a string
+###################
+ foreach ($B in $DCdata) {
+	[string]$str = $b[1]
+	if ($str.contains("206")) {
+	Write-host $str 
+	}
+}
+
+
+http://www.happysysadm.com/2011/01/multidimensional-arrays-in-powershell.html

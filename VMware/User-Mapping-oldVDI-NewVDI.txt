@@ -1,0 +1,9 @@
+$Stuff = @{}
+Import-Csv c:\vdi\bob2.csv | Group-Object user_displayName | ForEach-Object { $Stuff.Add(($_.Name -replace '^[^\\]+\\'), $_.Group) }
+
+Import-KSExcelWorksheet c:\vdi\VDI.xlsx -WorksheetName Format | ForEach-Object {
+  if ($_.'UK Login ID' -and $Stuff.Contains($_.'UK Login ID')) {
+    $_.'Current VDI Machine Name' = $Stuff[$_.'UK Login ID'].Name -join " "
+  }
+  $_
+} | Export-ksexcelworksheet c:\vdi\VDI2.xlsx

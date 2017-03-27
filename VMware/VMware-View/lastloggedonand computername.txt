@@ -1,0 +1,1 @@
+$rawdata | Select-Object @{n='Username';e={ $_.user_displayname -replace '^.+\\' }}, Name | Where-Object { $_.UserName } | Select-Object *, @{n='LastLogon';e={ $Username = $_.UserName; $Time = ($events | ? {$_.moduleandeventtext -like "*$Username*"} | sort time -descending | select -first 1).Time; if ($Time) { $Time } else { "N/A" } }}

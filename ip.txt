@@ -1,0 +1,15 @@
+$IP = "10.216.179.149"
+$Gateway = "10.216.176.1"
+$DNS1 = "10.216.134.155"
+$Subnet = "22"
+
+$netadapter = Get-NetAdapter -Name Ethernet
+$netadapter | Set-NetIPInterface -Dhcp Disabled
+$netadapter | New-NetIPAddress -IPAddress $IP -PrefixLength $Subnet –DefaultGateway $gateway
+Set-DnsClientServerAddress -InterfaceAlias "Ethernet" -ServerAddresses $DNS1
+$netadapter = Get-NetAdapter -Name “Ethernet 2”
+
+##turn dhcp on
+#$netadapter | Set-NetIPInterface -Dhcp Disabled
+#change ip
+#$netadapter | New-NetIPAddress -IPAddress 10.0.0.1 -PrefixLength 8

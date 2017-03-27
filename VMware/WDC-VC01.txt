@@ -1,0 +1,1 @@
+Connect-VIServer -Server wdc-vm-vc0003 -User wycombe\supportamarlanda -Password Dragoncontrol101

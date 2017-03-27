@@ -1,0 +1,1 @@
+$searcher = [adsisearcher] [adsi] $(([adsisearcher]"").Searchroot.path)

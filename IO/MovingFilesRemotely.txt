@@ -1,0 +1,6 @@
+﻿ 01..19 | % { $num = $_ 
+   gci . | % {
+   "Moveing $($_.Name) from to \\ukvmsucollab$($num.tostring("00"))\c$\StartUpScript"
+    Copy-Item  "$_" -Destination "\\ukvmsucollab$($num.tostring("00"))\c$\StartUpScript" 
+   }
+}

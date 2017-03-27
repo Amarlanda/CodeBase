@@ -1,0 +1,9 @@
+﻿$arry = New-Object psobject
+
+gci . | ForEach-Object {
+ $arry | Add-Member -type NoteProperty -Name "folder" -Value ( $_.FullName ) -Force;
+ $arry | Add-Member -type NoteProperty -Name "Size" -Value ((gci $_ -r -Force -ErrorAction SilentlyContinue| measure-object -property length -sum).sum /1mb) -Force
+
+}
+
+Write-Host ($arry | ft)

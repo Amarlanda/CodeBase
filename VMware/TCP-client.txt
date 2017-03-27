@@ -1,0 +1,10 @@
+PS C:\_aj\scripts> $tcpclient = new-object net.sockets.tcpclient
+PS C:\_aj\scripts> $tcpclient.c
+PS C:\_aj\scripts> nslookup ukvmssrv143
+Server:  ukwatdc01.uk.kworld.kpmg.com
+Address:  158.177.79.90
+
+Name:    ukvmssrv143.uk.kworld.kpmg.com
+Address:  10.222.68.75
+
+PS C:\_aj\scripts> $tcpclient.connect("10.222.68.75", 80)

@@ -1,0 +1,4 @@
+$PlainPassword = "]"
+$SecurePassword = $PlainPassword | ConvertTo-SecureString -AsPlainText -Force
+$UserName = "LAB\Admin"
+$Credentials = New-Object System.Management.Automation.PSCredential -ArgumentList $UserName, $SecurePassword

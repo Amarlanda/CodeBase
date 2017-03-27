@@ -1,0 +1,16 @@
+## get all HostSystems' .NET View object
+Get-View -ViewType HostSystem -Property name, Config.StorageDevice.HostBusAdapter | %{
+    $viewHost = $_
+    ## for each HBA that is a HostFibreChannelHba, get some info
+    $viewHost.Config.StorageDevice.HostBusAdapter | ?{$_ -is [VMware.Vim.HostFibreChannelHba]} | %{
+        New-Object -TypeName PSObject -Property @{
+            VMHostName = $viewHost.Name
+            ## the HBA Port WWN in hexadecimal, with each octet split by ":"
+            HBAPortWWN = (("{0:x}" -f $_.PortWorldWideName) -split "(\w{2})" | ?{$_ -ne ""}) -join ":"
+            ## the HBA Node WWN in hexadecimal, with each octet split by ":"
+            HBANodeWWN = (("{0:x}" -f $_.NodeWorldWideName) -split "(\w{2})" | ?{$_ -ne ""}) -join ":"
+            ## the HBA status ("online", for example)
+            HBAStatus = $_.Status
+        } ## end new-object
+    } ## end foreach-object
+} | Select VMHostName, HBAPortWWN, HBANodeWWN, HBAStatus | Sort VMHostName | export-csv -notypeinformation -path "C:\test\wwns.csv"

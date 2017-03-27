@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>HTML TABLE</title>
+</head><body>
+<DIV><P><FONT size=1 color=#969696>Back to [[Module reference]]</FONT></P></DIV>
+<DIV><STRONG><FONT size=4>Contents</FONT></STRONG></DIV>
+&nbsp;
+<DIV>
+<A HREF='http://sites.eu.kworld.kpmg.com/sites/infrastructure/department/itservices/coretechnologies/KScript/KScript.CertificateManagement.aspx#ModuleInformation'>Module information</A><BR />
+<A HREF='http://sites.eu.kworld.kpmg.com/sites/infrastructure/department/itservices/coretechnologies/KScript/KScript.CertificateManagement.aspx#Functions'>Functions</A><BR />
+</DIV>
+&nbsp;<HR>&nbsp;
+<DIV><A Name='ModuleInformation'></A><STRONG><FONT size=4>Module information</FONT></STRONG></DIV>
+&nbsp;
+<DIV>
+<P>X509 certificate management.</P>
+<UL>
+<LI>Module version: 1.13</LI>
+<LI>Author: Chris Dent</LI>
+<LI>Page updated: Monday 8 December 2014</LI>
+</UL>
+</DIV>
+&nbsp;<HR>&nbsp;
+<DIV><A Name='Functions'></A><STRONG><FONT size=4>Functions</FONT></STRONG></DIV>
+&nbsp;
+<DIV>
+<TABLE style="WIDTH: 100%; BORDER-COLLAPSE: collapse; FONT-SIZE: 1em" border=1>
+<tr><th style="background-color: #98C6F3;">Name</th><th style="background-color: #98C6F3;">Description</th><th style="background-color: #98C6F3;">Author</th><th style="background-color: #98C6F3;">Last modified</th><th style="background-color: #98C6F3;">Modified by</th></tr>
+<tr><td><a href='http://sites.eu.kworld.kpmg.com/sites/infrastructure/department/itservices/coretechnologies/KScript/KScript.CertificateManagement.aspx#Get-KSCertificate'>Get-KSCertificate</a></td><td>Get certificates from a local or remote certificate store.</td><td>Chris Dent</td><td>24/06/2014</td><td>Chris Dent</td></tr>
+<tr><td><a href='http://sites.eu.kworld.kpmg.com/sites/infrastructure/department/itservices/coretechnologies/KScript/KScript.CertificateManagement.aspx#Install-KSCertificate'>Install-KSCertificate</a></td><td>Install a certificate.</td><td>Chris Dent</td><td>12/06/2014</td><td>Chris Dent</td></tr>
+<tr><td><a href='http://sites.eu.kworld.kpmg.com/sites/infrastructure/department/itservices/coretechnologies/KScript/KScript.CertificateManagement.aspx#Test-KSTrustedCertificate'>Test-KSTrustedCertificate</a></td><td>Test for a certificate in the TrustedPeople store on the target computer.</td><td>Chris Dent</td><td>12/06/2014</td><td>Chris Dent</td></tr>
+</table>
+</DIV>
+&nbsp;<HR>&nbsp;
+<DIV><A Name='Get-KSCertificate'></A><STRONG><FONT size=4>Get-KSCertificate</FONT></STRONG></DIV>
+&nbsp;
+<DIV><STRONG><FONT size=2>Synopsis</FONT></STRONG></DIV>
+<P>Get certificates from a local or remote certificate store.</P>
+<DIV><STRONG><FONT size=2>Syntax</FONT></STRONG></DIV>
+<P style='font-family: Consolas'>Get-KSCertificate [[-StoreName] &lt;StoreName[]&gt;] [[-StoreLocation] {CurrentUser | LocalMachine}] [[-ComputerName] &lt;String&gt;] [-HasPrivateKey] [-Expired] [&lt;CommonParameters&gt;]</P>
+<DIV><STRONG><FONT size=2>Description</FONT></STRONG></DIV>
+<P>Get X509 certificates from a certificate store.</P>
+&nbsp;<DIV><STRONG><FONT size=2>Change log</FONT></STRONG></DIV>
+&nbsp;
+<DIV>
+<TABLE style="WIDTH: 70%; BORDER-COLLAPSE: collapse; FONT-SIZE: 1em" border=1>
+<tr><th style="background-color: #98C6F3;">Date</th><th style="background-color: #98C6F3;">Who</th><th style="background-color: #98C6F3;">What</th></tr>
+<tr><td>24/06/2014</td><td>Chris Dent</td><td>Added HasPrivateKey and Expired parameters.</td></tr>
+<tr><td>12/06/2014</td><td>Chris Dent</td><td>First release.</td></tr>
+</table>
+</DIV>
+&nbsp;<HR>&nbsp;
+<DIV><A Name='Install-KSCertificate'></A><STRONG><FONT size=4>Install-KSCertificate</FONT></STRONG></DIV>
+&nbsp;
+<DIV><STRONG><FONT size=2>Synopsis</FONT></STRONG></DIV>
+<P>Install a certificate.</P>
+<DIV><STRONG><FONT size=2>Syntax</FONT></STRONG></DIV>
+<P style='font-family: Consolas'>Install-KSCertificate [-Certificate] &lt;X509Certificate2&gt; [[-StoreName] {AddressBook | AuthRoot | CertificateAuthority | Disallowed | My | Root | TrustedPeople | TrustedPublisher}] [[-StoreLocation] {CurrentUser | LocalMachine}] [[-ComputerName] &lt;String&gt;] [&lt;CommonParameters&gt;]</P>
+<DIV><STRONG><FONT size=2>Description</FONT></STRONG></DIV>
+<P>Install a certificate in the specified store.</P>
+&nbsp;<DIV><STRONG><FONT size=2>Change log</FONT></STRONG></DIV>
+&nbsp;
+<DIV>
+<TABLE style="WIDTH: 70%; BORDER-COLLAPSE: collapse; FONT-SIZE: 1em" border=1>
+<tr><th style="background-color: #98C6F3;">Date</th><th style="background-color: #98C6F3;">Who</th><th style="background-color: #98C6F3;">What</th></tr>
+<tr><td>12/06/2014</td><td>Chris Dent</td><td>First release.</td></tr>
+</table>
+</DIV>
+&nbsp;<HR>&nbsp;
+<DIV><A Name='Test-KSTrustedCertificate'></A><STRONG><FONT size=4>Test-KSTrustedCertificate</FONT></STRONG></DIV>
+&nbsp;
+<DIV><STRONG><FONT size=2>Synopsis</FONT></STRONG></DIV>
+<P>Test for a certificate in the TrustedPeople store on the target computer.</P>
+<DIV><STRONG><FONT size=2>Syntax</FONT></STRONG></DIV>
+<P style='font-family: Consolas'>Test-KSTrustedCertificate [-Certificate] &lt;X509Certificate2&gt; [[-StoreLocation] {CurrentUser | LocalMachine}] [[-ComputerName] &lt;String&gt;] [-Detail] [&lt;CommonParameters&gt;]</P>
+<DIV><STRONG><FONT size=2>Description</FONT></STRONG></DIV>
+<P>Test-KSTrustedCertificate attempts to find a matching certificate in the TrustedPeople store.</P>
+&nbsp;<DIV><STRONG><FONT size=2>Change log</FONT></STRONG></DIV>
+&nbsp;
+<DIV>
+<TABLE style="WIDTH: 70%; BORDER-COLLAPSE: collapse; FONT-SIZE: 1em" border=1>
+<tr><th style="background-color: #98C6F3;">Date</th><th style="background-color: #98C6F3;">Who</th><th style="background-color: #98C6F3;">What</th></tr>
+<tr><td>12/06/2014</td><td>Chris Dent</td><td>First release.</td></tr>
+</table>
+</DIV>
+&nbsp;<HR>&nbsp;
+
+<table>
+</table>
+</body></html>
+

@@ -1,0 +1,5 @@
+"Name","Access","Description","Author","Team","LastModified","ModifiedBy"
+"GetKPMGSPInterface","Private","Get all known WSDL interface URLs.","","","",""
+"Get-KPMGSPItem","Public","","","","",""
+"Get-KPMGSPList","Public","Get SharePoint lists from a SharePoint 2007 site.","","","",""
+"Get-KPMGSPSite","Public","Get an SharePoint 2007 site object.","","","",""

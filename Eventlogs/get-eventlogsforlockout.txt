@@ -1,0 +1,35 @@
+$LogWindow = New-TimeSpan -Minutes 10
+$EventcombmtPath = "C:\Users\uktpalanda\Documents\WindowsPowerShell\Modules\KScript.EventLog\bin\eventcombMT.exe"
+
+$SamAccountName = "ukspnodonnell"
+
+Get-KSADDomainController | ForEach-Object {
+  $DCName = $_.Name
+
+  # Get bad password time from each Domain Controller.
+  Get-KSADObject -LdapFilter "(&(samAccountName=$SamAccountName))" -Properties 'samaccountname', 'distinguishedname', 'badpasswordtime' -ComputerName $_.Name |
+      Select-Object `
+        SamAccountName,
+        BadPasswordTime,
+        @{n='Start';e={ ($_.BadPasswordTime - $LogWindow).ToString("MMddyyyyHHmmss") }},
+        @{n='End';e={ $_.BadPasswordTime.ToString("MMddyyyyHHmmss") }},
+        @{n='DCName';e={ $DCName }}
+  } | sort-object BadPasswordTime -Desc | Select -First 1 | %{
+    Write-Host "$EventcombmtPath /s:$($_.DCName) /evt:""675 680"" /et:safa /log:sec /outdir:""$($PWD.Path)\LogResults"" /text:""$($_.SamAccountName)"" /after:$($_.Start) /before:$($_.End) /start"
+
+    & "cmd.exe" "/c", "$EventcombmtPath /s:$($_.DCName) /evt:""675 680"" /et:safa /log:sec /outdir:""$($PWD.Path)\LogResults"" /text:""$($_.SamAccountName)"" /after:$($_.Start) /before:$($_.End) /start"
+  }
+
+Resolve-Path "$($PWD.Path)\LogResults\*_LOG.txt" | ForEach-Object {
+    Import-Csv $_.Path -Header EventID, Type, LogName, Date, User, Message |
+      Select *, @{n='Client Address';e={ $_.Message -match 'Client Address: ([^ ]+)' | Out-Null; $matches[1] }} |
+      Where-Object "Client Address"
+  } | Group-Object "Client Address" |
+      Select-Object Name, @{n='DNSName';e={ [Net.Dns]::GetHostEntry($_.Name) | Select-Object -ExpandProperty HostName }}, Count
+
+Resolve-Path "$($PWD.Path)\LogResults\*_LOG.txt" | ForEach-Object {
+    Import-Csv $_.Path -Header EventID, Type, LogName, Date, User, Message |
+      Select *, @{n='Client Address';e={ $_.Message -match 'Client Address: ([^ ]+)' | Out-Null; $matches[1] }} |
+      Where-Object "Client Address"
+  } | Group-Object "Client Address" |
+      Select-Object Name, @{n='DNSName';e={ [Net.Dns]::GetHostEntry($_.Name) | Select-Object -ExpandProperty HostName }}, Count

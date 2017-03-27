@@ -1,0 +1,11 @@
+﻿$arry=@()
+$users=@()
+cat C:\_AJ\Scripts\vm.txt | % { $arry += "\\$_\c$\Documents and Settings\"}
+#$arry += "\\uknasdata04\BPSctxprofile$\CRMCPMPROFILES"
+#$arry +="\\uknasdata04\taxctxprofile$\TAXCPMPROFILES"
+
+gci $arry | % { $_ | select * }
+$users | Export-Clixml C:\_aj\Scripts\test.xml
+#import-Clixml C:\_aj\Scripts\test.xml | sort ft
+
+#| ? { $_.name -eq "uktpalanda" }

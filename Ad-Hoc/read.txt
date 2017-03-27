@@ -1,0 +1,10 @@
+﻿
+
+gci "\\uknasdata04\taxctxhome$\*\TSData\AppData\Adobe\Acrobat\10.0" -Force |% { 
+$_.FullName >> c:\test\out.txt
+Copy-Item -Force -path "\\uknasdata04\OPITAX\Citrix PS 4.5 Deploy\Master\Scripts\AppSource\Stamps" -r -Destination $_.FullName 
+}
+
+
+
+

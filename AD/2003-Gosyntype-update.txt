@@ -1,0 +1,37 @@
+﻿$searcher = [adsisearcher] [adsi] "LDAP://UK"
+
+
+#cat C:\_AJ\Scripts\AD\users.txt | % {
+
+$searcher.filter = "(&(objectClass=User) (CN=testpr1))"
+$ADobj = $searcher.findone().GetDirectoryEntry()
+
+
+#
+
+#$ADobj.put("kPMG-User-GOMailSync",1)
+#$ADobj.SetInfo() 
+
+#Export-Csv -NoTypeInformation C:\_AJ\Scripts\AD\usersstatus.csv ($ADobj |select name, kPMG-User-GOMailSync)
+$ADobj |Select-Object name, kPMG-User-GOMailSync 
+
+#}
+
+
+
+#Export-Csv -NoTypeInformation C:\_AJ\Scripts\AD\kPMG-User-GOMailSync.csv
+#$ads_Property_Clear = 1
+
+ #$de =
+ #[adsi]"$a"
+ #[adsi]"LDAP://CN=UK-SG SMS ARO Desktop Content,OU=SMS Apps Collections Groups,OU=UK Groups,DC=uk,DC=kworld,DC=kpmg,DC=com"
+
+ 
+
+#$de.putex($ads_Property_Clear,"member",$null)
+#$de.SetInfo()
+#$de
+
+#$searcher.filter = "(&(objectClass=user) (CN=uktpalanda))"
+
+#}

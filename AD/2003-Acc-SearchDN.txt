@@ -1,0 +1,11 @@
+﻿$searcher = [adsisearcher] [adsi] "LDAP://UK"
+
+cat  | C:\_AJ\Scripts\AD\Docs | % {
+$input = $_.trim(" ")
+$searcher.filter = "(&(objectClass=user) (CN=$_))" #edit class and CN
+$ADobj = $searcher.findone().GetDirectoryEntry()
+$ADobj
+
+}
+
+

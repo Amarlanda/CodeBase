@@ -1,0 +1,4 @@
+"Name","Access","Description","Author","Team","LastModified","ModifiedBy"
+"Get-KSJMLReport","Public","Get an JML report definition from XML.","Chris Dent","Core Technologies","02/07/2014","Chris Dent"
+"Publish-KSJMLReport","Public","Publish all scheduled JML reports.","Chris Dent","Core Technologies","02/07/2014","Chris Dent"
+"Start-KSJMLReport","Public","Start and distribute scheduled reports.","Chris Dent","Core Technologies","12/08/2014","Chris Dent"

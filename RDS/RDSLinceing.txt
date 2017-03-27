@@ -1,0 +1,8 @@
+$obj = gwmi -namespace "Root/CIMV2/TerminalServices" Win32_TerminalServiceSetting
+
+$obj.SetSpecifiedLicenseServerList("ukvmswts003.uk.kworld.kpmg.com")
+
+$obj = gwmi -namespace "Root/CIMV2/TerminalServices" Win32_TerminalServiceSetting
+
+$obj.ChangeMode(2)
+

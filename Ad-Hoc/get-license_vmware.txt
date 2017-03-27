@@ -1,0 +1,62 @@
+﻿$DCData = @()
+    ForEach ($DC in Get-DataCenter) {
+
+
+        $VMHosts = @($DC | Get-VMHost)
+        $a =@($VMHosts |Sort Name |Get-View)
+        
+            
+            $HostCount = $VMHosts.count
+            $physicalcpus = ($a.Hardware.CpuInfo| Measure-Object -Property NumCpuPackages -sum).sum
+            $ClusterCoreTotal = ($a.Hardware.CpuInfo| Measure-Object -Property numcpucores -sum).sum
+            #if( $ClusterCoreTotal -gt 0 ) {}
+            
+            $CPUavgPerHost = $physicalcpus / $HostCount
+            $CoresPerCPUperHost = $ClusterCoreTotal / $HostCount / $CPUavgPerHost
+            #$b = $VMHosts |% { $_ + " " + $b}
+            $DCData += New-Object PSObject -Property @{
+                    clustername= $DC.name
+                    HostCount = $HostCount
+                    CPUavgPerHost= $CPUavgPerHost
+                    CoresPerCPUperHost = $CoresPerCPUperHost
+                    CPUsCluster = $physicalcpus
+                    ClusterCoreTotal = $ClusterCoreTotal
+                    vm = ($DC |Get-VM).count
+                    hosts = $a.name -join ","
+                    
+
+                    
+
+                    }
+
+    $DCData |ft -AutoSize -Property hosts, clustername, hostcount, CPUavgPerHost, CoresPerCPUperHost, CPUsCluster, clustercoretotal, vm
+    }
+
+    
+        
+        
+      
+
+        #@{N=“Type“;E={$_.Hardware.SystemInfo.Vendor+ “ “ + $_.Hardware.SystemInfo.Model}}
+        #@{N=“CPU“;E={“PROC:“ + $_.Hardware.CpuInfo.NumCpuPackages + “ CORES:“ + $_.Hardware.CpuInfo.NumCpuCores + “ MHZ: “ + [math]::round($_.Hardware.CpuInfo.Hz / 1000000, 0)}}
+
+<#
+
+$DCData = @()
+    ForEach ($DC in $(Get-DataCenter))
+    {
+            $VMHosts = @($DC | Get-VMHost)
+            Get-VMHost | select *
+            $DCData += New-Object PSObject -Property @{
+                            
+                            Clustername = $DC.Name
+                            HostCount = $VMHosts.Count
+                            CPUsCluster = $VMHosts.numcpu 
+                            VM = (get-datacenter -name $dc.name |get-vm).count
+                            
+                           
+                            TotalCPU = ($VMHosts | Measure-Object -Property NumCpu -Sum).Sum
+            }
+            $dcdata |ft
+      }
+      #>

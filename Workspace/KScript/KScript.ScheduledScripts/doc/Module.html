@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>HTML TABLE</title>
+</head><body>
+<DIV><P><FONT size=1 color=#969696>Back to [[Module reference]]</FONT></P></DIV>
+<DIV><STRONG><FONT size=4>Contents</FONT></STRONG></DIV>
+&nbsp;
+<DIV>
+<A HREF='http://sites.eu.kworld.kpmg.com/sites/infrastructure/department/itservices/coretechnologies/KScript/KScript.ScheduledScripts.aspx#ModuleInformation'>Module information</A><BR />
+<A HREF='http://sites.eu.kworld.kpmg.com/sites/infrastructure/department/itservices/coretechnologies/KScript/KScript.ScheduledScripts.aspx#Functions'>Functions</A><BR />
+</DIV>
+&nbsp;<HR>&nbsp;
+<DIV><A Name='ModuleInformation'></A><STRONG><FONT size=4>Module information</FONT></STRONG></DIV>
+&nbsp;
+<DIV>
+<P>Scripts which would, ordinarily, be standalone are stored in this module.</P>
+<UL>
+<LI>Module version: 1.0</LI>
+<LI>Author: Chris Dent</LI>
+<LI>Page updated: Friday 21 November 2014</LI>
+</UL>
+</DIV>
+&nbsp;<HR>&nbsp;
+<DIV><A Name='Functions'></A><STRONG><FONT size=4>Functions</FONT></STRONG></DIV>
+&nbsp;
+<DIV>
+<TABLE style="WIDTH: 100%; BORDER-COLLAPSE: collapse; FONT-SIZE: 1em" border=1>
+<tr><th style="background-color: #98C6F3;">Name</th><th style="background-color: #98C6F3;">Description</th><th style="background-color: #98C6F3;">Author</th><th style="background-color: #98C6F3;">Last modified</th><th style="background-color: #98C6F3;">Modified by</th></tr>
+<tr><td><a href='http://sites.eu.kworld.kpmg.com/sites/infrastructure/department/itservices/coretechnologies/KScript/KScript.ScheduledScripts.aspx#Backup-KSProjectVioletCMS'>Backup-KSProjectVioletCMS</a></td><td>Project Violet CMS backup script.</td><td>Chris Dent</td><td>13/11/2014</td><td>Chris Dent</td></tr>
+<tr><td><a href='http://sites.eu.kworld.kpmg.com/sites/infrastructure/department/itservices/coretechnologies/KScript/KScript.ScheduledScripts.aspx#Export-KSHubUser'>Export-KSHubUser</a></td><td>Export a list of users for the Hub.</td><td>Chris Dent</td><td>21/11/2014</td><td>Chris Dent</td></tr>
+<tr><td><a href='http://sites.eu.kworld.kpmg.com/sites/infrastructure/department/itservices/coretechnologies/KScript/KScript.ScheduledScripts.aspx#Remove-KSEAuditTempDocuments'>Remove-KSEAuditTempDocuments</a></td><td>Remove files over 14 days old from \\uknasdata400\TempDocuments.</td><td>Chris Dent</td><td>13/11/2014</td><td>Chris Dent</td></tr>
+</table>
+</DIV>
+&nbsp;<HR>&nbsp;
+<DIV><A Name='Backup-KSProjectVioletCMS'></A><STRONG><FONT size=4>Backup-KSProjectVioletCMS</FONT></STRONG></DIV>
+&nbsp;
+<DIV><STRONG><FONT size=2>Synopsis</FONT></STRONG></DIV>
+<P>Project Violet CMS backup script.</P>
+<DIV><STRONG><FONT size=2>Syntax</FONT></STRONG></DIV>
+<P style='font-family: Consolas'>Backup-KSProjectVioletCMS [&lt;CommonParameters&gt;]</P>
+<DIV><STRONG><FONT size=2>Description</FONT></STRONG></DIV>
+<P>Project Violet CMS backup script.</P>
+<P>Service owner:   Willy Vedrine, Data Analytics PREMAS number:    Service account: uk-svc-auto-violetcms Schedule:        9am to 7pm, repeating every 2 hours.</P>
+<P>7 days of backups are maintained for the CMS. This script purges expired backup sets.</P>
+&nbsp;<DIV><STRONG><FONT size=2>Change log</FONT></STRONG></DIV>
+&nbsp;
+<DIV>
+<TABLE style="WIDTH: 70%; BORDER-COLLAPSE: collapse; FONT-SIZE: 1em" border=1>
+<tr><th style="background-color: #98C6F3;">Date</th><th style="background-color: #98C6F3;">Who</th><th style="background-color: #98C6F3;">What</th></tr>
+<tr><td>13/11/2014</td><td>Chris Dent</td><td>Merged into KScript.ScheduledScripts for version and release control.</td></tr>
+<tr><td>19/06/2014</td><td>Chris Dent</td><td>First release.</td></tr>
+</table>
+</DIV>
+&nbsp;<HR>&nbsp;
+<DIV><A Name='Export-KSHubUser'></A><STRONG><FONT size=4>Export-KSHubUser</FONT></STRONG></DIV>
+&nbsp;
+<DIV><STRONG><FONT size=2>Synopsis</FONT></STRONG></DIV>
+<P>Export a list of users for the Hub.</P>
+<DIV><STRONG><FONT size=2>Syntax</FONT></STRONG></DIV>
+<P style='font-family: Consolas'>Export-KSHubUser [[-WorkingDirectory] &lt;String&gt;] [&lt;CommonParameters&gt;]</P>
+<DIV><STRONG><FONT size=2>Description</FONT></STRONG></DIV>
+<P>Export-KSHubUser exports the membership of two groups and sends each as an attachment to a mail.</P>
+<P>Service owner:   Gaynor Hayes / Thore Gaynor Hayes (The Hub) PREMAS number:    Service account: uk-svc-auto-eaudit Schedule:        Monthly</P>
+&nbsp;<DIV><STRONG><FONT size=2>Change log</FONT></STRONG></DIV>
+&nbsp;
+<DIV>
+<TABLE style="WIDTH: 70%; BORDER-COLLAPSE: collapse; FONT-SIZE: 1em" border=1>
+<tr><th style="background-color: #98C6F3;">Date</th><th style="background-color: #98C6F3;">Who</th><th style="background-color: #98C6F3;">What</th></tr>
+<tr><td>21/11/2014</td><td>Chris Dent</td><td>First release.</td></tr>
+</table>
+</DIV>
+&nbsp;<HR>&nbsp;
+<DIV><A Name='Remove-KSEAuditTempDocuments'></A><STRONG><FONT size=4>Remove-KSEAuditTempDocuments</FONT></STRONG></DIV>
+&nbsp;
+<DIV><STRONG><FONT size=2>Synopsis</FONT></STRONG></DIV>
+<P>Remove files over 14 days old from \\uknasdata400\TempDocuments.</P>
+<DIV><STRONG><FONT size=2>Syntax</FONT></STRONG></DIV>
+<P style='font-family: Consolas'>Remove-KSEAuditTempDocuments [&lt;CommonParameters&gt;]</P>
+<DIV><STRONG><FONT size=2>Description</FONT></STRONG></DIV>
+<P>Remove-EAuditTempDocuments deletes files over 14 days old from \\uknasdata400\TempDocuments.</P>
+<P>Service owner:   Steve Geraghty / Patrick Forrester (eAudit support) PREMAS number:    Service account: uk-svc-auto-eaudit Schedule:        Daily, 1am.</P>
+&nbsp;<DIV><STRONG><FONT size=2>Change log</FONT></STRONG></DIV>
+&nbsp;
+<DIV>
+<TABLE style="WIDTH: 70%; BORDER-COLLAPSE: collapse; FONT-SIZE: 1em" border=1>
+<tr><th style="background-color: #98C6F3;">Date</th><th style="background-color: #98C6F3;">Who</th><th style="background-color: #98C6F3;">What</th></tr>
+<tr><td>13/11/2014</td><td>Chris Dent</td><td>Merged into KScript.ScheduledScripts for version and release control.</td></tr>
+<tr><td>30/10/2014</td><td>Chris Dent</td><td>First release.</td></tr>
+</table>
+</DIV>
+&nbsp;<HR>&nbsp;
+
+<table>
+</table>
+</body></html>
+

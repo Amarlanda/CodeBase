@@ -1,0 +1,9 @@
+cd "C:\Program Files\VMware\VMware View\Server\extras\PowerShell\"
+
+C:\Program Files\VMware\VMware View\Server\extras\PowerShell> .\add-snapin.ps1
+                                                                    
+Get-EventReport -viewName user_events -startDate ((Get-Date).AddDays(-1)) 
+$Log = (Get-EventReport -viewName user_events -startDate ((Get-Date).AddDays(-6
+0)))                                                                           
+
+

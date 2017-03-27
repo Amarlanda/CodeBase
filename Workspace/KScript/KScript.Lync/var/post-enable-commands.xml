@@ -1,0 +1,34 @@
+<?xml version='1.0'?>
+<post-enable-commands>
+  <!-- The combination of match-patterns and commands forms the unique XML entry for post-enable-operation -->
+  <post-enable-command>
+    <!-- match-property must be returned by Get-CsAdUser -->
+    <match-property>distinguishedName</match-property>
+    <!-- match-pattern is a collection of regular expressions used to qualify the match-property -->
+    <match-patterns>
+      <match-pattern><![CDATA[ OU=KRC,OU=Function,DC=uk,DC=kworld,DC=kpmg,DC=com$ ]]></match-pattern>
+    </match-patterns>
+    <!-- CmdLet names will be validated and must belong to the Lync module. All CmdLets used here must implement and Identity parameter. -->
+    <commands>
+      <command>
+        <name>Set-CsUser</name>
+        <!-- Parameter names will be validated and must belong to the specified CmdLet. -->
+        <parameters>
+          <parameter>
+            <name>AudioVideoDisabled</name>
+            <value>true</value>
+          </parameter>
+        </parameters>
+      </command>
+      <command>
+        <name>Grant-CsConferencingPolicy</name>
+        <parameters>
+          <parameter>
+            <name>PolicyName</name>
+            <value>UK-U-LOW-01</value>
+          </parameter>
+        </parameters>
+      </command>
+    </commands>
+  </post-enable-command>
+</post-enable-commands>

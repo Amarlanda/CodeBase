@@ -1,0 +1,18 @@
+﻿$startfolder = gci . 
+$files1 = ""
+
+    foreach ($file in $startfolder){
+
+        try {
+            $files1 = gci . -r -Force -ErrorAction SilentlyContinue 
+            }
+         Catch{
+            }
+
+         
+         #if ($file1 -gt 0) {
+            write-host ($files1 | measure-object -property length -sum).sum
+          #  }
+
+    }
+

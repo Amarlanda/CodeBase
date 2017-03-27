@@ -1,0 +1,1 @@
+﻿$a = import-Clixml C:\_aj\Scripts\test.xml | ?{$_.EndsWith("ukrchsingh1")}

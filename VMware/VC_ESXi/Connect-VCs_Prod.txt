@@ -1,0 +1,2 @@
+Connect-VIServer ukwatapp182
+Connect-VIServer ukdtaapp14

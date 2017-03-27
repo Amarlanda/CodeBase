@@ -1,0 +1,11 @@
+﻿$searcher = [adsisearcher] [adsi] "LDAP://UK"
+$searcher.filter = "(&(objectClass=user) (CN=cwright1))"
+$Group = $searcher.findall().GetDirectoryEntry()
+$a = $Group.memberof | % {$_ -replace "(CN=)(.*?),.*",'$2'}| Sort-Object # this group is a member of 
+
+$searcher.filter = "(&(objectClass=user) (CN=DMontgomery))"
+$Group = $searcher.findall().GetDirectoryEntry()
+$b = $Group.memberof | % {$_ -replace "(CN=)(.*?),.*",'$2'}| Sort-Object # this group is a member of
+
+#compare-object $a $b .input object
+

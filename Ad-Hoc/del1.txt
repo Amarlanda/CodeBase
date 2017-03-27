@@ -1,0 +1,11 @@
+﻿$acc = 'Administrator','ctx_cpsvcuser','Default user','local service','network service','All Users'
+
+ cat c:\test\vm.txt | %{
+         
+    gci "\\$_\c$\Documents and Settings\" | ?{$acc -notcontains $_.Name} | %{
+            
+        del $_.fullname -force
+    } 
+ } 
+   
+   #write $("Deleted $($_.fullname)");

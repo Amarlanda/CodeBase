@@ -1,0 +1,12 @@
+﻿
+cat C:\_AJ\Scripts\AD\SGs.txt | % {
+
+
+$searcher = [adsisearcher] [adsi] "LDAP://UK"
+$searcher.filter = "(&(objectClass=group) (CN=$_))"
+$groupresult = 
+$group = $searcher.findone().GetDirectoryEntry()
+
+$group.distinguishedName
+
+}

@@ -1,0 +1,25 @@
+﻿
+
+$myCol = @()
+        ForEach ($vmhost in ($cluster | Get-VMHost))
+        {
+            $VMView = $VMhost | Get-View
+            $vmhosts = ($Cluster | get-vmhost)
+
+                        $VMSummary = “” | Select ClusterName,hostcount, CPUSockets, CPUCores,CPUsCluster
+                        $VMSummary.ClusterName = $Cluster.Name
+                        $VMSummary.hostcount =  $vmhosts.count
+                        $VMSummary.CPUSockets = $VMview.hardware.cpuinfo.numCpuPackages
+                
+                        $VMSummary.CPUsCluster = $VMHosts.numcpu
+                        
+                        
+                        $VMSummary.CPUCores = $VMview.hardware.cpuinfo.numCpuCores
+                        $myCol += $VMSummary
+                    }
+            
+$myCol | ft
+    
+    # CPUcoreAVG = ([int]$VMHosts.hostcount / [int]$VMHosts.cpucores)
+    #$VMSummary.MemorySizeGB = $VMview.hardware.memorysize / 1024Mb
+                        

@@ -1,0 +1,6 @@
+$username = "supportamarlanda"
+$password = "Dragoncontrol101"
+$secstr = New-Object -TypeName System.Security.SecureString
+$password.ToCharArray() | ForEach-Object {$secstr.AppendChar($_)}
+$cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $secstr
+Get-WmiObject -credential $cred -Namespace root\cimv2 -Class Win32_Service -ComputerName wdc-vm-ts02

@@ -1,0 +1,87 @@
+﻿
+$arry = New-Object 'object[,]' 67,2
+$vms = cat C:\_AJ\Scripts\vm.txt 
+
+for ($i=1; $i -lt (cat C:\_AJ\Scripts\vm.txt).count; $i++){ 
+
+$arry[$i,0] += "\\"+ $vms[$i] +"\c$\Documents and Settings\"
+$arry[$i,1] += $vms[$i]
+
+}
+
+$arry[63,0] += "\\uknasdata04\BPSctxprofile$\CRMCPMPROFILES"
+$arry[63,1] += "uknasdata04"
+$arry[64,0] +="\\uknasdata04\taxctxprofile$\TAXCPMPROFILES"
+$arry[64,1] += "uknasdata04"
+$arry[65,0] +="\\uknasdata04\bpsctxhome$"
+$arry[65,1] += "uknasdata04"
+$arry[66,0] +="\\uknasdata04\taxctxhome$"
+$arry[66,1] += "uknasdata04"
+
+#gci
+#$.name gives name of user
+
+#createshortcut and bulid a menu
+
+$path = "C:\_AJ\Scripts\xml\xml.xml"
+$xml = New-Object System.Xml.XmlTextWriter($path,$null)
+
+$xml.WriteStartDocument()
+
+$xml.Formatting = "Indented"
+$xml.Indentation = "4"
+
+# Set the XSL
+$XSLPropText = "type='text/xsl' href='style.xsl'"
+$xml.WriteProcessingInstruction("xml-stylesheet", $XSLPropText)
+ 
+# Write Root Element
+$xml.WriteStartElement("RootElement")
+
+for ($i=1; $i -le ($arry).count; $i++){ 
+
+    # Write the Document
+    $xml.WriteStartElement("Servers")
+    $xml.WriteElementString("path",($arry[$i,0]))
+    $xml.WriteElementString("name",($arry[$i,1]))
+    $xml.WriteEndElement() # <-- Closing Servers
+ }
+ 
+# Write Close Tag for Root Element
+$xml.WriteEndElement # <-- Closing RootElement
+ 
+# End the XML Document
+$xml.WriteEndDocument()
+ 
+# Finish The Document
+$xml.Finalize
+$xml.Flush
+$xml.Close()
+
+
+notepad $path
+
+
+
+#gci $arry| % { $paths +=  $_.fullname }
+
+
+
+#$users | Export-Clixml C:\_aj\Scripts\test.xml
+#$users
+
+##Things to implement 
+#XML data structure
+##ica command to disconnect users from citrix sesison
+## add a funtion to create shortcuts on citrix users
+#if tax flag gci $arry | % { $users +=  $_.fullname+"\outlook.flg" }
+#kgs user do not store anything in there home drive.
+
+#does user have a cirtrix profile - have they even logged in..
+
+##Code snippets
+#import-Clixml C:\_aj\Scripts\test.xml | sort ft
+#| ? { $_.name -eq "uktpalanda" }
+
+#Del
+#=

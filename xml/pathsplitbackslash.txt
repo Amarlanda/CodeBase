@@ -1,0 +1,5 @@
+﻿$OldServer = "metcorpfs1"
+$NewServer = "metcorpfs3"
+$SharePath = "\\metcorpfs1.metcorp.org\Share1"
+$NewSharePath = $SharePath -Replace ([regex]::Escape(“$OldServer”),”$NewServer”)
+$NewSharePath

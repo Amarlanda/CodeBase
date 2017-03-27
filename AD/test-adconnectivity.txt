@@ -1,0 +1,19 @@
+
+$groupprincipal = $null
+
+Add-Type -Assembly System.DirectoryServices.AccountManagement
+
+$context = new-object Directoryservices.accountmanagement.principalcontext("Domain", "ukxxex.kpmg.com", "ukxxex\-svc-belton", "London123")
+
+$GroupPrincipal = [directoryServices.accountmanagement.groupprincipal]::findbyidentity($context,"CMM00001-user")
+
+#$GroupPrincipal.GetUnderlyingObject().properties["member"]
+
+$GroupPrincipal.GetMembers()
+
+
+new-object directoryservices.directoryentry("LDAP://somewhere/something", "username", "password")
+
+
+
+New-Object DirectoryServices.DirectoryEntry("LDAP://ukxxex.kpmg.com/RootDSE", "ukxxex\-svc-belton", "London123", "Secure")

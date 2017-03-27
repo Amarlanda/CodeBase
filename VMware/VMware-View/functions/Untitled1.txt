@@ -1,0 +1,23 @@
+﻿$searcher = [adsisearcher] [adsi] "LDAP://UK"
+$searcher.filter = "(|(memberOf=CN=UK-SG UKVDIKCRC,OU=UK Groups,DC=uk,DC=kworld,DC=kpmg,DC=com)(CN=UK-SG VDI UKWGDV51,OU=UK Groups,DC=uk,DC=kworld,DC=kpmg,DC=com)(CN=UK-SG VDI Deny RDP,OU=UK Groups,DC=uk,DC=kworld,DC=kpmg,DC=com)(CN=UK-SG UK ProfileUnity,OU=UK Groups,DC=uk,DC=kworld,DC=kpmg,DC=com))"
+$res = $searcher.findall()
+
+$res| % { $_ | select  @{n='servicearea';e={ $_.properties.extensionattribute3 }},
+ @{n='function';e={  $_.properties.extensionattribute5 }}, 
+ @{n='ADuserLastlogonTime';e={$([datetime]::FromFileTime( $_.properties.lastlogontimestamp))}},
+ @{n='Username';e={ $_.properties.displayname}},
+ @{n='Email';e={$_.properties.mail}},
+ @{n='Title';e={$_.properties.title}},
+ @{n='Department';e={$_.properties.department}}
+ } | export-csv -NoTypeInformation C:\test\VDINewWorldReport.csv
+
+
+#Groupdns
+#$SecuirtyGroup = "UK-SG UK ProfileUnity"
+
+#(|(memberOf=Uk-SG VDI UKWGDV51)(memberOf=UK-SG UKVDIKCRC)(memberOf=UK-SG VDI Deny RDP)(memberOf=UK-SG UK ProfileUnity))
+
+#Get-KSADUser -LdapFilter "(|(memberOf=CN=UK-SG UKVDIKCRC,OU=UK Groups,DC=uk,DC=kworld,DC=kpmg,DC=com)(CN=UK-SG VDI UKWGDV51,OU=UK Groups,DC=uk,DC=kworld,DC=kpmg,DC=com)(CN=UK-SG VDI Deny RDP,OU=UK Groups,DC=uk,DC=kworld,DC=kpmg,DC=com)(CN=UK-SG UK ProfileUnity,OU=UK Groups,DC=uk,DC=kworld,DC=kpmg,DC=com))" -SizeLimit 0 |
+#  Select-Object DisplayName, Mail, astLogonTimeStamp, Title, Department,  @{n='servicearea';e={ $_.extensionattribute3 }},
+# @{n='function';e={ $_.extensionattribute5 }}, 
+# @{n='ADuserLastlogonTime';e={$([datetime]::FromFileTime($_.lastlogontimestamp))}}

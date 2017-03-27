@@ -1,0 +1,41 @@
+﻿$searcher = [adsisearcher] [adsi] "LDAP://UK"
+
+#cat C:\_AJ\Scripts\AD\usersDPC.txt | % {
+
+$searcher.filter = "(&(objectClass=user) (CN=ljames1))" #edit class and CN
+$ADobj = $searcher.findone().GetDirectoryEntry()
+
+
+$de =[ADSI]("LDAP://" +$ADobj.distinguishedName)
+$de | select *
+
+
+#ForEach ($GroupDN In 
+
+#$ADobj.memberof | % {$_ -replace "(CN=)(.*?),.*",'$2'}| Sort-Object  # member of like AD menberof tab - and removes crap around the groupis
+
+  
+ # $Group = [ADSI]("LDAP://$GroupDN")
+  #$Group.Remove($User.ADsPath)
+ # $Group
+
+
+
+
+
+#$ads_Property_Clear = 1
+
+ #$de =
+ #[adsi]"$a"
+ #[adsi]"LDAP://CN=UK-SG SMS ARO Desktop Content,OU=SMS Apps Collections Groups,OU=UK Groups,DC=uk,DC=kworld,DC=kpmg,DC=com"
+
+ 
+#
+#$de.putex($ads_Property_Clear,"member",$null)
+#$de.SetInfo()
+#$de
+
+#$searcher.filter = "(&(objectClass=user) (CN=uktpalanda))"
+
+#}
+

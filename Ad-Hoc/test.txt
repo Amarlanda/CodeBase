@@ -1,0 +1,7 @@
+﻿$DCData = @()
+    ForEach ($DC in $(Get-DataCenter)) {
+        
+        $VMHosts = @($DC | Get-VMHost)
+        $a =@($VMHosts |Sort Name |Get-View)
+        $a.name
+    }

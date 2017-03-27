@@ -1,0 +1,27 @@
+﻿#$WshShell = New-Object -comObject WScript.Shell
+#$name = Read-Host 'What is the username?'
+
+$p =1
+gci "\\uknasdata04\BPSctxprofile$" -Force | % {
+
+    if ($_.Name -like "UKcr"  +"*") {
+        $RS[$p] += $_ 
+        $p++
+    }  
+
+    $RS
+#$A = ""+ ($_.fullname) + "\BMS Share.lnk"
+#
+#$Shortcut = $WshShell.CreateShortcut($A)
+#$Shortcut.TargetPath = "\\uknasdata05\stdspudapp\payroll\Star payroll server\BMS"
+#$Shortcut.Save()
+ }
+#for ($i=0; $i -lt $RS.count; $i++){ 
+
+ #   Write-host $RS[4] ""+""+"" $i} 
+
+#Copy-Item -Force -path D:\bms_Share.lnk -Destination "\\ukwatwts19\d$\Documents and Settings\uktpmjabbar\desktop" }
+
+#$file  = [io.fileinfo]"D:\bms_Share.lnk"
+
+

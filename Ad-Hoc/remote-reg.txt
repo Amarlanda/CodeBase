@@ -1,0 +1,15 @@
+﻿Get-WmiObject -credential Win32_Service -ComputerName ukwatwts14 |
+ Set-ItemProperty -Path HKCU:\Software\hsg -Name newproperty -Value anewvalue
+
+
+#$file = Get-Content c:\temp\hosts.txt 
+#foreach ($computername in $file){ 
+    #$PingStatus = 
+    #Gwmi Win32_PingStatus -Filter "Address = 'ukwatwts14'
+    
+     #| Select-Object StatusCode
+   # If ($PingStatus.StatusCode -eq 0){ 
+
+        $reg = [Microsoft.Win32.RegistryKey]::OpenRemoteBaseKey('LocalMachine','ukwatwts14') 
+        $regKey= $reg.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run",$true) 
+        $regKey.SetValue("New_Valuename_String","New_Valuedata",[Microsoft.Win32.RegistryValueKind]::String) 	

@@ -1,0 +1,4 @@
+while($true)
+{
+   $vms | select -frst 10 | Get-VMQuestion 
+}

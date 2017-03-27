@@ -1,0 +1,7 @@
+﻿$ads_Property_Clear = 1
+
+ 
+ $de = [adsi]"LDAP://CN=UK-SG SMS KLegal Word Primary Testers,OU=Applications,OU=SMS Apps Collections Groups,OU=UK Groups,DC=uk,DC=kworld,DC=kpmg,DC=com"
+ $de.putex($ads_Property_Clear,"member",$null) #put #putex are the methods
+
+ $de.SetInfo()

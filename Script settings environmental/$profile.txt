@@ -1,0 +1,10 @@
+Import-Module C:\_AJ\Modules\LocalTools\LocalTools.psd1 -Force
+Import-Module Kpmg.KScript.Core -Force
+Import-Module Kpmg.KScript.vSphere -Force
+Import-Module Kpmg.KScript.Management -Force
+
+$EuOperCred = Read-RegistryPSCredential -AccountName 'EU\-oper-alanda' -PromptForCredential
+$UkOperCred = Read-RegistryPSCredential -AccountName 'UK\-oper-alanda' -PromptForCredential
+
+New-item -type file -force $profile
+notepad $profile

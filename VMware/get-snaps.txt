@@ -1,0 +1,1 @@
+get-vm | get-snapshot | select vm, name | Format-Table -Wrap -AutoSize > Snaps.txt

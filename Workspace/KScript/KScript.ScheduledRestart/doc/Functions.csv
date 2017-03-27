@@ -1,0 +1,6 @@
+"Name","Access","Description","Author","Team","LastModified","ModifiedBy"
+"Add-KSScheduledRestart","Public","Add a scheduled restart to the schedule file.","Chris Dent","Core Technologies","08/10/2014","Chris Dent"
+"Get-KSScheduledRestart","Public","Get scheduled restart operations.","Chris Dent","Core Technologies","08/10/2014","Chris Dent"
+"Remove-KSScheduledRestart","Public","Remove an existing scheduled restart.","Chris Dent","Core Technologies","14/10/2014","Chris Dent"
+"Start-KSScheduledRestart","Public","Start a scheduled restart process of the computers specified in a schedule file.","Chris Dent","Core Technologies","14/10/2014","Chris Dent"
+"Update-KSScheduledRestart","Public","Update the NextRestart value of a specific scheduled restart entry.","Chris Dent","Core Technologies","10/10/2014","Chris Dent"

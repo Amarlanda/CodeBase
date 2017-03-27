@@ -1,0 +1,3 @@
+﻿cat C:\test\vm.txt | % {$a += (Invoke-Command -ComputerName $_ -ScriptBlock {Get-Culture;Get-UICulture})}
+write-host $a | ft
+#$s = new-pssession -computername $_

@@ -1,0 +1,34 @@
+﻿$arry=@()
+$users=@()
+
+cat C:\_AJ\Scripts\vm.txt 
+for ($i=0; $i -le (cat C:\_AJ\Scripts\vm.txt).count; $i++)
+{ 
+$arry [i][i] += "\\$_\c$\Documents and Settings\"
+$arry [i][i+1] += "$_"
+}
+
+$arry [63][63] += "\\uknasdata04\BPSctxprofile$\CRMCPMPROFILES"
+$arry [63][63] += "uknasdata04"
+$arry [i][i] +="\\uknasdata04\taxctxprofile$\TAXCPMPROFILES"
+$arry [i][i] +="\\uknasdata04\bpsctxhome$"
+$arry [i][i] +="\\uknasdata04\taxctxhome$"
+}
+gci $arry | % { $users +=  $_.fullname }
+
+$users | Export-Clixml C:\_aj\Scripts\test.xml
+$users
+
+##Things to implement 
+#XML data structure
+##ica command to disconnect users from citrix sesison
+## add a funtion to create shortcuts on citrix users
+#if tax flag gci $arry | % { $users +=  $_.fullname+"\outlook.flg" }
+#kgs user do not store anything in there home drive.
+
+##Code snippets
+#import-Clixml C:\_aj\Scripts\test.xml | sort ft
+#| ? { $_.name -eq "uktpalanda" }
+
+#Del
+#

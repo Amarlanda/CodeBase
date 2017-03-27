@@ -1,0 +1,540 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type='text/xsl' href='style.xsl'?>
+<RootElement>
+    <Servers>
+        <path>\\UKIXEWTS131\c$\Documents and Settings\</path>
+        <name>UKIXEWTS131</name>
+    </Servers>
+    <Servers>
+        <path>\\UKIXEWTS133\c$\Documents and Settings\</path>
+        <name>UKIXEWTS133</name>
+    </Servers>
+    <Servers>
+        <path>\\UKIXEWTS134\c$\Documents and Settings\</path>
+        <name>UKIXEWTS134</name>
+    </Servers>
+    <Servers>
+        <path>\\UKIXEWTS135\c$\Documents and Settings\</path>
+        <name>UKIXEWTS135</name>
+    </Servers>
+    <Servers>
+        <path>\\UKIXEWTS136\c$\Documents and Settings\</path>
+        <name>UKIXEWTS136</name>
+    </Servers>
+    <Servers>
+        <path>\\UKIXEWTS140\c$\Documents and Settings\</path>
+        <name>UKIXEWTS140</name>
+    </Servers>
+    <Servers>
+        <path>\\UKIXEWTS141\c$\Documents and Settings\</path>
+        <name>UKIXEWTS141</name>
+    </Servers>
+    <Servers>
+        <path>\\UKIXEWTS142\c$\Documents and Settings\</path>
+        <name>UKIXEWTS142</name>
+    </Servers>
+    <Servers>
+        <path>\\UKIXEWTS143\c$\Documents and Settings\</path>
+        <name>UKIXEWTS143</name>
+    </Servers>
+    <Servers>
+        <path>\\UKIXEWTS144\c$\Documents and Settings\</path>
+        <name>UKIXEWTS144</name>
+    </Servers>
+    <Servers>
+        <path>\\UKIXEWTS145\c$\Documents and Settings\</path>
+        <name>UKIXEWTS145</name>
+    </Servers>
+    <Servers>
+        <path>\\UKIXEWTS151\c$\Documents and Settings\</path>
+        <name>UKIXEWTS151</name>
+    </Servers>
+    <Servers>
+        <path>\\UKIXEWTS152\c$\Documents and Settings\</path>
+        <name>UKIXEWTS152</name>
+    </Servers>
+    <Servers>
+        <path>\\UKIXEWTS153\c$\Documents and Settings\</path>
+        <name>UKIXEWTS153</name>
+    </Servers>
+    <Servers>
+        <path>\\UKIXEWTS163\c$\Documents and Settings\</path>
+        <name>UKIXEWTS163</name>
+    </Servers>
+    <Servers>
+        <path>\\UKPKRWTS61\c$\Documents and Settings\</path>
+        <name>UKPKRWTS61</name>
+    </Servers>
+    <Servers>
+        <path>\\UKPKRWTS62\c$\Documents and Settings\</path>
+        <name>UKPKRWTS62</name>
+    </Servers>
+    <Servers>
+        <path>\\UKWATWTS130\c$\Documents and Settings\</path>
+        <name>UKWATWTS130</name>
+    </Servers>
+    <Servers>
+        <path>\\UKWATWTS131\c$\Documents and Settings\</path>
+        <name>UKWATWTS131</name>
+    </Servers>
+    <Servers>
+        <path>\\UKWATWTS133\c$\Documents and Settings\</path>
+        <name>UKWATWTS133</name>
+    </Servers>
+    <Servers>
+        <path>\\UKWATWTS134\c$\Documents and Settings\</path>
+        <name>UKWATWTS134</name>
+    </Servers>
+    <Servers>
+        <path>\\UKWATWTS135\c$\Documents and Settings\</path>
+        <name>UKWATWTS135</name>
+    </Servers>
+    <Servers>
+        <path>\\UKWATWTS136\c$\Documents and Settings\</path>
+        <name>UKWATWTS136</name>
+    </Servers>
+    <Servers>
+        <path>\\UKWATWTS140\c$\Documents and Settings\</path>
+        <name>UKWATWTS140</name>
+    </Servers>
+    <Servers>
+        <path>\\UKWATWTS141\c$\Documents and Settings\</path>
+        <name>UKWATWTS141</name>
+    </Servers>
+    <Servers>
+        <path>\\UKWATWTS142\c$\Documents and Settings\</path>
+        <name>UKWATWTS142</name>
+    </Servers>
+    <Servers>
+        <path>\\UKWATWTS143\c$\Documents and Settings\</path>
+        <name>UKWATWTS143</name>
+    </Servers>
+    <Servers>
+        <path>\\UKWATWTS144\c$\Documents and Settings\</path>
+        <name>UKWATWTS144</name>
+    </Servers>
+    <Servers>
+        <path>\\UKWATWTS145\c$\Documents and Settings\</path>
+        <name>UKWATWTS145</name>
+    </Servers>
+    <Servers>
+        <path>\\UKWATWTS147\c$\Documents and Settings\</path>
+        <name>UKWATWTS147</name>
+    </Servers>
+    <Servers>
+        <path>\\UKWATWTS151\c$\Documents and Settings\</path>
+        <name>UKWATWTS151</name>
+    </Servers>
+    <Servers>
+        <path>\\UKWATWTS152\c$\Documents and Settings\</path>
+        <name>UKWATWTS152</name>
+    </Servers>
+    <Servers>
+        <path>\\UKWATWTS153\c$\Documents and Settings\</path>
+        <name>UKWATWTS153</name>
+    </Servers>
+    <Servers>
+        <path>\\UKWATWTS162\c$\Documents and Settings\</path>
+        <name>UKWATWTS162</name>
+    </Servers>
+    <Servers>
+        <path>\\UKWATWTS163\c$\Documents and Settings\</path>
+        <name>UKWATWTS163</name>
+    </Servers>
+    <Servers>
+        <path>\\UKWATWTS26\c$\Documents and Settings\</path>
+        <name>UKWATWTS26</name>
+    </Servers>
+    <Servers>
+        <path>\\UKWATWTS54\c$\Documents and Settings\</path>
+        <name>UKWATWTS54</name>
+    </Servers>
+    <Servers>
+        <path>\\UKWATWTS61\c$\Documents and Settings\</path>
+        <name>UKWATWTS61</name>
+    </Servers>
+    <Servers>
+        <path>\\UKWATWTS62\c$\Documents and Settings\</path>
+        <name>UKWATWTS62</name>
+    </Servers>
+    <Servers>
+        <path>\\UKWATWTS72\c$\Documents and Settings\</path>
+        <name>UKWATWTS72</name>
+    </Servers>
+    <Servers>
+        <path>\\UKIXEWTS50\c$\Documents and Settings\</path>
+        <name>UKIXEWTS50</name>
+    </Servers>
+    <Servers>
+        <path>\\UKWATWTS50\c$\Documents and Settings\</path>
+        <name>UKWATWTS50</name>
+    </Servers>
+    <Servers>
+        <path>\\UKWATWTS164\c$\Documents and Settings\</path>
+        <name>UKWATWTS164</name>
+    </Servers>
+    <Servers>
+        <path>\\UKIXEWTS164\c$\Documents and Settings\</path>
+        <name>UKIXEWTS164</name>
+    </Servers>
+    <Servers>
+        <path>\\UKIXEWTS77\c$\Documents and Settings\</path>
+        <name>UKIXEWTS77</name>
+    </Servers>
+    <Servers>
+        <path>\\UKIXEWTS78\c$\Documents and Settings\</path>
+        <name>UKIXEWTS78</name>
+    </Servers>
+    <Servers>
+        <path>\\UKWATWTS51\c$\Documents and Settings\</path>
+        <name>UKWATWTS51</name>
+    </Servers>
+    <Servers>
+        <path>\\UKWATWTS56\c$\Documents and Settings\</path>
+        <name>UKWATWTS56</name>
+    </Servers>
+    <Servers>
+        <path>\\UKWATWTS77\c$\Documents and Settings\</path>
+        <name>UKWATWTS77</name>
+    </Servers>
+    <Servers>
+        <path>\\UKWATWTS78\c$\Documents and Settings\</path>
+        <name>UKWATWTS78</name>
+    </Servers>
+    <Servers>
+        <path>\\UKIXEWTS79\c$\Documents and Settings\</path>
+        <name>UKIXEWTS79</name>
+    </Servers>
+    <Servers>
+        <path>\\UKIXEWTS80\c$\Documents and Settings\</path>
+        <name>UKIXEWTS80</name>
+    </Servers>
+    <Servers>
+        <path>\\UKIXEWTS81\c$\Documents and Settings\</path>
+        <name>UKIXEWTS81</name>
+    </Servers>
+    <Servers>
+        <path>\\UKIXEWTS82\c$\Documents and Settings\</path>
+        <name>UKIXEWTS82</name>
+    </Servers>
+    <Servers>
+        <path>\\UKWATWTS79\c$\Documents and Settings\</path>
+        <name>UKWATWTS79</name>
+    </Servers>
+    <Servers>
+        <path>\\UKWATWTS80\c$\Documents and Settings\</path>
+        <name>UKWATWTS80</name>
+    </Servers>
+    <Servers>
+        <path>\\UKWATWTS81\c$\Documents and Settings\</path>
+        <name>UKWATWTS81</name>
+    </Servers>
+    <Servers>
+        <path>\\UKIXEWEB102\c$\Documents and Settings\</path>
+        <name>UKIXEWEB102</name>
+    </Servers>
+    <Servers>
+        <path>\\UKWATWEB102\c$\Documents and Settings\</path>
+        <name>UKWATWEB102</name>
+    </Servers>
+    <Servers>
+        <path>\\UKWATWTS168\c$\Documents and Settings\</path>
+        <name>UKWATWTS168</name>
+    </Servers>
+    <Servers>
+        <path>\\UKWATWTS170\c$\Documents and Settings\</path>
+        <name>UKWATWTS170</name>
+    </Servers>
+    <Servers>
+        <path />
+        <name />
+    </Servers>
+    <Servers>
+        <path>\\uknasdata04\BPSctxprofile$\CRMCPMPROFILES</path>
+        <name>uknasdata04</name>
+    </Servers>
+    <Servers>
+        <path>\\uknasdata04\taxctxprofile$\TAXCPMPROFILES</path>
+        <name>uknasdata04</name>
+    </Servers>
+    <Servers>
+        <path>\\uknasdata04\bpsctxhome$</path>
+        <name>uknasdata04</name>
+    </Servers>
+    <Servers>
+        <path>\\uknasdata04\taxctxhome$</path>
+        <name>uknasdata04</name>
+    </Servers>
+    <Servers>
+        <path />
+        <name />
+    </Servers>
+    <Servers>
+        <path />
+        <name />
+    </Servers>
+    <Servers>
+        <path />
+        <name />
+    </Servers>
+    <Servers>
+        <path />
+        <name />
+    </Servers>
+    <Servers>
+        <path />
+        <name />
+    </Servers>
+    <Servers>
+        <path />
+        <name />
+    </Servers>
+    <Servers>
+        <path />
+        <name />
+    </Servers>
+    <Servers>
+        <path />
+        <name />
+    </Servers>
+    <Servers>
+        <path />
+        <name />
+    </Servers>
+    <Servers>
+        <path />
+        <name />
+    </Servers>
+    <Servers>
+        <path />
+        <name />
+    </Servers>
+    <Servers>
+        <path />
+        <name />
+    </Servers>
+    <Servers>
+        <path />
+        <name />
+    </Servers>
+    <Servers>
+        <path />
+        <name />
+    </Servers>
+    <Servers>
+        <path />
+        <name />
+    </Servers>
+    <Servers>
+        <path />
+        <name />
+    </Servers>
+    <Servers>
+        <path />
+        <name />
+    </Servers>
+    <Servers>
+        <path />
+        <name />
+    </Servers>
+    <Servers>
+        <path />
+        <name />
+    </Servers>
+    <Servers>
+        <path />
+        <name />
+    </Servers>
+    <Servers>
+        <path />
+        <name />
+    </Servers>
+    <Servers>
+        <path />
+        <name />
+    </Servers>
+    <Servers>
+        <path />
+        <name />
+    </Servers>
+    <Servers>
+        <path />
+        <name />
+    </Servers>
+    <Servers>
+        <path />
+        <name />
+    </Servers>
+    <Servers>
+        <path />
+        <name />
+    </Servers>
+    <Servers>
+        <path />
+        <name />
+    </Servers>
+    <Servers>
+        <path />
+        <name />
+    </Servers>
+    <Servers>
+        <path />
+        <name />
+    </Servers>
+    <Servers>
+        <path />
+        <name />
+    </Servers>
+    <Servers>
+        <path />
+        <name />
+    </Servers>
+    <Servers>
+        <path />
+        <name />
+    </Servers>
+    <Servers>
+        <path />
+        <name />
+    </Servers>
+    <Servers>
+        <path />
+        <name />
+    </Servers>
+    <Servers>
+        <path />
+        <name />
+    </Servers>
+    <Servers>
+        <path />
+        <name />
+    </Servers>
+    <Servers>
+        <path />
+        <name />
+    </Servers>
+    <Servers>
+        <path />
+        <name />
+    </Servers>
+    <Servers>
+        <path />
+        <name />
+    </Servers>
+    <Servers>
+        <path />
+        <name />
+    </Servers>
+    <Servers>
+        <path />
+        <name />
+    </Servers>
+    <Servers>
+        <path />
+        <name />
+    </Servers>
+    <Servers>
+        <path />
+        <name />
+    </Servers>
+    <Servers>
+        <path />
+        <name />
+    </Servers>
+    <Servers>
+        <path />
+        <name />
+    </Servers>
+    <Servers>
+        <path />
+        <name />
+    </Servers>
+    <Servers>
+        <path />
+        <name />
+    </Servers>
+    <Servers>
+        <path />
+        <name />
+    </Servers>
+    <Servers>
+        <path />
+        <name />
+    </Servers>
+    <Servers>
+        <path />
+        <name />
+    </Servers>
+    <Servers>
+        <path />
+        <name />
+    </Servers>
+    <Servers>
+        <path />
+        <name />
+    </Servers>
+    <Servers>
+        <path />
+        <name />
+    </Servers>
+    <Servers>
+        <path />
+        <name />
+    </Servers>
+    <Servers>
+        <path />
+        <name />
+    </Servers>
+    <Servers>
+        <path />
+        <name />
+    </Servers>
+    <Servers>
+        <path />
+        <name />
+    </Servers>
+    <Servers>
+        <path />
+        <name />
+    </Servers>
+    <Servers>
+        <path />
+        <name />
+    </Servers>
+    <Servers>
+        <path />
+        <name />
+    </Servers>
+    <Servers>
+        <path />
+        <name />
+    </Servers>
+    <Servers>
+        <path />
+        <name />
+    </Servers>
+    <Servers>
+        <path />
+        <name />
+    </Servers>
+    <Servers>
+        <path />
+        <name />
+    </Servers>
+    <Servers>
+        <path />
+        <name />
+    </Servers>
+    <Servers>
+        <path />
+        <name />
+    </Servers>
+    <Servers>
+        <path />
+        <name />
+    </Servers>
+    <Servers>
+        <path />
+        <name />
+    </Servers>
+</RootElement>

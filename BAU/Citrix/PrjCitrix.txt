@@ -1,0 +1,1 @@
+gci C:\_AJ\Scripts\Citrix |% { powershell_ise $_.fullname }

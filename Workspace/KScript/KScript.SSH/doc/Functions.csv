@@ -1,0 +1,4 @@
+"Name","Access","Description","Author","Team","LastModified","ModifiedBy"
+"Import-KSSshKey","Public","","","","",""
+"New-KSSshClient","Public","Create a new SSH client using the specified ComputerName and credentials.","Chris Dent","Core Technologies","03/10/2014","Chris Dent"
+"Send-KSSshCommand","Public","Send an SSH command to an SSH client.","Chris Dent","Core Technologies","03/10/2014","Chris Dent"

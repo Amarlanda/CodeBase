@@ -1,0 +1,3 @@
+﻿SviConfig.exe -operation=FindUnusedReplica -DsnName=vComposerDB -DbUsername=vComposerDB_Production01 -DbPassword=JDh76$dh22$%k
+
+SviConfig -Operation=UnprotectEntity -DsnName=vComposerDB -DbUsername=vComposerDB_Production01 -DbPassword=JDh76$dh22$%k -VCURL=https://ukvmapp133.uk.kworld.kpmg.com/sdk -VcUsername=uk\uk-svc-vdi -VcPassword=London123 -InventoryPath="/WAT/vm/VMwareViewComposerReplicaFolder/replica-1edb0fe8-6b8e-4546-9a5c-880e96d12fdf" -Recursive=True

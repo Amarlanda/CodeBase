@@ -1,0 +1,48 @@
+﻿Get-Datacenter | ForEach-Object {
+    $DCName = $_.Name
+    $Folder = $_.ParentFolder
+
+      Write-Host "Datacentre $($_.Name)"
+  
+      $_ | Get-VMHost | ForEach-Object {
+        Write-Host "Getting view for $($_.Name)"
+
+        $View = $_ | Get-View
+
+        Write-Host "Returning VI host $($_.Name)"
+
+        $_ | Select-Object *,
+          @{Name='DCName';Expression={ $DCName }},
+          @{n='Folder';e={ $Folder }},
+          @{n='HostCores';e={ $View.Hardware.CPUInfo.NumCPUCores }},
+          @{n='HostProcessors';e={ $View.Hardware.CPUInfo.NumCPUPackages }},
+          @{n='HostVersion';e={ $View.Config.Product.FullName }},
+          @{n='VIObject';e={ $_ }}
+        }
+    }
+
+$VMGuests = $VMHosts | ForEach-Object {
+    $Folder = $_.Folder
+    $DCName = $_.DCName
+  
+    $i = 0
+    $_.VIObject | Get-VM | ForEach-Object {
+    $View = $_ | Get-View
+    $i++
+    $_ | Select-Object *,
+      @{n='Processors';e={ $View.Config.Hardware.NumCPU }},
+      @{n='CoresPerSocket';e={ $View.Config.Hardware.NumCoresPerSocket }},
+      @{Name='DCName';Expression={ $DCName }},
+      @{n='DCFolder';e={ $Folder }}
+
+      }
+    $_ | Add-Member -type NoteProperty -Name "VMcount" -Value $i -Force;
+
+    }
+
+   
+# Output VMHosts
+$VMHosts | Export-csv C:\test\HostDataNew.csv -NoTypeInformation
+
+# Output VMs
+$VMGuests | Export-csv C:\test\VMDataNew.csv -NoTypeInformation

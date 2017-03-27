@@ -1,0 +1,20 @@
+$Job = {
+
+	param(
+
+	$ExistingEvents = @()
+
+	)
+
+	Add-PSSnapIn VMWare.View.Broker
+	$ExistingEvents += Get-EventReport -ViewName user_events -StartDate (Get-Date).AddHours(-2) -endDate (get-date).addhours(-1)
+
+}
+
+Start-Job $Job -ArgumentList @(,$VDIEvents)
+
+ 
+
+
+
+#Get-EventReport -viewName user_events |? {$_.eventtype -eq "BROKER_USERLOGGEDIN"} | select eventid, time, severity, moduleandeventtext, desktopid |ft -autosize -wrap

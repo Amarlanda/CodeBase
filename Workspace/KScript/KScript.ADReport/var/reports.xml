@@ -1,0 +1,299 @@
+<?xml version='1.0'?>
+<ADReports>
+  <SharedConfiguration>
+    <SmtpSenderAddress><![CDATA[ jmlreports@kpmg.co.uk ]]></SmtpSenderAddress>
+    <Properties>
+      <Property>
+        <LdapDisplayName>extensionAttribute13</LdapDisplayName>
+        <DisplayName>StaffNumber</DisplayName>
+      </Property>
+      <Property>
+        <LdapDisplayName>sAMAccountName</LdapDisplayName>
+        <DisplayName>LogonID</DisplayName>
+      </Property>
+      <Property>
+        <LdapDisplayName>displayName</LdapDisplayName>
+        <DisplayName>Name</DisplayName>
+      </Property>
+      <Property>
+        <LdapDisplayName>givenName</LdapDisplayName>
+        <DisplayName>FirstName</DisplayName>
+      </Property>
+      <Property>
+        <LdapDisplayName>sn</LdapDisplayName>
+        <DisplayName>LastName</DisplayName>
+      </Property>
+      <Property>
+        <LdapDisplayName>mail</LdapDisplayName>
+        <DisplayName>EmailAddress</DisplayName>
+      </Property>
+      <Property>
+        <LdapDisplayName>title</LdapDisplayName>
+        <DisplayName>JobTitle</DisplayName>
+      </Property>
+      <Property>
+        <LdapDisplayName>accountExpires</LdapDisplayName>
+        <DisplayName>AccountExpiry</DisplayName>
+      </Property>
+      <Property>
+        <LdapDisplayName>kpmg-user-hiredate</LdapDisplayName>
+        <DisplayName>HireDate</DisplayName>
+      </Property>
+      <Property>
+        <LdapDisplayName>lastLogonTimeStamp</LdapDisplayName>
+        <DisplayName>LastLogon</DisplayName>
+      </Property>
+      <Property>
+        <LdapDisplayName>kpmg-user-goemployeestatus</LdapDisplayName>
+        <DisplayName>SAPStatus</DisplayName>
+      </Property>
+      <Property>
+        <LdapDisplayName>manager</LdapDisplayName>
+        <DisplayName>Manager</DisplayName>
+      </Property>
+      <Property>
+        <LdapDisplayName>kpmg-user-gofunction</LdapDisplayName>
+        <DisplayName>Function</DisplayName>
+      </Property>
+      <Property>
+        <LdapDisplayName>kpmg-user-goservicearea</LdapDisplayName>
+        <DisplayName>ServiceArea</DisplayName>
+      </Property>
+      <Property>
+        <LdapDisplayName>kpmg-user-gosegment</LdapDisplayName>
+        <DisplayName>Sector</DisplayName>
+      </Property>
+      <Property>
+        <LdapDisplayName>kpmg-user-golineofbusiness</LdapDisplayName>
+        <DisplayName>LineOfBusiness</DisplayName>
+      </Property>
+      <Property>
+        <LdapDisplayName>kpmg-user-goaccounttype</LdapDisplayName>
+        <DisplayName>AccountType</DisplayName>
+      </Property>
+      <Property>
+        <LdapDisplayName>extensionAttribute5</LdapDisplayName>
+        <DisplayName>BusinessUnit</DisplayName>
+      </Property>
+      <Property>
+        <LdapDisplayName>department</LdapDisplayName>
+        <DisplayName>Department</DisplayName>
+      </Property>
+      <Property>
+        <LdapDisplayName>extensionAttribute3</LdapDisplayName>
+        <DisplayName>KPMGDepartment</DisplayName>
+      </Property>
+      <Property>
+        <LdapDisplayName>physicalDeliveryOfficeName</LdapDisplayName>
+        <DisplayName>Office</DisplayName>
+      </Property>
+      <Property>
+        <LdapDisplayName>extensionAttribute4</LdapDisplayName>
+        <DisplayName>Grade</DisplayName>
+      </Property>
+      <Property>
+        <LdapDisplayName>Description</LdapDisplayName>
+        <DisplayName>Description</DisplayName>
+      </Property>
+      <Property>
+        <LdapDisplayName>distinguishedName</LdapDisplayName>
+        <DisplayName>DN</DisplayName>
+      </Property>
+      <Property>
+        <LdapDisplayName>userAccountControl</LdapDisplayName>
+        <DisplayName>UserAccountControl</DisplayName>
+      </Property>
+      <Property>
+        <LdapDisplayName>whenCreated</LdapDisplayName>
+        <DisplayName>AccountCreationDate</DisplayName>
+      </Property>
+    </Properties>
+    <!-- Simple regular expression matches which will be returned as boolean - The referenced comparison property must exist in either CommonProperties or the report specific Properties -->
+    <!-- Match groups may be displayed if ShowMatchGroups is set to TRUE and the regular expression captures groups -->
+    <CalculatedProperties>
+      <Property>
+        <DisplayName>IsOperAccount</DisplayName>
+        <Type>Match</Type>
+        <CompareToPropertyName>LogonID</CompareToPropertyName>
+        <Expression><![CDATA[ ^-oper- ]]></Expression>
+      </Property>
+      <Property>
+        <DisplayName>IsTempAccount</DisplayName>
+        <Type>Match</Type>
+        <CompareToPropertyName>LogonID</CompareToPropertyName>
+        <Expression><![CDATA[ ^uk[st]p ]]></Expression>
+      </Property>
+      <Property>
+        <DisplayName>IsServiceAccount</DisplayName>
+        <Type>Match</Type>
+        <CompareToPropertyName>LogonID</CompareToPropertyName>
+        <Expression><![CDATA[ ^-svc- ]]></Expression>
+      </Property>
+      <Property>
+        <DisplayName>IsMailboxAccount</DisplayName>
+        <Type>Match</Type>
+        <CompareToPropertyName>Name</CompareToPropertyName>
+        <Expression><![CDATA[ ^(uk-?fm|JM-|SystemMailbox\{) ]]></Expression>
+      </Property>
+    </CalculatedProperties>
+  </SharedConfiguration>
+  <Reports>
+    <Report>
+      <ID>101a</ID>
+      <Enabled>TRUE</Enabled>
+      <Description>Inactive (4 weeks, but not expired/disabled) temp accounts (with no staff numbers)</Description>
+      <LdapFilter><![CDATA[ (&(objectClass=user)(objectCategory=person)(|(sAMAccountName=uktp*)(sAMAccountName=uksp*))(|(lastLogonTimeStamp<=%DATE(-4WEEK)%)(!lastLogonTimeStamp=*))(whenCreated<=%DATE(-4WEEK)%)(!userAccountControl:%LDAP_AND%:=2)(|(accountExpires>=%DATE%)(accountExpires=0)(accountExpires=9223372036854775807))(!extensionAttribute13=*)) ]]></LdapFilter>
+      <Properties /> <!-- Additional properties may be requested on a per-report basis. This tag forces inclusion of CommonProperties defined at the root -->
+      <CalculatedProperties /> <!-- Additional calculated properties may be added on a per-report basis. This tag forces inclusion of CalculatedProperties defined at the root -->
+      <Recipients>
+        <!-- must be valid recipient (SMTP address) -->
+        <Recipient>FM Security Mailbox</Recipient>
+      </Recipients>
+      <Frequency>Weekly</Frequency>
+    </Report>
+    <Report>
+      <ID>101b</ID>
+      <Enabled>TRUE</Enabled>
+      <Description>Inactive (4 weeks, but not expired/disabled) temp accounts (with staff numbers)</Description>
+      <LdapFilter><![CDATA[ (&(objectClass=user)(objectCategory=person)(|(sAMAccountName=uktp*)(sAMAccountName=uksp*))(|(lastLogonTimeStamp<=%DATE(-4WEEK)%)(!lastLogonTimeStamp=*))(whenCreated<=%DATE(-4WEEK)%)(!userAccountControl:%LDAP_AND%:=2)(|(accountExpires>=%DATE%)(accountExpires=0)(accountExpires=9223372036854775807))(extensionAttribute13=*)) ]]></LdapFilter>
+      <Properties />
+      <CalculatedProperties />
+      <Recipients>
+        <Recipient>People Centre (TBC)</Recipient>
+      </Recipients>
+      <Frequency>Weekly</Frequency>
+    </Report>
+    <Report>
+      <ID>102</ID>
+      <Enabled>TRUE</Enabled>
+      <Description>Temp accounts where expiry is set for more than 3 months (not expired/disabled)</Description>
+      <LdapFilter><![CDATA[ (&(objectClass=user)(objectCategory=person)(|(sAMAccountName=uktp*)(sAMAccountName=uksp*))(!title=KGS Resource)(!title=Non Executive Director)(!title=Non-Executive Director)(!userAccountControl:%LDAP_AND%:=2)(|(accountExpires=0)(accountExpires=9223372036854775807)(accountExpires>=%DATE(3MONTH)%))) ]]></LdapFilter>
+      <Properties />
+      <CalculatedProperties />
+      <Recipients>
+        <!-- must be valid recipient (SMTP address) -->
+        <Recipient>People Centre (TBC)</Recipient>
+      </Recipients>
+      <Frequency>Monthly</Frequency>
+    </Report>
+    <Report>
+      <ID>103</ID>
+      <Enabled>TRUE</Enabled>
+      <Description>Inactive (6 months) -oper accounts</Description>
+      <LdapFilter><![CDATA[ (&(objectClass=user)(objectCategory=person)(sAMAccountName=-oper-*)(|(lastLogonTimeStamp<=%DATE(-6MONTH)%)(!lastLogonTimeStamp=*))(whenCreated<=%DATE(-6MONTHS)%)) ]]></LdapFilter>
+      <Properties />
+      <CalculatedProperties />
+      <Recipients>
+        <Recipient>UK-DLITSCoreTechnologiesTeam@KPMG.co.uk</Recipient>
+      </Recipients>
+      <Frequency>Monthly</Frequency>
+    </Report>
+    <Report>
+      <ID>104</ID>
+      <Enabled>TRUE</Enabled>
+      <Description>Terminated in SAP, enabled in AD</Description>
+      <LdapFilter><![CDATA[ (&(objectClass=user)(objectCategory=person)(!userAccountControl:%LDAP_AND%:=2)(|(accountExpires=0)(accountExpires=9223372036854775807)(accountExpires>=%DATE%))(kpmg-user-goemployeestatus=4)) ]]></LdapFilter>
+      <Properties />
+      <CalculatedProperties />
+      <Recipients>
+        <Recipient>UKDLDSHPTeam@KPMG.co.uk</Recipient>
+      </Recipients>
+      <Frequency>Weekly</Frequency>
+    </Report>
+    <Report>
+      <ID>105</ID>
+      <Enabled>TRUE</Enabled>
+      <Description>Terminated in AD, active in SAP</Description>
+      <LdapFilter><![CDATA[ (&(objectClass=user)(objectCategory=person)(userAccountControl:%LDAP_AND%:=2)(extensionAttribute13=*)(kpmg-user-goemployeestatus=2)) ]]></LdapFilter>
+      <Properties />
+      <CalculatedProperties />
+      <Recipients>
+        <!-- must be valid recipient (SMTP address) -->
+        <Recipient>People Centre</Recipient>
+      </Recipients>
+      <Frequency>Weekly</Frequency>
+    </Report>
+    <Report>
+      <ID>106</ID>
+      <Enabled>TRUE</Enabled>
+      <Description>Any account that has been disabled for more than 3 months</Description>
+      <LdapFilter><![CDATA[ (&(objectClass=user)(objectCategory=person)(userAccountControl:%LDAP_AND%:=2)(|(lastLogonTimeStamp<=%DATE(-3MONTH)%)(!lastLogonTimeStamp=*))) ]]></LdapFilter>
+      <Properties />
+      <CalculatedProperties>
+        <Property>
+          <DisplayName>AccountDisableDate</DisplayName>
+          <Type>Match</Type>
+          <CompareToPropertyName>Description</CompareToPropertyName>
+          <Expression><![CDATA[ ^Account disabled (?:on )?(?<Date>\d{1,2}[\\/]\d{1,2}[\\/]\d{2,4}) ]]></Expression>
+          <ShowMatchGroups>TRUE</ShowMatchGroups>
+        </Property>
+      </CalculatedProperties>
+      <Recipients>
+        <Recipient>UK-DLITSCoreTechnologiesTeam@KPMG.co.uk</Recipient>
+      </Recipients>
+      <Frequency>Weekly</Frequency>
+    </Report>
+    <Report>
+      <ID>107a</ID>
+      <Enabled>FALSE</Enabled>
+      <Description>Disabled in AD, SecurID still enabled</Description>
+      <LdapFilter><![CDATA[ (&(objectClass=user)(objectCategory=person)(userAccountControl:%LDAP_AND%:=2)) ]]></LdapFilter>
+      <Properties />
+      <CalculatedProperties />
+      <Recipients>
+        <Recipient>UK-DLITSCoreTechnologiesTeam@KPMG.co.uk</Recipient>
+      </Recipients>
+      <Frequency>Weekly</Frequency>
+    </Report>
+    <Report>
+      <ID>107b</ID>
+      <Enabled>FALSE</Enabled>
+      <Description>Removed from AD, SecurID still enabled</Description>
+      <LdapFilter><![CDATA[ (&(objectClass=user)(objectCategory=person)(userAccountControl:%LDAP_AND%:=2)(lastLogonTimeStamp<=%DATE(-3MONTH)%)) ]]></LdapFilter>
+      <Properties />
+      <CalculatedProperties />
+      <Recipients>
+        <Recipient>UK-DLITSCoreTechnologiesTeam@KPMG.co.uk</Recipient>
+      </Recipients>
+      <Frequency>Weekly</Frequency>
+    </Report>
+    <Report>
+      <ID>108a</ID>
+      <Enabled>TRUE</Enabled>
+      <Description>AD accounts expired for a month or more, and not disabled, and either do not have staff numbers or are already terminated in SAP.</Description>
+      <LdapFilter><![CDATA[ (&(objectClass=user)(objectCategory=person)(!userAccountControl:%LDAP_AND%:=2)(&(accountExpires<=%DATE(-1MONTH)%)(!accountExpires=0))(|(!extensionAttribute13=*)(kpmg-user-goemployeestatus=4))) ]]></LdapFilter>
+      <Properties />
+      <CalculatedProperties />
+      <Recipients>
+        <!-- must be valid recipient (SMTP address) -->
+        <Recipient>TBC</Recipient>
+      </Recipients>
+      <Frequency>Weekly</Frequency>
+    </Report>
+    <Report>
+      <ID>108b</ID>
+      <Enabled>TRUE</Enabled>
+      <Description>AD accounts expired for a month or more, and not disabled, and do have active SAP accounts.</Description>
+      <LdapFilter><![CDATA[ (&(objectClass=user)(objectCategory=person)(!userAccountControl:%LDAP_AND%:=2)(&(accountExpires<=%DATE(-1MONTH)%)(!accountExpires=0))(kpmg-user-goemployeestatus=2)) ]]></LdapFilter>
+      <Properties />
+      <CalculatedProperties />
+      <Recipients>
+        <!-- must be valid recipient (SMTP address) -->
+        <Recipient>People Centre (TBC)</Recipient>
+      </Recipients>
+      <Frequency>Weekly</Frequency>
+    </Report>
+    <Report>
+      <ID>109</ID>
+      <Enabled>TRUE</Enabled>
+      <Description>Test accounts without managers</Description>
+      <LdapFilter><![CDATA[ (&(objectClass=user)(objectCategory=person)(sAMAccountName=-test-*)(!manager=*)) ]]></LdapFilter>
+      <Properties />
+      <CalculatedProperties />
+      <Recipients>
+        <Recipient>UK-DLITSCoreTechnologiesTeam@KPMG.co.uk</Recipient>
+      </Recipients>
+      <Frequency>Weekly</Frequency>
+    </Report>
+  </Reports>
+</ADReports>

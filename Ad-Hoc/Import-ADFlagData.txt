@@ -1,0 +1,164 @@
+<#
+	.SYNOPSIS
+	Script to import AD flag data into AD from an xlsx
+
+	.DESCRIPTION
+	The user is asked to select a xlsx file via a dialog box.
+	The results are written to the Comments column in the xlsx.
+
+	.EXAMPLE
+	PS> .\Import-ADFlagData.ps1
+
+	.NOTES
+#>
+[CmdletBinding()]
+Param()
+
+try
+{
+	# --- Header - load core module
+	$ErrorActionPreference = 'Stop'
+	Push-Location -LiteralPath $(Split-Path -Parent $MyInvocation.MyCommand.Path)
+	try {Import-Module KpmgCore}
+	catch
+	{
+		if (@(wevtutil ep) -NotContains 'KScript') {New-EventLog -LogName Application -Source KScript}
+		$ExitMessage = "Script $(Split-Path -Leaf $MyInvocation.MyCommand.Path) Cannot Start. KpmgCore Module Not Loaded"
+		Write-EventLog -LogName Application -Source KScript -EventID 999 -EntryType Error -Message $ExitMessage
+		Write-Warning $ExitMessage
+		Exit 1
+	}
+
+	# --- Start logging
+	Start-KpmgScript $MyInvocation
+	Start-Transcript -Path $LogFile
+
+	# --- Get the xlsx file from the user
+	$XlsxFile = Select-KpmgFile -Title $MyInvocation.MyCommand.Name -Filter "xlsx files (*.xlsx)|*.xlsx"
+	if (!$XlsxFile) {throw "Invalid xlsx file selection"}
+	Write-Host "Using xlsx file: $($XlsxFile.Name)"
+
+	# --- Get an -oper or -admin user account if the current user is not using one
+	if ($env:UserName -Match "^(-oper-|-admin-).*")
+	{
+		$Cred = @{}
+		$ADRoot = New-Object DirectoryServices.DirectoryEntry("LDAP://UK")
+	}
+	else
+	{
+		$Credential = $Host.UI.PromptForCredential($MyInvocation.MyCommand.Name,'Enter Credentials for UK Domain','UK\','')
+		if (!$Credential) {throw "No credentials provided"}
+		if ($Credential.UserName -NotMatch "^UK\\(-oper-|-admin-).*") {throw "Invalid credentials: must be -oper or -admin"}
+		$Cred = @{Credential = $Credential}
+		$ADRoot = New-Object DirectoryServices.DirectoryEntry("LDAP://UK",$Credential.UserName,$Credential.GetNetworkCredential().Password)
+	}
+
+	# --- Check the connection is ok
+	if (!$ADRoot.distinguishedName) {throw "Failed to connect to domain AD. $($ADRoot | Out-String)"}
+
+	# --- import the data
+	$ExcelData = $XlsxFile | Import-KpmgExcelWorkBook -SheetNames 'AD Flags'
+	$ADFlags = @($ExcelData.'AD Flags' | Where-Object {$_.ADName})
+	if (!$ADFlags) {throw "No data found in xlsx file"}
+
+	# --- Clean up invalid chars that BT keep pasting into the sheet
+	ForEach ($i in $ADFlags) {ForEach ($Prop in 'ADName','First Name','Last Name') {$i.$Prop = ([String]([String]$i.$Prop).Trim()).Trim([char]65533)}}
+
+	# --- Calculate some derived properties for each item
+	$ADFlags | Add-Member ScriptProperty ADUser {Search-KpmgADAccountName -AccountName $this.ADName -objectCategory User @Cred}
+	$ADFlags | Add-Member ScriptProperty 'User Exists' {[Bool]$this.ADUser}
+
+	# --- Get the active requests
+	$TargetRequests = @($ADFlags | Where-Object {!($_.'Success Date') -AND ($_.'Update Result' -ne 'SUCCESS')})
+
+	# --- Display the active requests
+	$TargetRequests | Select-Object 'Request Date','ADName','First Name','Last Name','User Exists' | Format-Table -AutoSize | Out-Host
+
+	# --- Get a list of duplicate active requests
+	$Duplicates = @($TargetRequests | Group-Object -Property ADName | Where-Object {$_.Count -gt 1} | Select-Object -ExpandProperty Name)
+
+	# --- Process the active requests
+	:ProcessRequests ForEach ($Request in $ADFlags)
+	{
+		if (!$Request.'Success Date' -AND ($Request.'Update Result' -ne 'SUCCESS'))
+		{
+			try
+			{
+				Write-Host "`n-----------------------"
+				$Request | Out-Host
+
+				# --- Check if this is a duplicate entry
+				if ($Duplicates -Contains $Request.ADName)
+				{
+					throw "Duplicate active request [$($Request.ADName)] in xlsx data - please correct the data"
+					continue ProcessRequests
+				}
+
+				# --- Process the user if it exists - otherwise try to suggest via the first/last names.
+				if ($Request.'User Exists')
+				{
+					$UserObj = $Request.ADUser.GetDirectoryEntry()
+					$ipPhone = $Request.'Directory Number'
+					$msRTCSIPOptionFlags = 272
+					$msRTCSIPLineServer = "sip:$($UserObj.samAccountName)@uklhrcupp01.eu.kworld.kpmg.com"
+					$msRTCSIPLine = "tel:$($Request.'Directory Number')`;phone-context=dialstring"
+
+					Write-Host "Updating ipPhone to $ipPhone"
+					$UserObj.Put('ipPhone',$ipPhone)
+					Write-Host "Updating msRTCSIP-OptionFlags to $msRTCSIPOptionFlags"
+					$UserObj.Put('msRTCSIP-OptionFlags',$msRTCSIPOptionFlags)
+					Write-Host "Updating msRTCSIP-LineServer to $msRTCSIPLineServer"
+					$UserObj.Put('msRTCSIP-LineServer',$msRTCSIPLineServer)
+					Write-Host "Updating msRTCSIP-Line to $msRTCSIPLine"
+					$UserObj.Put('msRTCSIP-Line',$msRTCSIPLine)
+					$UserObj.SetInfo()
+
+					$Request.'Update Result' = 'SUCCESS'
+					$Request.'Success Date' = [String](Get-Date ([DateTime]::Today) -Format 'dd/MM/yyyy')
+				}
+				else
+				{
+					# --- Try to look for the user via First/Last names and suggest if only one exists
+					$SearchResults = @(Search-KpmgADAccountName -SearchFilter "(&(givenname=$($Request.'First Name'))(sn=$($Request.'Last Name'))(objectCategory=User))" @Cred)
+					Switch ($SearchResults.Count)
+					{
+						0 {throw "Could not find user in AD"}
+						1 {throw "Could not find user. ADName suggestion - $($SearchResults.Properties.samaccountname)"}
+						Default {throw "Could not find user in AD. No suggestions: multiple [$($Request.'First Name') $($Request.'Last Name')] users found"}
+					}
+				}
+			}
+			catch
+			{
+				Write-Warning $_
+				$Warnings += "User: $($Request.ADName) - $_"
+				$Request.'Update Result' = 'FAILED'
+				$Request.Comments = "$_"
+			}
+		}
+	}
+
+	Write-Host "Exporting Results to Xlsx File"
+	$OutputProperties = 'Request Date','ADName','First Name','Last Name','Directory Number','User Location','Update Result','Success Date','Comments'
+	$ADFlags | Export-KpmgExcelWorkBook -OutputFile $XlsxFile -SheetTitle 'AD Flags' -Properties $OutputProperties -Force -FreezePanes
+
+	# --- Exit
+	Exit-KpmgSuccess
+}
+catch
+{
+	# --- Write the whole error stack to the log file (stop the transcript first)
+	if ($LogFile)
+	{
+		try {[VOID](Stop-Transcript)} catch {Remove-KpmgLastError}
+		"*** Full Error Stack ***" | Out-File -FilePath $LogFile -Append
+		$Error | Out-File -FilePath $LogFile -Append -Width 1000
+	}
+
+	# --- Exit with an error
+	Exit-KpmgError "Failed to Update AD Flags"
+}
+finally
+{
+	try {[VOID](Stop-Transcript)} catch {}
+}

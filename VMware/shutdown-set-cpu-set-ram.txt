@@ -1,0 +1,13 @@
+﻿
+$vms |? {
+    $_.memorymb  -lt "3073"} | select -first 5 | % {
+     if ($_.PowerState -eq "PoweredOn"){
+         stop-vm -Confirm:$false
+         }
+         Set-VM $_.name -MemoryMB "4096" -Confirm:$false
+         set-vm $_.name -numcpu "2" -Confirm:$false
+         
+     }
+     \
+     $vms | %{ $_ | Set-VM -MemoryMB "4096" -Confirm:$false ; $_ | set-vm -numcpu "4" -Confirm:$false }
+     

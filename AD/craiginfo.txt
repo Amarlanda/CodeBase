@@ -1,0 +1,29 @@
+﻿$searcher = [adsisearcher] [adsi] "LDAP://UK"
+$DCData = @()
+  
+cat C:\test\CraigUsers.txt | % {
+                                                                                                                                                                                                                                          
+$searcher.filter = "(&(objectClass=user) (CN=$_))"
+$ADobj = $searcher.findone().GetDirectoryEntry()  
+#$ADobj.extensionAttribute12}
+
+$grade = $ADobj.extensionAttribute12.ToString()
+$title = $ADobj.title.ToString()
+$UPN = $ADobj.userPrincipalName.ToString()
+$displayName = $ADobj.displayName.ToString()
+$name = $ADobj.sAMAccountName.ToString()
+$department = $ADobj.department.ToString()
+
+
+
+$DCData += New-Object PSObject -Property @{
+                    Grade = $grade
+                    Title = $title
+                    UPN = $UPN
+                    DisplayName = $displayName
+                    UserName = $name
+                    Department = $department
+
+                    }
+$DCData | sort UserName |export-csv "C:\test\outputfile.csv" -NoTypeInformation
+}

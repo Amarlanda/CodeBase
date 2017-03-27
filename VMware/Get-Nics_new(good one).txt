@@ -1,0 +1,1 @@
+get-vm | select-object Name,@{N="IP Address";E={@($_.guest.IPAddress)}} | Export-csv c:\VM_IP_Addresses.csv

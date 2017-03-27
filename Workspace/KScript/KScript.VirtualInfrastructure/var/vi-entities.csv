@@ -1,0 +1,17 @@
+Name,Type,ManagementDomain,Description
+ukwatapp182.uk.kworld.kpmg.com,vCenter,uk.kworld.kpmg.com,VCenter for ESX 5 Production
+ukdtaapp14.uk.kworld.kpmg.com,vCenter,uk.kworld.kpmg.com,VCenter for ESX 3.5 Production
+ukvmapp052.uk.kworld.kpmg.com,vCenter,uk.kworld.kpmg.com,Mobile Iron VC
+euwatapp115.eu.kworld.kpmg.com,vCenter,uk.kworld.kpmg.com,Mobile Iron VC
+ukwatapp169.uk.kworld.kpmg.com,vCenter-VDI,uk.kworld.kpmg.com,VCenter for VDI KGS
+ukwatapp170.uk.kworld.kpmg.com,vCenter-VDI,uk.kworld.kpmg.com,VCenter for VDI KPMG
+ukwatapp156.uk.kworld.kpmg.com,vCenter-VDI,uk.kworld.kpmg.com,VCenter for VDI Pilot
+ukwatapp153.uk.kworld.kpmg.com,vCenter-VDI,uk.kworld.kpmg.com,eAudit VDI VC
+ukixeapp153.uk.kworld.kpmg.com,vCenter-VDI,uk.kworld.kpmg.com,eAudit VDI VC
+ukvmssrv101.uk.kworld.kpmg.com,SCVMM,uk.kworld.kpmg.com,SP1
+ukvmssrv122.uk.kworld.kpmg.com,SCVMM,uk.kworld.kpmg.com,R2
+ukwatapp171.uk.kworld.kpmg.com,vCenter,uk.kworld.kpmg.com,Site Recovery Manager
+ukixeapp171.uk.kworld.kpmg.com,vCenter,uk.kworld.kpmg.com,Site Recovery Manager
+ukvmapp133.uk.kworld.kpmg.com,vCenter-VDI,uk.kworld.kpmg.com,vCenter for VDI new world
+ukvmapp129.uk.kworld.kpmg.com,vCenter-VDI,uk.kworld.kpmg.com,vCenter for VDI new world
+ukvmapp130.uk.kworld.kpmg.com,vCenter-VDI,uk.kworld.kpmg.com,vCenter for VDI new world

@@ -1,0 +1,2 @@
+675,AUDIT FAILURE,Security,Wed Jul 09 15:16:31 2014,NT AUTHORITY\SYSTEM,Pre-authentication failed:     User Name: Oburton     User ID:  %{S-1-5-21-1965243242-631715425-1848903544-279330}     Service Name: krbtgt/UK     Pre-Authentication Type: 0x2     Failure Code: 0x18     Client Address: 10.224.27.68     Certificate Issuer Name: %7     Certificate Serial Number: %8     Certificate Thumbprint: %9    
+C:\_aj\scripts\LogResults\UKCSQGC02-Security_LOG.txt contains 1 parsed events.

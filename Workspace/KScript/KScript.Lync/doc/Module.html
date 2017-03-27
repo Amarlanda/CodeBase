@@ -1,0 +1,165 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>HTML TABLE</title>
+</head><body>
+<DIV><P><FONT size=1 color=#969696>Back to [[Module reference]]</FONT></P></DIV>
+<DIV><STRONG><FONT size=4>Contents</FONT></STRONG></DIV>
+&nbsp;
+<DIV>
+<A HREF='http://sites.eu.kworld.kpmg.com/sites/infrastructure/department/itservices/coretechnologies/KScript/KScript.Lync.aspx#ModuleInformation'>Module information</A><BR />
+<A HREF='http://sites.eu.kworld.kpmg.com/sites/infrastructure/department/itservices/coretechnologies/KScript/KScript.Lync.aspx#Functions'>Functions</A><BR />
+</DIV>
+&nbsp;<HR>&nbsp;
+<DIV><A Name='ModuleInformation'></A><STRONG><FONT size=4>Module information</FONT></STRONG></DIV>
+&nbsp;
+<DIV>
+<P>Lync management.</P>
+<UL>
+<LI>Module version: 2.7</LI>
+<LI>Author: Chris Dent</LI>
+<LI>Page updated: Monday 3 November 2014</LI>
+</UL>
+</DIV>
+&nbsp;<HR>&nbsp;
+<DIV><A Name='Functions'></A><STRONG><FONT size=4>Functions</FONT></STRONG></DIV>
+&nbsp;
+<DIV>
+<TABLE style="WIDTH: 100%; BORDER-COLLAPSE: collapse; FONT-SIZE: 1em" border=1>
+<tr><th style="background-color: #98C6F3;">Name</th><th style="background-color: #98C6F3;">Description</th><th style="background-color: #98C6F3;">Author</th><th style="background-color: #98C6F3;">Last modified</th><th style="background-color: #98C6F3;">Modified by</th></tr>
+<tr><td><a href='http://sites.eu.kworld.kpmg.com/sites/infrastructure/department/itservices/coretechnologies/KScript/KScript.Lync.aspx#Disable-KSLyncUser'>Disable-KSLyncUser</a></td><td>Disable Lync user accounts with Disable-CsUser.</td><td>Chris Dent</td><td>29/07/2014</td><td>Chris Dent</td></tr>
+<tr><td><a href='http://sites.eu.kworld.kpmg.com/sites/infrastructure/department/itservices/coretechnologies/KScript/KScript.Lync.aspx#Enable-KSLyncUser'>Enable-KSLyncUser</a></td><td>Lync enable users created within the specified time frame.</td><td>Chris Dent</td><td>19/09/2014</td><td>Chris Dent</td></tr>
+<tr><td><a href='http://sites.eu.kworld.kpmg.com/sites/infrastructure/department/itservices/coretechnologies/KScript/KScript.Lync.aspx#Get-KSLyncPolicy'>Get-KSLyncPolicy</a></td><td>Get policies defined in an XML file.</td><td>Chris Dent</td><td>13/08/2014</td><td>Chris Dent</td></tr>
+<tr><td><a href='http://sites.eu.kworld.kpmg.com/sites/infrastructure/department/itservices/coretechnologies/KScript/KScript.Lync.aspx#Import-KSLyncSession'>Import-KSLyncSession</a></td><td>Import a PSSession based on a LyncManagementURI.</td><td>Chris Dent</td><td>15/09/2014</td><td>Chris Dent</td></tr>
+<tr><td><a href='http://sites.eu.kworld.kpmg.com/sites/infrastructure/department/itservices/coretechnologies/KScript/KScript.Lync.aspx#Start-KSLyncUserMaintenance'>Start-KSLyncUserMaintenance</a></td><td>Start the Enable-KSLyncUser command.</td><td>Chris Dent</td><td>07/08/2014</td><td>Chris Dent</td></tr>
+<tr><td><a href='http://sites.eu.kworld.kpmg.com/sites/infrastructure/department/itservices/coretechnologies/KScript/KScript.Lync.aspx#Update-KSLyncUserPolicy'>Update-KSLyncUserPolicy</a></td><td>Update Lync users in accordance with policies defined by Get-KSLyncPolicy.</td><td>Chris Dent</td><td>13/08/2014</td><td>Chris Dent</td></tr>
+</DIV>
+&nbsp;<HR>&nbsp;
+<DIV><A Name='Disable-KSLyncUser'></A><STRONG><FONT size=4>Disable-KSLyncUser</FONT></STRONG></DIV>
+&nbsp;
+<DIV><STRONG><FONT size=2>Synopsis</FONT></STRONG></DIV>
+<P>Disable Lync user accounts with Disable-CsUser.</P>
+<DIV><STRONG><FONT size=2>Syntax</FONT></STRONG></DIV>
+<P style='font-family: Consolas'>Disable-KSLyncUser [[-LdapFilter] &lt;String&gt;] [[-SearchRoot] &lt;String[]&gt;] [-PassThru] [-WhatIf] [-Confirm] [&lt;CommonParameters&gt;]</P>
+<DIV><STRONG><FONT size=2>Description</FONT></STRONG></DIV>
+<P>Disable-KSLyncUser finds LyncUsers using the UserPrincipalName (which is an acceptable identity for Get-CsUser). The resulting CSUser is passed to Disable-CsUser to completely remove a Lync account.</P>
+<P>Remove-LyncUser is reliant on a connection to the LyncManagementURI setting published using Get/Set-KSSetting.</P>
+<P>All actions taken by this script are logged using Write-KSLog.</P>
+&nbsp;<DIV><STRONG><FONT size=2>Change log</FONT></STRONG></DIV>
+&nbsp;
+<DIV>
+<TABLE style="WIDTH: 70%; BORDER-COLLAPSE: collapse; FONT-SIZE: 1em" border=1>
+<tr><th style="background-color: #98C6F3;">Date</th><th style="background-color: #98C6F3;">Who</th><th style="background-color: #98C6F3;">What</th></tr>
+<tr><td>29/07/2014</td><td>Chris Dent</td><td>Removed ErrorVariable from Disable-CsUser (not permitted).</td></tr>
+<tr><td>24/07/2014</td><td>Chris Dent</td><td>Algorithm changed to resemble Enabled-KSLyncUser.</td></tr>
+<tr><td>17/07/2014</td><td>Chris Dent</td><td>First release.</td></tr>
+</DIV>
+&nbsp;<HR>&nbsp;
+<DIV><A Name='Enable-KSLyncUser'></A><STRONG><FONT size=4>Enable-KSLyncUser</FONT></STRONG></DIV>
+&nbsp;
+<DIV><STRONG><FONT size=2>Synopsis</FONT></STRONG></DIV>
+<P>Lync enable users created within the specified time frame.</P>
+<DIV><STRONG><FONT size=2>Syntax</FONT></STRONG></DIV>
+<P style='font-family: Consolas'>Enable-KSLyncUser [[-SearchRoot] &lt;String&gt;] [[-CreatedWithin] &lt;TimeSpan&gt;] [[-PostEnableCommandsFile] &lt;String&gt;] [-WhatIf] [-Confirm] [&lt;CommonParameters&gt;]</P>
+<DIV><STRONG><FONT size=2>Description</FONT></STRONG></DIV>
+<P>Enable-KSLyncUser searches AD using Get-CsADUser for accounts created within the period defined by CreatedWithin.</P>
+<P>Each user is enabled using the users e-mail address as the SIP address.</P>
+<P>Users whose primary SMTP address is not @kpmg.co.uk will be reported but will not be enabled.</P>
+<P>Post-enable operations are loaded from XML then tested and executed.</P>
+&nbsp;<DIV><STRONG><FONT size=2>Change log</FONT></STRONG></DIV>
+&nbsp;
+<DIV>
+<TABLE style="WIDTH: 70%; BORDER-COLLAPSE: collapse; FONT-SIZE: 1em" border=1>
+<tr><th style="background-color: #98C6F3;">Date</th><th style="background-color: #98C6F3;">Who</th><th style="background-color: #98C6F3;">What</th></tr>
+<tr><td>19/09/2014</td><td>Chris Dent</td><td>BugFix: Fixed display of SIPAddress where none are available to use.</td></tr>
+<tr><td>13/08/2014</td><td>Chris Dent</td><td>Updated registrar pool split.</td></tr>
+<tr><td>24/07/2014</td><td>Chris Dent</td><td>Added parameter validation for SearchRoot (passed as OU to Get-CsAdUser).</td></tr>
+<tr><td>23/07/2014</td><td>Chris Dent</td><td>Added text logging.</td></tr>
+<tr><td>22/07/2014</td><td>Chris Dent</td><td>Moved session import to Import-KSLyncSession.</td></tr>
+<tr><td>18/07/2014</td><td>Chris Dent</td><td>Split PostEnableCommands into a second pass loop.</td></tr>
+<tr><td>25/06/2014</td><td>Chris Dent</td><td>First release.</td></tr>
+</DIV>
+&nbsp;<HR>&nbsp;
+<DIV><A Name='Get-KSLyncPolicy'></A><STRONG><FONT size=4>Get-KSLyncPolicy</FONT></STRONG></DIV>
+&nbsp;
+<DIV><STRONG><FONT size=2>Synopsis</FONT></STRONG></DIV>
+<P>Get policies defined in an XML file.</P>
+<DIV><STRONG><FONT size=2>Syntax</FONT></STRONG></DIV>
+<P style='font-family: Consolas'>Get-KSLyncPolicy [[-Name] &lt;String&gt;] [[-PolicyDefinitionFile] &lt;String&gt;] [&lt;CommonParameters&gt;]</P>
+<DIV><STRONG><FONT size=2>Description</FONT></STRONG></DIV>
+<P>Get-KSLyncPolicy reads an XML file describing policies (sets of commands) to be applied to users based on certain criteria.</P>
+<P>KS Lync Policies support the following filtering mechanisms:</P>
+<UL><LI>LdapFilter</LI><LI>SearchRoot</LI><LI>PatternMatch</LI></UL><P>Pattern matching is the least efficient method as it cannot filter the result set. Pattern matches are applied to an object returned by Get-CsAdUser, therefore the property name must be one returned by Get-CsAdUser.</P>
+<P>Policies are applied to the users meeting all of the filtering requirements.</P>
+<P>The XML file uses the following format:</P>
+<FONT style='font-family: Consolas'>&lt;Policies&gt;<BR /> &nbsp;&nbsp;&lt;Policy&gt;<BR /> &nbsp;&nbsp;&nbsp;&nbsp;&lt;Name&gt;Policy&nbsp;Name&lt;/Name&gt;<BR /> &nbsp;&nbsp;&nbsp;&nbsp;&lt;Filters&gt;<BR /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;Filter&gt;<BR /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;Type&gt;LdapFilter&nbsp;or&nbsp;SearchRoot&lt;/Type&gt;<BR /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;Value&gt;&lt;![CDATA[&nbsp;Value&nbsp;]]&gt;&lt;/Value&gt;<BR /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/Filter&gt;<BR /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;Filter&gt;<BR /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;Type&gt;PatternMatch&lt;/Type&gt;<BR /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;Property&gt;PropertyName&lt;/Property&gt;<BR /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;Pattern&gt;&lt;![CDATA[&nbsp;RegularExpression&nbsp;]]&gt;&lt;/Pattern&gt;<BR /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/Filter&gt;<BR /> &nbsp;&nbsp;&nbsp;&nbsp;&lt;/Filters&gt;<BR /> &nbsp;&nbsp;&nbsp;&nbsp;&lt;Commands&gt;<BR /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;Command&gt;<BR /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;Name&gt;LyncCommand&lt;/Name&gt;<BR /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;Parameters&gt;<BR /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;Parameter&gt;<BR /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;Name&gt;ParameterName&lt;/Name&gt;<BR /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;Value&gt;ParameterValue&lt;/Value&gt;<BR /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/Parameter&gt;<BR /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/Parameters&gt;<BR /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/Command&gt;<BR /> &nbsp;&nbsp;&nbsp;&nbsp;&lt;/Commands&gt;<BR /> &nbsp;&nbsp;&lt;/Policy&gt;<BR /> &lt;/Policies&gt;<BR /></FONT><P>If the ParameterValue is set to True, false or null the value is converted to an appropriate value, otherwise the value is treated as a string.</P>
+<P>Multiple parameters may be defined for any given command. Multiple commands may be defined for any policy.</P>
+<P>Policies are applied in the order they are listed in the XML file. If policies conflict the last policy wins (each will be applied in sequence).</P>
+&nbsp;<DIV><STRONG><FONT size=2>Change log</FONT></STRONG></DIV>
+&nbsp;
+<DIV>
+<TABLE style="WIDTH: 70%; BORDER-COLLAPSE: collapse; FONT-SIZE: 1em" border=1>
+<tr><th style="background-color: #98C6F3;">Date</th><th style="background-color: #98C6F3;">Who</th><th style="background-color: #98C6F3;">What</th></tr>
+<tr><td>13/08/2014</td><td>Chris Dent</td><td>First release.</td></tr>
+</DIV>
+&nbsp;<HR>&nbsp;
+<DIV><A Name='Import-KSLyncSession'></A><STRONG><FONT size=4>Import-KSLyncSession</FONT></STRONG></DIV>
+&nbsp;
+<DIV><STRONG><FONT size=2>Synopsis</FONT></STRONG></DIV>
+<P>Import a PSSession based on a LyncManagementURI.</P>
+<DIV><STRONG><FONT size=2>Syntax</FONT></STRONG></DIV>
+<P style='font-family: Consolas'>Import-KSLyncSession [[-LyncManagementURI] &lt;Uri&gt;] [&lt;CommonParameters&gt;]</P>
+<DIV><STRONG><FONT size=2>Description</FONT></STRONG></DIV>
+<P>Import-KSLyncSession imports a Lync session into the users global scope.</P>
+&nbsp;<DIV><STRONG><FONT size=2>Change log</FONT></STRONG></DIV>
+&nbsp;
+<DIV>
+<TABLE style="WIDTH: 70%; BORDER-COLLAPSE: collapse; FONT-SIZE: 1em" border=1>
+<tr><th style="background-color: #98C6F3;">Date</th><th style="background-color: #98C6F3;">Who</th><th style="background-color: #98C6F3;">What</th></tr>
+<tr><td>15/09/2014</td><td>Chris Dent</td><td>Bugfix: Bad error handling.</td></tr>
+<tr><td>13/08/2014</td><td>Chris Dent</td><td>Modified function to import session once only (per session).</td></tr>
+<tr><td>17/07/2014</td><td>Chris Dent</td><td>First release.</td></tr>
+</DIV>
+&nbsp;<HR>&nbsp;
+<DIV><A Name='Start-KSLyncUserMaintenance'></A><STRONG><FONT size=4>Start-KSLyncUserMaintenance</FONT></STRONG></DIV>
+&nbsp;
+<DIV><STRONG><FONT size=2>Synopsis</FONT></STRONG></DIV>
+<P>Start the Enable-KSLyncUser command.</P>
+<DIV><STRONG><FONT size=2>Syntax</FONT></STRONG></DIV>
+<P style='font-family: Consolas'>Start-KSLyncUserMaintenance [-WhatIf] [-Confirm] [&lt;CommonParameters&gt;]</P>
+<DIV><STRONG><FONT size=2>Description</FONT></STRONG></DIV>
+<P>Start-KSLyncUserMaintenance is a reporting wrapper for a number of scripts, each is run in order:</P>
+<UL><LI>Disable-KSLyncUser - Removes AD-disabled accounts from the Lync system.</LI><LI>Enable-KSLyncUser - Adds recently created users to the Lync system.</LI></UL><P>Start-KSLyncUserMaintenance provides extensive reporting for Enable-KSLyncUser. The command output is converted to HTML and sent as an e-mail message.</P>
+<P>Start-KSLyncUserMaintenance inherits parameters from Enable-KSLyncUser and passes all bound parameters through without modification.</P>
+&nbsp;<DIV><STRONG><FONT size=2>Change log</FONT></STRONG></DIV>
+&nbsp;
+<DIV>
+<TABLE style="WIDTH: 70%; BORDER-COLLAPSE: collapse; FONT-SIZE: 1em" border=1>
+<tr><th style="background-color: #98C6F3;">Date</th><th style="background-color: #98C6F3;">Who</th><th style="background-color: #98C6F3;">What</th></tr>
+<tr><td>07/08/2014</td><td>Chris Dent</td><td>Added transcript logging option.</td></tr>
+<tr><td>29/07/2014</td><td>Chris Dent</td><td>Increased wait time between disable and enable operations.</td></tr>
+<tr><td>24/07/2014</td><td>Chris Dent</td><td>Title change.</td></tr>
+<tr><td>23/07/2014</td><td>Chris Dent</td><td>Formatting changes, bug fixes, added support for Get-KSSMTPConfiguration.</td></tr>
+<tr><td>22/07/2014</td><td>Chris Dent</td><td>First release.</td></tr>
+</DIV>
+&nbsp;<HR>&nbsp;
+<DIV><A Name='Update-KSLyncUserPolicy'></A><STRONG><FONT size=4>Update-KSLyncUserPolicy</FONT></STRONG></DIV>
+&nbsp;
+<DIV><STRONG><FONT size=2>Synopsis</FONT></STRONG></DIV>
+<P>Update Lync users in accordance with policies defined by Get-KSLyncPolicy.</P>
+<DIV><STRONG><FONT size=2>Syntax</FONT></STRONG></DIV>
+<P style='font-family: Consolas'>Update-KSLyncUserPolicy [-WhatIf] [-Confirm] [&lt;CommonParameters&gt;]</P>
+<DIV><STRONG><FONT size=2>Description</FONT></STRONG></DIV>
+<P>Update-KSLyncUserPolicy assembles filters, finds users, then executes the commands defined in policy on each matching user.</P>
+<P>Update-KSLyncUserPolicy relies on policy content read by Get-KSLyncPolicy.</P>
+&nbsp;<DIV><STRONG><FONT size=2>Change log</FONT></STRONG></DIV>
+&nbsp;
+<DIV>
+<TABLE style="WIDTH: 70%; BORDER-COLLAPSE: collapse; FONT-SIZE: 1em" border=1>
+<tr><th style="background-color: #98C6F3;">Date</th><th style="background-color: #98C6F3;">Who</th><th style="background-color: #98C6F3;">What</th></tr>
+<tr><td>13/08/2014</td><td>Chris Dent</td><td>First release.</td></tr>
+</DIV>
+&nbsp;<HR>&nbsp;
+
+</body></html>
+

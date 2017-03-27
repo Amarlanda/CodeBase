@@ -1,0 +1,21 @@
+Get-EventReport -viewName user_events |? {$_.eventtype -eq "AGENT_CONNECTED"} | select eventid, time, severity, moduleandeventtext, desktopid |ft -autosize -wrap
+
+#get-events 
+
+two access points username and comuter name 
+show all infro events
+
+show vdis
+
+ask if you want vdis to be restart
+
+ask if you need live VDI info
+
+agent no reporting in.
+
+check local admins
+check space on e: drive
+check for ost files
+
+map network drive as user.
+

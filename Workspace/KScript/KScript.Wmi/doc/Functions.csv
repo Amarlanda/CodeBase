@@ -1,0 +1,2 @@
+"Name","Access","Description","Author","Team","LastModified","ModifiedBy"
+"Get-KSRegistryValue","Public","Get values from the registry using the StdRegProv class and the CIM CmdLets.","Chris Dent","Core Technologies","06/01/2015","Chris Dent"

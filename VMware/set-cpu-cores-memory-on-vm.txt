@@ -1,0 +1,62 @@
+$corecount =2
+$proccount =2
+
+$spec = new-object -typename VMware.VIM.virtualmachineconfigspec -property @{'numcorespersocket'=$corecount;'numCPUs'=$($proccount * $corecount)}
+
+
+}
+
+$vms | % { 
+  #if (($_ | Get-view ).config.hardware.numcorespersocket -notlike "2" ){
+     
+
+    (Get-VM –Name $_.name).ExtensionData.ReconfigVM_Task($spec)
+	write "changed $_.name "
+   }
+    
+}
+
+
+get-
+
+
+| ? { $_.powerstate -eq "poweredoff"} 
+
+$vms = import-csv .\vms.csv | sort descending 
+
+$vms | % { if ((($_ | Get-view ).config.hardware.NumCores -lt "2"){
+
+$corecount =2
+$proccount =2
+
+$spec = new-object -typename VMware.VIM.virtualmachineconfigspec -property @{'numcorespersocket'=$corecount;'numCPUs'=$($proccount * $corecount)}
+
+$vms | % { (Get-VM –Name $_.name).ExtensionData.ReconfigVM_Task($spec)
+
+}
+
+
+
+
+PerSocket -ne "2" 
+
+
+
+ }
+
+
+
+
+
+$onVms = $vms | ? { $_.powerstate -eq "poweredon"} 
+
+$onvms | % { $_ | stop-vm  -Confirm:$false }
+
+
+
+$onvms | % { (Get-VM –Name $_.name).ExtensionData.ReconfigVM_Task($spec)
+
+
+ Get-view  -ViewType VirtualMachine -Value $vm.config.hardware.NumCPU
+
+

@@ -1,0 +1,4 @@
+"Name","Access","Description","Author","Team","LastModified","ModifiedBy"
+"Get-KSCertificate","Public","Get certificates from a local or remote certificate store.","Chris Dent","Core Technologies","24/06/2014","Chris Dent"
+"Install-KSCertificate","Public","Install a certificate.","Chris Dent","Core Technologies","12/06/2014","Chris Dent"
+"Test-KSTrustedCertificate","Public","Test for a certificate in the TrustedPeople store on the target computer.","Chris Dent","Core Technologies","12/06/2014","Chris Dent"

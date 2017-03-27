@@ -1,0 +1,10 @@
+﻿#$path = ("c:\test.xml")
+#$xml = (New-Object -TypeName XML).Load($path)
+#$xml | gm
+
+$Path = ("C:\users\Administrator.LPT01\powershell\xml.xml")
+ 
+# load it into an XML object:
+[XML]$xml = Get-Content $Path
+
+$xml.Root.Server2

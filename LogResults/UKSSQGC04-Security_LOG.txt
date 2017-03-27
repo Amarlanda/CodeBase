@@ -1,0 +1,2 @@
+680,AUDIT FAILURE,Security,Mon Jul 07 09:12:51 2014,NT AUTHORITY\SYSTEM,Logon attempt by: MICROSOFT_AUTHENTICATION_PACKAGE_V1_0    Logon account: Dthakker1    Source Workstation: UKPK26LXF    Error Code: 0xC000006A    
+C:\_aj\scripts\LogResults\UKSSQGC04-Security_LOG.txt contains 1 parsed events.

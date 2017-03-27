@@ -1,0 +1,5 @@
+$object = [adsisearcher] [adsi] 'LDAP://localhost:389/OU=Servers,DC=vdi,DC=vmware,DC=int'
+$object.filter = "(&(objectClass=pae-Vm) (CN=*))"
+$res = $object.findall() 
+$res | % {$_.properties."pae-displayname";$_.properties."pae-vmstate" }
+

@@ -1,0 +1,1 @@
+$Global:DefaultVIServers | select name, Version, Build

@@ -1,0 +1,8 @@
+foreach ($service in get-content c:\VMs.txt)
+
+{
+$a = $service
+Echo $a
+return $a
+}
+

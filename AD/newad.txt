@@ -1,0 +1,62 @@
+﻿$searcher = [adsisearcher] [adsi] "LDAP://UK"
+$username = "uktpalanda"
+
+$searcher.filter = "(&(objectClass=user) (CN=$username))"
+    $ADobj = $searcher.findone().GetDirectoryEntry()
+   
+    if ($ADobj.psbase.invokeGet("IsAccountLocked")){
+        $counter = 2
+        $counter ++
+
+            $Excel = new-Object -comobject Excel.Application
+            $Excel.visible = $True
+            $Workbook=$Excel.Workbooks.Add()
+            $worksheet=$workbook.Worksheets.Add()
+            $worksheet.Name="testsheet"
+            $cells=$worksheet.Cells
+            $Cells.Item(1,1) = $username
+            $Cells.Item(1,2) = "Time_Of_lockout"
+            $intRow = 2 + $counter
+            $Cells.Item($intRow, 2) = Get-Date
+            
+
+        $ADobj.lockoutTime = 0
+        $ADobj.CommitChanges()
+        $ADobj.Close() 
+        write-host "sdfdsf"
+    }
+   
+
+<#
+##monitor account locks
+
+#Enter Username
+$user="tmahmood"
+$logpath = "C:\_aj\Scripts\ad\monukspjnarebor.txt"
+$searcher = [adsisearcher] [adsi] "LDAP://UK"
+
+
+    while($i -lt 9999)
+    {
+       start-sleep -s 1
+
+        $searcher.filter = "(&(objectClass=user) (CN=$user))"
+        $ADobj = $searcher.findone().GetDirectoryEntry()
+        $de =[ADSI]("LDAP://" +$ADobj.distinguishedName)
+
+            #if locked - write in red, Date User ID and log to txt file.
+            if ($de.psbase.invokeGet("IsAccountLocked")){
+              Write-host (get-date) " $user locked - loop id $i” -foreground "red"
+              Add-Content "$logpath" "$(get-date) + $user locked - loop id $i"
+
+            #if un locked - write in white, Date User ID and do notlog to txt file.
+            } else {
+                Write-host "$(get-date) + $user not locked - loop id $i"
+                Add-Content "$logpath" "$(get-date) + $user locked - loop id $i"
+               
+                
+            }
+
+        $i++
+    }
+#>

@@ -1,0 +1,7 @@
+"Name","Access","Description","Author","Team","LastModified","ModifiedBy"
+"Compress-KSItem","Public","Compress a file or directory.","Chris Dent","Core Technologies","14/07/2014","Chris Dent"
+"Expand-KSItem","Public","Expand the content of a zip file.","Chris Dent","Core Technologies","14/07/2014","Chris Dent"
+"Export-KSExcelWorksheet","Public","Export objects to an Excel Worksheet.","Chris Dent","Core Technologies","17/10/2014","Chris Dent"
+"Import-KSExcelWorksheet","Public","Import from Excel using the Microsoft Access Database Engine.","Chris Dent","Core Technologies","19/06/2014","Chris Dent"
+"Resize-KSImageFile","Public","Resize image an image file.","Chris Dent","Core Technologies","27/06/2014","Chris Dent"
+"Select-KSString","Public","Select a matching string from an alphabetically sorted file.","Chris Dent","Core Technologies","11/08/2014","Chris Dent"

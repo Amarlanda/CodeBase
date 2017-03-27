@@ -1,0 +1,26 @@
+﻿
+$ExcludeList = 'admin','fred'
+$ServerFile = 'C:\myServers.txt'
+
+$ErrorActionPreference = 'Stop'
+$ServerList = @(Get-Content $ServerFile)
+
+Foreach ($Server in $ServerList)
+{
+                $TargetUNC = "\\$Server\c$\Documents and Settings\"
+                $Profiles = @(Get-Childitem -Path $TargetUNC | Where {$_.PSIsContainer -AND $ExcludeList -NotContains $_.Name})
+                
+                Write-Host "Found $($Profiles.Count) Profile(s) to Remove on Server $Server"
+                ForEach ($Profile in $Profiles)
+                {
+                                try
+                                {
+                                                Write-Host "Removing Profile $($Profile.Name)"
+                                                <remove code here>
+                                }
+                                catch
+                                {
+                                                Write-Warning "Failed to remove profile $($Profile.Name) - $_"
+                                }
+                }
+}

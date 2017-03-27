@@ -1,0 +1,21 @@
+﻿$searcher = [adsisearcher] [adsi] "LDAP://UK"
+$SecuirtyGroup = "IPSUsers58"
+
+    $searcher.filter = "(&(objectClass=group) (CN=$SecuirtyGroup))"
+    $Group = $searcher.findall().GetDirectoryEntry()
+
+                            write-host ""                                                                         # formating
+                            write-host "Before Script"                                                             # formating
+                            write-host "SecuirtyGroup = $($Group.distinguishedName)"                              # display SG Name
+                            write-host "Menbers $($group.member | % {$_ -replace "(CN=)(.*?),.*",'$2'} | Sort)"   # Displays users inside this SG
+                            
+
+    $group.putex(1,"member",$null)
+    $group.SetInfo()
+    $Group = [ADSI]$Group.path
+
+                            write-host ""                                                                         # formating
+                            write-host "After Script"                                                             # formating
+                            write-host "SecuirtyGroup = $($Group.distinguishedName)"                              # display SG Name
+                            write-host "Menbers $($group.member | % {$_ -replace "(CN=)(.*?),.*",'$2'} | Sort)"   # Displays users inside this SG
+    

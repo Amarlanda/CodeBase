@@ -1,0 +1,24 @@
+## Account with admin rights on computer to have agent installed on
+$InstallAccount = Get-Credential
+
+
+### Management Servers
+#
+# UK00PSRV0026.ukapps.kpmg.com
+# ukxvmssrv024.ukx.kworldx.kpmg.com
+# UKVMSSRV109.uk.kworld.kpmg.com
+# UKVMSSRV108.uk.kworld.kpmg.com
+# UK00PSRV0001.ukapps.kpmg.com
+# UK00DSRV0035.ukappsx.kpmg.com
+# UK00DSRV0036.ukappsx.kpmg.com
+# UKVMSSRV107.uk.kworld.kpmg.com
+# ukxvmssrv023.ukx.kworldx.kpmg.com
+# UKVMSSRV106.uk.kworld.kpmg.com
+#
+##
+
+##Get the management server to push the agent from 
+$PrimaryMgmtServer = Get-SCOMManagementServer -ComputerName "UKVMSSRV106.uk.kworld.kpmg.com"
+
+##Install Agent 
+Install-SCOMAgent -DNSHostName "avm.uk.kworld.kpmg.com" -PrimaryManagementServer $PrimaryMgmtServer -ActionAccount $InstallAccount

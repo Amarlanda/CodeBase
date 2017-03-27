@@ -1,0 +1,8 @@
+"Name","Access","Description","Author","Team","LastModified","ModifiedBy"
+"Get-KSTelephoneNumber","Public","Get a telephoneNumber and otherTelephone based on the IPPhone value.","Chris Dent","Core Technologies","27/11/2014","Chris Dent"
+"Import-KSADTelephoneNumber","Public","Import ipPhone, othertelephone and telephoneNumber from an Excel spreadsheet supplied by BT.","Chris Dent","Core Technologies","10/11/2014","Chris Dent"
+"Set-KSADTelephoneNumber","Public","Set telephoneNumber information for an individual user (based on IPPhone).","Chris Dent","Core Technologies","22/08/2014","Chris Dent"
+"Start-KSADUnlockUser","Public","Start a perpetual account unlock job for all users in the specified file.","Chris Dent","Core Technologies","03/12/2014","Chris Dent"
+"Start-KSADUserMaintenance","Public","Start AD user maintenance tasks.","Chris Dent","Core Technologies","07/08/2014","Chris Dent"
+"Update-KSADTelephoneNumber","Public","Update telephone numbers in Active Directory based on the content of the IPPhone attribute.","Chris Dent","Core Technologies","03/12/2014","Chris Dent"
+"Update-KSDDIMapping","Public","Update the ddi-mapping.xml file from a spreadsheet.","Chris Dent","Core Technologies","07/11/2014","Chris Dent"

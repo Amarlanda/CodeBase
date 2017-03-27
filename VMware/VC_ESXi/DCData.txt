@@ -1,0 +1,283 @@
+﻿$Hostdata = @()
+$VMdata = @()
+
+## get VC detials
+($global:DefaultVIServers) | % { 
+    $VCName  = $_.Name
+    $VCVersion = $_.Version
+    $VCBuild = $_.Build
+}
+
+$DCdata = @()
+$i=0
+ForEach ($DC in $(Get-DataCenter)) {
+
+    ForEach ($ESXiHost in $($DC|get-vmhost)) {
+
+        $DCdata += ,@($b, "$ESXiHost", "$DC")
+        $i++
+    }
+}
+
+
+$DCFolders = @()
+$i1=0
+
+ForEach ($DC in $(get-folder)) {
+
+    ForEach ($ESXiHost in $($DC|get-vmhost)) {
+
+        $DCFolders += ,@($i1, "$ESXiHost", "$DC")
+        $i1++
+    }
+}
+
+# $vmhosts = get-vmhost
+#$ESXiHost = "ukixevsh158.uk.kworld.kpmg.com", "ukwatvsh158.uk.kworld.kpmg.com", "ukdcavsh025.uk.kworld.kpmg.com"
+
+#Foreach ($host1 in $ESXiHost) { 
+
+  $vmhosts = get-vmhost #-name $host1
+
+            $vmhosts  | % { 
+            
+                 $HostVMHostID = $_.VMHostID -join ", "
+                 $HostState= $_.State -join ", "
+                 $HostConnectionState= $_.ConnectionState -join ", "
+                 $HostPowerState= $_.PowerState -join ", "
+                 $HostVMSileDatastoreId= $_.VMSwapfileDatastoreId -join ", "
+                 $HostVMSwapfilePolicy= $_.VMSwapfilePolicy -join ", "
+                 $HostParentId= $_.ParentId
+                 $HostIsStandalone= $_.IsStandalone
+                 $HostManufacturer= $_.Manufacturer
+                 $HostModel= $_.Model
+                 $HostNumCpu= $_.NumCpu
+                 $HostCpuTotalMhz= $_.CpuTotalMhz
+                 $HostCpuUsageMhz= $_.CpuUsageMhz
+                 $HostMemoryTotalMB= $_.MemoryTotalMB
+                 $HostMemoryTotalGB= $_.MemoryTotalGB
+                 $HostMemoryUsageMB= $_.MemoryUsageMB
+                 $HostMemoryUsageGB= $_.MemoryUsageGB
+                 $HostProcessorType= $_.ProcessorType
+                 $HostHyperthreadingActive= $_.HyperthreadingActive
+                 $HostTimeZone= $_.TimeZone
+                 $HostVersion= $_.Version
+                 $HostBuild= $_.Build
+                 $HostParent= $_.Parent
+                 $HostVMSwapfileDatastore= $_.VMSwapfileDatastore
+                 $HostStorageInfo= $_.StorageInfo
+                 $HostNetworkInfo= $_.NetworkInfo
+                 $HostDiagnosticPartition= $_.DiagnosticPartition
+                 $HostFirewallDefaultPolicy= $_.FirewallDefaultPolicy
+                 $HostApiVersion= $_.ApiVersion
+                 $HostName= $_.Name
+                 $HostCustomFields= $_.CustomFields
+                 $HostExtensionData= $_.ExtensionData
+                 $HostId= $_.Id
+                 $HostUid= $_.Uid
+                 $HostClient= $_.Client
+                 $HostDatastoreIdList= $_.DatastoreIdList
+                 
+                      foreach ($B in $DCdata) {
+	                        [string]$str = $b
+	                        if ($str.contains("$HostName")) {
+	                        Write-host $b[2] " name of server - $hostname "
+                            $HostDataCentre = $b[2]
+	                        }
+                        }
+
+                 
+                    ## USE CASE if - only pulls valed ESXI host element 
+
+                 foreach ($c in $DCFolders) {
+                  [string]$str = $c
+    
+                    if ($str.contains("$HostName")){
+                                
+                        if (-not ($str.contains("Datacenters"))){
+                    
+                            if (-not ($str.contains("host"))){
+                        
+                               $HostFolderName = $c[2]
+
+                             }
+                 
+                        }
+                    }
+
+                }
+
+                ##VM folder
+                
+                $VMs = $_ | get-vm
+                $VMs | % {
+                
+                                $VMOSName = $_.OSName -join ", "
+                                $VMDNSName  = $_.DNSName -join ", "
+                                $VMPowerState =$_.PowerState -join ", "
+                                $VMVersion = $_.Version -join ", "
+                                $VMDescription = $_.Description -join ", "
+                                $VMNotes  = $_.Notes -join ", "
+                                $VMGuest  = $_.Guest -join ", "
+                                $VMNumCpu  = $_.NumCpu -join ", "
+                                $VMMemoryMB  = $_.MemoryMB -join ", "
+                                $VMMemoryGB  = $_.MemoryGB -join ", "
+                                $VMHardDisks  = $_.HardDisks -join ", "
+                                $VMNetworkAdapters  = $_.NetworkAdapters -join ", "
+                                $VMUsbDevices  = $_.UsbDevices -join ", "
+                                $VMCDDrives  = $_.CDDrives -join ", "
+                                $VMFloppyDrives  = $_.FloppyDrives  -join ", "
+                                $VMHost  = $_.Host  -join ", "
+                                $VMHostId  = $_.HostId -join ", "
+                                $VMVMHost  = $_.VMHost  -join ", "
+                                $VMVApp  = $_.VApp  -join ", "
+                                $VMFolderId  = $_.FolderId  -join ", "
+                                $VMFolder  = $_.Folder  -join ", "
+                                $VMResourcePoolId  = $_.ResourcePoolId -join ", " 
+                                $VMResourcePool  = $_.ResourcePool  -join ", "
+                                $VMPersistentId  = $_.PersistentId  -join ", "
+                                $VMUsedSpaceGB  = $_.UsedSpaceGB  -join ", "
+                                $VMProvisionedSpaceGB  = $_.ProvisionedSpaceGB -join ", " 
+                                $VMDatastoreIdList  = $_.DatastoreIdList  -join ", "
+                                $VMHARestartPriority  = $_.HARestartPriority  -join ", "
+                                $VMHAIsolationResponse  = $_.HAIsolationResponse  -join ", "
+                                $VMDrsAutomationLevel  = $_.DrsAutomationLevel  -join ", "
+                                $VMVMSwapfilePolicy  = $_.VMSwapfilePolicy  -join ", "
+                                $VMVMResourceConfiguration  = $_.VMResourceConfiguration -join ", " 
+                                $VMName  = $_.Name  -join ", "
+                                $VMCustomFields  = $_.CustomFields -join ", " 
+                                $VMExtensionData  = $_.ExtensionData  -join ", "
+                                $VMId  = $_.Id  -join ", "
+                                $VMUid1  = $_.Uid  -join ", "
+                                $VMClient = $_.VMClient -join ", "
+                                                        
+                                      $VMAdvance = $_ | get-view 
+
+                                      $NumCoresPerSocket = $VMAdvance.config.hardware.NumCoresPerSocket
+
+                                                                                                   
+                             $VMData += New-Object PSObject -Property @{
+                           
+                                    VMOSName =$VMOSName
+                                    VMDNSName =$VMDNSName   
+                                    VMPowerState =$VMPowerState  
+                                    VMVersion =$VMVersion  
+                                    VMDescription =$VMDescription   
+                                    VMNotes =$VMNotes   
+                                    VMGuest =$VMGuest    
+                                    VMNumCpu =$VMNumCpu   
+                                    VMMemoryMB =$VMMemoryMB    
+                                    VMMemoryGB =$VMMemoryGB   
+                                    VMHardDisks =$VMHardDisks   
+                                    VMNetworkAdapters =$VMNetworkAdapters    
+                                    VMUsbDevices =$VMUsbDevices    
+                                    VMCDDrives =$VMCDDrives    
+                                    VMFloppyDrives =$VMFloppyDrives    
+                                    VMHost =$VMHost    
+                                    VMHostId =$VMHostId    
+                                    VMVMHost =$VMVMHost    
+                                    VMVApp =$VMVApp    
+                                    VMFolderId =$VMFolderId    
+                                    VMFolder =$VMFolder    
+                                    VMResourcePoolId  =$VMResourcePoolId    
+                                    VMResourcePool =$VMResourcePool    
+                                    VMPersistentId =$VMPersistentId    
+                                    VMUsedSpaceGB =$VMUsedSpaceGB    
+                                    VMProvisionedSpaceGB  =$VMProvisionedSpaceGB    
+                                    VMDatastoreIdList =$VMDatastoreIdList    
+                                    VMHARestartPriority =$VMHARestartPriority    
+                                    VMHAIsolationResponse =$VMHAIsolationResponse    
+                                    VMDrsAutomationLevel =$VMDrsAutomationLevel    
+                                    VMVMSwapfilePolicy =$VMVMSwapfilePolicy    
+                                    VMVMResourceConfiguration =$VMVMResourceConfiguration    
+                                    VMName =$VMName    
+                                    VMCustomFields =$VMCustomFields    
+                                    VMExtensionData =$VMExtensionData    
+                                    VMId =$VMId   
+                                    VMUid1 =$VMUid1   
+                                    VMClient =$VMClient 
+                                    NumCoresPerSocket = $NumCoresPerSocket
+                                    VCName  = $VCName
+                                    HostFolderName= $HostFolderName
+                                    VCVersion = $VCVersion
+                                    VCBuild = $VCBuild
+                                    HostDataCentre = $HostDataCentre
+                                    HostName= $HostName
+                                
+                                }
+
+                                
+                            $VMData | select VCName, VCVersion, HostDataCentre, HostFolderName, HostName VMName, VMDNSName, VMExtensionData, VMVMResourceConfiguration, VMNotes, VMProvisionedSpaceGB, VMPersistentId, VMHostId, VMId, VMHARestartPriority, VMCustomFields, VMNumCpu, VMVMHost, VMFolderId, VMDescription, VMNetworkAdapters, VMPowerState, VMUsbDevices, VMUid1, VMClient, VMFloppyDrives, VMHost, VMVersion, VMHardDisks, VMMemoryMB, VMResourcePool, VMHAIsolationResponse, VMOSName, VMVApp, VMMemoryGB, VMUsedSpaceGB, VMDatastoreIdList, VMCDDrives, VMDrsAutomationLevel, VMResourcePoolId,  VMVMSwapfilePolicy, VMFolder, VMGuest
+
+                   }
+                   
+                    $HostData += New-Object PSObject -Property @{
+                        Name= $HostName
+                        VCName  = $VCName
+                        VCVersion = $VCVersion
+                        VCBuild = $VCBuild
+                    
+                        HostVMHostID =$HostVMHostID
+                        HostState = $HostState
+                        HostConnectionState = $HostConnectionState
+                        HostPowerState = $HostPowerState
+                        HostVMSwapfileDatastoreId =  $HostVMSwapfileDatastoreId
+                        HostVMSwapfilePolicy =  $HostVMSwapfilePolicy
+                        HostParentId = $HostParentId
+                        HostIsStandalone = $HostIsStandalone
+                        HostManufacturer = $HostManufacturer
+                        HostModel  = $HostModel
+                        HostNumCpu = $HostNumCpu
+                        HostCpuTotalMhz  = $HostCpuTotalMhz
+                        HostCpuUsageMhz = $HostCpuUsageMhz
+                        HostMemoryTotalMB = $HostMemoryTotalMB
+                        HostMemoryTotalGB = $HostMemoryTotalGB
+                        HostMemoryUsageMB = $HostMemoryUsageMB
+                        HostMemoryUsageGB  = $HostMemoryUsageGB
+                        HostProcessorType  = $HostProcessorType
+                        HostHyperthreadingActive  = $HostHyperthreadingActive
+                        HostTimeZone  = $HostTimeZone
+                        HostVersion  = $HostVersion
+                        HostBuild  = $HostBuild
+                        HostParent  = $HostParent
+                        HostVMSwapfileDatastore = $HostVMSwapfileDatastore
+                        HostStorageInfo = $HostStorageInfo
+                        HostNetworkInfo = $HostNetworkInfo
+                        HostDiagnosticPartition = $HostDiagnosticPartition
+                        HostFirewallDefaultPolicy = $HostFirewallDefaultPolicy
+                        HostApiVersion = $HostApiVersion
+                        HostName = $HostName
+                        HostCustomFields  = $HostCustomFields
+                        HostExtensionData  = $HostExtensionData
+                        HostId  = $HostId
+                        HostUid = $HostUid
+                        HostClient =  $HostClient
+                        HostDatastoreIdList =  $HostDatastoreIdList
+                        HostDataCentre = $HostDataCentre
+                        HostFolderName= $HostFolderName
+
+                    }
+                    }
+                                      
+                    $HostData | select VCName, hostdatacentre, HostFolderName, HostName
+
+
+       # }
+        $HostData | Export-csv -NoTypeInformation c:\test\Hostdata.csv 
+        $VMData | Export-csv -NoTypeInformation c:\test\VMData.csv 
+    
+        
+                                                         
+                                         
+                      
+                                                        
+                                                        
+                                             
+
+
+             
+
+            
+           
+                                 
+ 

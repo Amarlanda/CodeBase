@@ -1,0 +1,25 @@
+﻿
+$VMs = $Audit | Get-desktopvm | Select @{n='UserName';e={$($_.user_displayname).split("\") |select -last 1}},
+    @{n='PoolName';e={ $_.pool_id }}, * -ExcludeProperty user_displayname
+    
+$searcher = new-object DirectoryServices.DirectorySearcher
+
+$VMs | % {
+
+    $Currentpool = $_
+
+	$searcher.filter = "(&(objectClass=user)(CN=$($_.username)))"
+	$searcher.Findall() | Select `
+		@{n='name';e={ $_.Properties.displayname }},
+		@{n='email';e={ $_.Properties.mail }},
+		@{n='title';e={ $_.Properties.title }},
+		@{n='department';e={ $_.Properties.department }},
+		@{n='ServiceArea';e={ $_.Properties.extensionattribute3 }},
+		@{n='FunctionDescription';e={ $_.Properties.extensionattribute5 }},
+        @{n='PoolName';e={ $Currentpool.PoolName }},
+        @{n='DesktopNAme';e={ $Currentpool.Name }},
+        @{n='Username';e={ $Currentpool.Username }}  
+
+} | Export-csv C:\Amar\Report.csv
+
+    

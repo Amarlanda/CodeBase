@@ -1,0 +1,13 @@
+﻿Import-Csv .\vdi.csv | select user | % { 
+$user = $_ ;
+Get-KSADUser -SAMAccountName $_.User | select name, objectsid, @{n='OLDVDI';e={ $user.oldvm}},
+@{n='OLDVDI';e={ $user.newvm}}
+}
+
+"NEWVM,OLDVM,User,SID" | Add-Content -Path .\Newvdi.csv 
+Import-CSV .\VDI1.csv | %{
+    $SID = (Get-KSADUser -SAMAccountName $_.User).ObjectSID
+    if($user) {
+    "$($_.NewVM),$($_.OldVM),$($_.User),$($SID)" |  Add-Content -Path .\Newvdi.csv
+    }
+}

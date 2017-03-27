@@ -1,0 +1,1 @@
+Get-VM |foreach { Write "$($_.Name) has an IPAddress of $($_.Guest.IPAddress[0])" } > ipstxt.txt

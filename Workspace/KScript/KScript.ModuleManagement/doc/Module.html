@@ -1,0 +1,215 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>HTML TABLE</title>
+</head><body>
+<DIV><P><FONT size=1 color=#969696>Back to [[Module reference]]</FONT></P></DIV>
+<DIV><STRONG><FONT size=4>Contents</FONT></STRONG></DIV>
+&nbsp;
+<DIV>
+<A HREF='http://sites.eu.kworld.kpmg.com/sites/infrastructure/department/itservices/coretechnologies/KScript/KScript.ModuleManagement.aspx#ModuleInformation'>Module information</A><BR />
+<A HREF='http://sites.eu.kworld.kpmg.com/sites/infrastructure/department/itservices/coretechnologies/KScript/KScript.ModuleManagement.aspx#Functions'>Functions</A><BR />
+</DIV>
+&nbsp;<HR>&nbsp;
+<DIV><A Name='ModuleInformation'></A><STRONG><FONT size=4>Module information</FONT></STRONG></DIV>
+&nbsp;
+<DIV>
+<P>&lt;module&gt;&lt;description&gt;Module release management and documentation.&lt;/description&gt;&lt;type&gt;Development&lt;/type&gt;&lt;/module&gt;</P>
+<UL>
+<LI>Module version: 0.25</LI>
+<LI>Author: Chris Dent</LI>
+<LI>Page updated: Thursday 15 January 2015</LI>
+</UL>
+</DIV>
+&nbsp;<HR>&nbsp;
+<DIV><A Name='Functions'></A><STRONG><FONT size=4>Functions</FONT></STRONG></DIV>
+&nbsp;
+<DIV>
+<TABLE style="WIDTH: 100%; BORDER-COLLAPSE: collapse; FONT-SIZE: 1em" border=1>
+<tr><th style="background-color: #98C6F3;">Name</th><th style="background-color: #98C6F3;">Description</th><th style="background-color: #98C6F3;">Author</th><th style="background-color: #98C6F3;">Last modified</th><th style="background-color: #98C6F3;">Modified by</th></tr>
+<tr><td><a href='http://sites.eu.kworld.kpmg.com/sites/infrastructure/department/itservices/coretechnologies/KScript/KScript.ModuleManagement.aspx#Add-KSModuleFile'>Add-KSModuleFile</a></td><td>Add a new file to an existing module.</td><td>Chris Dent</td><td>13/11/2014</td><td>Chris Dent</td></tr>
+<tr><td><a href='http://sites.eu.kworld.kpmg.com/sites/infrastructure/department/itservices/coretechnologies/KScript/KScript.ModuleManagement.aspx#Get-KSModuleManifest'>Get-KSModuleManifest</a></td><td>Get an existing module manifest file.</td><td>Chris Dent</td><td>19/06/2014</td><td>Chris Dent</td></tr>
+<tr><td><a href='http://sites.eu.kworld.kpmg.com/sites/infrastructure/department/itservices/coretechnologies/KScript/KScript.ModuleManagement.aspx#New-KSModule'>New-KSModule</a></td><td>Create a new module for development.</td><td>Chris Dent</td><td>13/11/2014</td><td>Chris Dent</td></tr>
+<tr><td><a href='http://sites.eu.kworld.kpmg.com/sites/infrastructure/department/itservices/coretechnologies/KScript/KScript.ModuleManagement.aspx#New-KSModuleDocument'>New-KSModuleDocument</a></td><td>Create a new CSV file describing the functions in a module.</td><td>Chris Dent</td><td>19/06/2014</td><td>Chris Dent</td></tr>
+<tr><td><a href='http://sites.eu.kworld.kpmg.com/sites/infrastructure/department/itservices/coretechnologies/KScript/KScript.ModuleManagement.aspx#New-KSModuleSPPage'>New-KSModuleSPPage</a></td><td>Create a new HTML document suitable for pasting into SharePoint 2007&#39;s HTML wiki page editor.</td><td>Chris Dent</td><td>04/11/2014</td><td>Chris Dent</td></tr>
+<tr><td><a href='http://sites.eu.kworld.kpmg.com/sites/infrastructure/department/itservices/coretechnologies/KScript/KScript.ModuleManagement.aspx#Rename-KSCmdLetIdentifier'>Rename-KSCmdLetIdentifier</a></td><td>Rename owner identifiers in CmdLets.</td><td>Chris Dent</td><td>13/01/2015</td><td>Chris Dent</td></tr>
+<tr><td><a href='http://sites.eu.kworld.kpmg.com/sites/infrastructure/department/itservices/coretechnologies/KScript/KScript.ModuleManagement.aspx#Set-KSSignature'>Set-KSSignature</a></td><td>A wrapper function for Set-AuthenticodeSignature.</td><td>Chris Dent</td><td>19/06/2014</td><td>Chris Dent</td></tr>
+<tr><td><a href='http://sites.eu.kworld.kpmg.com/sites/infrastructure/department/itservices/coretechnologies/KScript/KScript.ModuleManagement.aspx#Update-KSModuleManifest'>Update-KSModuleManifest</a></td><td>Update an existing module manifest file.</td><td>Chris Dent</td><td>19/06/2014</td><td>Chris Dent</td></tr>
+<tr><td><a href='http://sites.eu.kworld.kpmg.com/sites/infrastructure/department/itservices/coretechnologies/KScript/KScript.ModuleManagement.aspx#Update-KSModuleRelease'>Update-KSModuleRelease</a></td><td>Update a release of an existing module.</td><td>Chris Dent</td><td>31/10/2014</td><td>Chris Dent</td></tr>
+</table>
+</DIV>
+&nbsp;<HR>&nbsp;
+<DIV><A Name='Add-KSModuleFile'></A><STRONG><FONT size=4>Add-KSModuleFile</FONT></STRONG></DIV>
+&nbsp;
+<DIV><STRONG><FONT size=2>Synopsis</FONT></STRONG></DIV>
+<P>Add a new file to an existing module.</P>
+<DIV><STRONG><FONT size=2>Syntax</FONT></STRONG></DIV>
+<P style='font-family: Consolas'>Add-KSModuleFile [-Name] &lt;String&gt; -FileName &lt;String&gt; -ScriptType &lt;String&gt; [-Force] [&lt;CommonParameters&gt;]</P>
+<P style='font-family: Consolas'>Add-KSModuleFile [-Name] &lt;String&gt; [-Root] [-Force] [&lt;CommonParameters&gt;]</P>
+<P style='font-family: Consolas'>Add-KSModuleFile [-Name] &lt;String&gt; [-Format] [-Force] [&lt;CommonParameters&gt;]</P>
+<DIV><STRONG><FONT size=2>Description</FONT></STRONG></DIV>
+<P>Create a file in an existing module, adding basic content, signing the file and adding the file to the FileList in the manifest.</P>
+&nbsp;<DIV><STRONG><FONT size=2>Change log</FONT></STRONG></DIV>
+&nbsp;
+<DIV>
+<TABLE style="WIDTH: 70%; BORDER-COLLAPSE: collapse; FONT-SIZE: 1em" border=1>
+<tr><th style="background-color: #98C6F3;">Date</th><th style="background-color: #98C6F3;">Who</th><th style="background-color: #98C6F3;">What</th></tr>
+<tr><td>13/11/2014</td><td>Chris Dent</td><td>BugFix: Missing + and use of carriage return. Changed to use StringBuilder.</td></tr>
+<tr><td>19/06/2014</td><td>Chris Dent</td><td>First release.</td></tr>
+</table>
+</DIV>
+&nbsp;<HR>&nbsp;
+<DIV><A Name='Get-KSModuleManifest'></A><STRONG><FONT size=4>Get-KSModuleManifest</FONT></STRONG></DIV>
+&nbsp;
+<DIV><STRONG><FONT size=2>Synopsis</FONT></STRONG></DIV>
+<P>Get an existing module manifest file.</P>
+<DIV><STRONG><FONT size=2>Syntax</FONT></STRONG></DIV>
+<P style='font-family: Consolas'>Get-KSModuleManifest [-Name] &lt;String&gt; [&lt;CommonParameters&gt;]</P>
+<DIV><STRONG><FONT size=2>Description</FONT></STRONG></DIV>
+<P>Get the content of an existing manifest file.</P>
+&nbsp;<DIV><STRONG><FONT size=2>Change log</FONT></STRONG></DIV>
+&nbsp;
+<DIV>
+<TABLE style="WIDTH: 70%; BORDER-COLLAPSE: collapse; FONT-SIZE: 1em" border=1>
+<tr><th style="background-color: #98C6F3;">Date</th><th style="background-color: #98C6F3;">Who</th><th style="background-color: #98C6F3;">What</th></tr>
+<tr><td>19/06/2014</td><td>Chris Dent</td><td>First release.</td></tr>
+</table>
+</DIV>
+&nbsp;<HR>&nbsp;
+<DIV><A Name='New-KSModule'></A><STRONG><FONT size=4>New-KSModule</FONT></STRONG></DIV>
+&nbsp;
+<DIV><STRONG><FONT size=2>Synopsis</FONT></STRONG></DIV>
+<P>Create a new module for development.</P>
+<DIV><STRONG><FONT size=2>Syntax</FONT></STRONG></DIV>
+<P style='font-family: Consolas'>New-KSModule [-Name] &lt;String&gt; [-Description] &lt;String&gt; [-Standalone] [&lt;CommonParameters&gt;]</P>
+<DIV><STRONG><FONT size=2>Description</FONT></STRONG></DIV>
+<P>New-Module performs the tasks required to create a new module.</P>
+&nbsp;<DIV><STRONG><FONT size=2>Change log</FONT></STRONG></DIV>
+&nbsp;
+<DIV>
+<TABLE style="WIDTH: 70%; BORDER-COLLAPSE: collapse; FONT-SIZE: 1em" border=1>
+<tr><th style="background-color: #98C6F3;">Date</th><th style="background-color: #98C6F3;">Who</th><th style="background-color: #98C6F3;">What</th></tr>
+<tr><td>13/11/2014</td><td>Chris Dent</td><td>BugFix: Sent new directory objects to null.</td></tr>
+<tr><td>03/11/2014</td><td>Chris Dent</td><td>BugFix: Root module document.</td></tr>
+<tr><td>19/06/2014</td><td>Chris Dent</td><td>First release.</td></tr>
+</table>
+</DIV>
+&nbsp;<HR>&nbsp;
+<DIV><A Name='New-KSModuleDocument'></A><STRONG><FONT size=4>New-KSModuleDocument</FONT></STRONG></DIV>
+&nbsp;
+<DIV><STRONG><FONT size=2>Synopsis</FONT></STRONG></DIV>
+<P>Create a new CSV file describing the functions in a module.</P>
+<DIV><STRONG><FONT size=2>Syntax</FONT></STRONG></DIV>
+<P style='font-family: Consolas'>New-KSModuleDocument [-Name] &lt;String&gt; [&lt;CommonParameters&gt;]</P>
+<DIV><STRONG><FONT size=2>Description</FONT></STRONG></DIV>
+<P>Generates an CSV file summarising the content of a module based on the initial content table and function descriptions.</P>
+&nbsp;<DIV><STRONG><FONT size=2>Change log</FONT></STRONG></DIV>
+&nbsp;
+<DIV>
+<TABLE style="WIDTH: 70%; BORDER-COLLAPSE: collapse; FONT-SIZE: 1em" border=1>
+<tr><th style="background-color: #98C6F3;">Date</th><th style="background-color: #98C6F3;">Who</th><th style="background-color: #98C6F3;">What</th></tr>
+<tr><td>19/06/2014</td><td>Chris Dent</td><td>First release.</td></tr>
+</table>
+</DIV>
+&nbsp;<HR>&nbsp;
+<DIV><A Name='New-KSModuleSPPage'></A><STRONG><FONT size=4>New-KSModuleSPPage</FONT></STRONG></DIV>
+&nbsp;
+<DIV><STRONG><FONT size=2>Synopsis</FONT></STRONG></DIV>
+<P>Create a new HTML document suitable for pasting into SharePoint 2007&#39;s HTML wiki page editor.</P>
+<DIV><STRONG><FONT size=2>Syntax</FONT></STRONG></DIV>
+<P style='font-family: Consolas'>New-KSModuleSPPage [-Name] &lt;String&gt; [&lt;CommonParameters&gt;]</P>
+<DIV><STRONG><FONT size=2>Description</FONT></STRONG></DIV>
+<P>New-KSModuleSPPage attempts to generate HTML which can be pasted directly into a SharePoint 2007 wiki page editor (HTML view).</P>
+&nbsp;<DIV><STRONG><FONT size=2>Change log</FONT></STRONG></DIV>
+&nbsp;
+<DIV>
+<TABLE style="WIDTH: 70%; BORDER-COLLAPSE: collapse; FONT-SIZE: 1em" border=1>
+<tr><th style="background-color: #98C6F3;">Date</th><th style="background-color: #98C6F3;">Who</th><th style="background-color: #98C6F3;">What</th></tr>
+<tr><td>04/11/2014</td><td>Chris Dent</td><td>Do not run Get-Help if the command is not locally available.</td></tr>
+<tr><td>03/11/2014</td><td>Chris Dent</td><td>Fixed to account for directory structure change.</td></tr>
+<tr><td>08/07/2014</td><td>Chris Dent</td><td>First release.</td></tr>
+</table>
+</DIV>
+&nbsp;<HR>&nbsp;
+<DIV><A Name='Rename-KSCmdLetIdentifier'></A><STRONG><FONT size=4>Rename-KSCmdLetIdentifier</FONT></STRONG></DIV>
+&nbsp;
+<DIV><STRONG><FONT size=2>Synopsis</FONT></STRONG></DIV>
+<P>Rename owner identifiers in CmdLets.</P>
+<DIV><STRONG><FONT size=2>Syntax</FONT></STRONG></DIV>
+<P style='font-family: Consolas'>Rename-KSCmdLetIdentifier [[-OldIdentifier] &lt;String&gt;] [-NewIdentifier] &lt;String&gt; [-OldNamespace &lt;String&gt;] [-NewNamespace &lt;String&gt;] [-ExcludeModule &lt;String[]&gt;] [-FileName &lt;String&gt;] [-WhatIf] [-Confirm] [&lt;CommonParameters&gt;]</P>
+<DIV><STRONG><FONT size=2>Description</FONT></STRONG></DIV>
+<P>This CmdLet attempts to update CmdLet names (public and private) and update namespace declarations to aid refactoring. For example, references to a CmdLet named Get-AAThing can be replaced with Get-BBThing. The CmdLet may also be used to inject identifiers provided the CmdLet uses an approved verb.</P>
+<FONT style='font-family: Consolas'>Modules&nbsp;are&nbsp;expected&nbsp;to&nbsp;be&nbsp;named&nbsp;in&nbsp;the&nbsp;form&nbsp;&lt;GlobalIdentifier&gt;.&lt;ModuleDescription&gt;.<BR /></FONT><P>Files are expected to be named as functions (used to build the list of available modules).</P>
+<P>Any new file names should be set prior to executing this script as a TFS operation.</P>
+<P>Note: This CmdLet is thorough and it may take some time to run.</P>
+&nbsp;<DIV><STRONG><FONT size=2>Change log</FONT></STRONG></DIV>
+&nbsp;
+<DIV>
+<TABLE style="WIDTH: 70%; BORDER-COLLAPSE: collapse; FONT-SIZE: 1em" border=1>
+<tr><th style="background-color: #98C6F3;">Date</th><th style="background-color: #98C6F3;">Who</th><th style="background-color: #98C6F3;">What</th></tr>
+<tr><td>13/01/2015</td><td>Chris Dent</td><td>First release.</td></tr>
+</table>
+</DIV>
+&nbsp;<HR>&nbsp;
+<DIV><A Name='Set-KSSignature'></A><STRONG><FONT size=4>Set-KSSignature</FONT></STRONG></DIV>
+&nbsp;
+<DIV><STRONG><FONT size=2>Synopsis</FONT></STRONG></DIV>
+<P>A wrapper function for Set-AuthenticodeSignature.</P>
+<DIV><STRONG><FONT size=2>Syntax</FONT></STRONG></DIV>
+<P style='font-family: Consolas'>Set-KSSignature [-Path] &lt;String&gt; [&lt;CommonParameters&gt;]</P>
+<DIV><STRONG><FONT size=2>Description</FONT></STRONG></DIV>
+<P>Set-KSSignature uses Set-AuthenticodeSignature to sign script.</P>
+<P>The code signing certificate is automatically selected from the current user certificate store.</P>
+&nbsp;<DIV><STRONG><FONT size=2>Change log</FONT></STRONG></DIV>
+&nbsp;
+<DIV>
+<TABLE style="WIDTH: 70%; BORDER-COLLAPSE: collapse; FONT-SIZE: 1em" border=1>
+<tr><th style="background-color: #98C6F3;">Date</th><th style="background-color: #98C6F3;">Who</th><th style="background-color: #98C6F3;">What</th></tr>
+<tr><td>19/06/2014</td><td>Chris Dent</td><td>First release.</td></tr>
+</table>
+</DIV>
+&nbsp;<HR>&nbsp;
+<DIV><A Name='Update-KSModuleManifest'></A><STRONG><FONT size=4>Update-KSModuleManifest</FONT></STRONG></DIV>
+&nbsp;
+<DIV><STRONG><FONT size=2>Synopsis</FONT></STRONG></DIV>
+<P>Update an existing module manifest file.</P>
+<DIV><STRONG><FONT size=2>Syntax</FONT></STRONG></DIV>
+<P style='font-family: Consolas'>Update-KSModuleManifest [-Name] &lt;String&gt; [-Property] &lt;String&gt; [-Value] &lt;Object&gt; [&lt;CommonParameters&gt;]</P>
+<DIV><STRONG><FONT size=2>Description</FONT></STRONG></DIV>
+<P>Update-KSModuleManifest changes properties in an existing module manifest file.</P>
+<P>Update-KSModuleManifest validates the Property parameter, but does not validate the value which is being set.</P>
+&nbsp;<DIV><STRONG><FONT size=2>Change log</FONT></STRONG></DIV>
+&nbsp;
+<DIV>
+<TABLE style="WIDTH: 70%; BORDER-COLLAPSE: collapse; FONT-SIZE: 1em" border=1>
+<tr><th style="background-color: #98C6F3;">Date</th><th style="background-color: #98C6F3;">Who</th><th style="background-color: #98C6F3;">What</th></tr>
+<tr><td>19/06/2014</td><td>Chris Dent</td><td>First release.</td></tr>
+</table>
+</DIV>
+&nbsp;<HR>&nbsp;
+<DIV><A Name='Update-KSModuleRelease'></A><STRONG><FONT size=4>Update-KSModuleRelease</FONT></STRONG></DIV>
+&nbsp;
+<DIV><STRONG><FONT size=2>Synopsis</FONT></STRONG></DIV>
+<P>Update a release of an existing module.</P>
+<DIV><STRONG><FONT size=2>Syntax</FONT></STRONG></DIV>
+<P style='font-family: Consolas'>Update-KSModuleRelease [-Name] &lt;String&gt; [-IncrementVersion] [-Major] [&lt;CommonParameters&gt;]</P>
+<DIV><STRONG><FONT size=2>Description</FONT></STRONG></DIV>
+<P>Automates the process of updating an releasing modules.</P>
+&nbsp;<DIV><STRONG><FONT size=2>Change log</FONT></STRONG></DIV>
+&nbsp;
+<DIV>
+<TABLE style="WIDTH: 70%; BORDER-COLLAPSE: collapse; FONT-SIZE: 1em" border=1>
+<tr><th style="background-color: #98C6F3;">Date</th><th style="background-color: #98C6F3;">Who</th><th style="background-color: #98C6F3;">What</th></tr>
+<tr><td>31/10/2014</td><td>Chris Dent</td><td>Re-added New-KSModuleDocument call.</td></tr>
+<tr><td>04/08/2014</td><td>Chris Dent</td><td>Only update TFS if IncrementVersion is set (testing complete).</td></tr>
+<tr><td>22/07/2014</td><td>Chris Dent</td><td>Overhauled. Added support for TFS.</td></tr>
+<tr><td>18/07/2014</td><td>Chris Dent</td><td>Added a date field to the module information file. Added an algorithm to generate release notes.</td></tr>
+<tr><td>19/06/2014</td><td>Chris Dent</td><td>First release.</td></tr>
+</table>
+</DIV>
+&nbsp;<HR>&nbsp;
+
+<table>
+</table>
+</body></html>
+

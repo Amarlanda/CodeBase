@@ -1,0 +1,15 @@
+  Invoke-VMScript -GuestCredential $gcreds -HostCredential $hcreds -ScriptType:Bat -VM $vm -RunAsync -ScriptText &quot;rmdir /s /q C:$Recycle.Bin&quot; | Out-Null
+25
+        Invoke-VMScript -GuestCredential $gcreds -HostCredential $hcreds -ScriptType:Bat -VM $vm -RunAsync -ScriptText &quot;rmdir /s /q C:RECYCLER&quot; | Out-Null
+26
+        Invoke-VMScript -GuestCredential $gcreds -HostCredential $hcreds -ScriptType:Bat -VM $vm -RunAsync -ScriptText &quot;del /S /Q C:Temp*.*&quot; | Out-Null
+27
+        Invoke-VMScript -GuestCredential $gcreds -HostCredential $hcreds -ScriptType:Bat -VM $vm -RunAsync -ScriptText &quot;del /S /Q C:WINDOWSSoftwareDistributionDownload*.*&quot; | Out-Null
+28
+        Invoke-VMScript -GuestCredential $gcreds -HostCredential $hcreds -ScriptType:Bat -VM $vm -RunAsync -ScriptText &quot;del C:WINDOWSsystem32wbemLogsFrameWork.log&quot; | Out-Null
+29
+        Invoke-VMScript -GuestCredential $gcreds -HostCredential $hcreds -ScriptType:Bat -VM $vm -RunAsync -ScriptText &quot;del /S /Q C:WINDOWSPCHealthERRORREPUserDumps*.*&quot; | Out-Null
+30
+        Write-Host -ForegroundColor:DarkRed &quot;[COMPLETE]: $vm Scripts Launched&quot;
+31
+    }

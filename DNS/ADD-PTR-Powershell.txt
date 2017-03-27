@@ -1,0 +1,45 @@
+function ReverseIPAddress{
+[CmdLetBinding()]
+    param([Parameter(Position=1,ValueFromPipelineByPropertyName=$true)][String]$IPAddress)
+
+    #TODO: RegEX the IP address to ensure it's valid.
+    # Could also try to resolve the IP via DNS namespace [Dns.GetHostEntry($IPAddress)]
+
+    # Get the Byte array associated with the provided IP address
+    $Bytes = [System.Net.IPAddress]::Parse($IPAddress).GetAddressBytes()
+    [array]::Reverse($Bytes)
+    # To return the full reverse address #return ($rev = $Bytes -join '.')
+    $rev = $Bytes -join '.'
+    # We want to return only the first 2 octets
+    return ($rev.split('.')[0..1] -join '.')
+}
+
+# create pointers for targets with dnscmd
+
+$DNSUpdates = @()
+$SourceData = import-csv "C:\Users\uktpajames\Documents\HadoopDNSUpdates.csv"
+
+$DNSServer = "UKIXEDC101"                  # Your DNS Server Name
+$ForwardZone = "uk.kworld.kpmg.com"        # Your Forward Lookup Zone Name
+$ReverseZone = "203.10.in-addr.arpa"       # Your ReverseLookup Zone Name
+
+$Cmd = "dnscmd"
+$Arguments = "$DNSServer /RecordAdd $ReverseZone {0} PTR {1}"
+
+#$cmd = "cmd"
+#$Arguments = "/c ipconfig"
+
+
+foreach ($Item in $SourceData) {
+    $args = [string]::Format($Arguments, (ReverseIPAddress($Item.IPAddress).ToString()), $Item.Hostname)
+
+    $Object = New-Object System.Object
+    $Object | Add-Member -type NoteProperty -name Hostname $Item.Hostname
+    $Object | Add-Member -type NoteProperty -Name IPAddress $Item.IPAddress
+    $Object | Add-Member -type NoteProperty -Name ReverseLookup (ReverseIPAddress($Item.IPAddress).ToString())
+    $object | Add-Member -type NoteProperty -Name Command "$CMD $args"
+    $Object | Add-Member -type NoteProperty -Name Result (start-process $cmd $args -Verb RunAs -WindowStyle Hidden).ExitCode
+    $DNSUpdates += $Object
+   } 
+   
+$DNSUpdates | ft -AutoSize

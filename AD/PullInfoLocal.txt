@@ -1,0 +1,3 @@
+﻿(get-hotfix).count
+get-ciminstance win32_userprofile | select localpath, lastusetime
+

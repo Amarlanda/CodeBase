@@ -1,0 +1,5 @@
+#$searcher = [adsisearcher] [adsi] $(([adsisearcher]"").Searchroot.path)
+
+$searcher = [adsisearcher][adsi]"LDAP://OU=KRC,OU=Function,DC=uk,DC=kworld,DC=kpmg,DC=com" 
+$searcher.filter = "(&(objectClass=user)(objectCategory=person)(userAccountControl:1.2.840.113556.1.4.803:=2))"
+$Res = $searcher.findall()

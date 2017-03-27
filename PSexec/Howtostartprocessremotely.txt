@@ -1,0 +1,3 @@
+drop CMD file - start process using WMI
+PS exec
+Ivoke command Script block

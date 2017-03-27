@@ -1,0 +1,2 @@
+($res | % {$_.properties."pae-vmstate" -match "main"}).count
+$res | % {$_.properties."pae-vmstate" -match "main"}

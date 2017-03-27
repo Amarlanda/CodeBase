@@ -1,0 +1,3 @@
+Get-View -ViewType virtualmachine -Property Guest.IPAddress | `
+Where-Object {$_.Guest.IPAddress -eq "172.18.253.249"} | `
+Get-VIObjectByVIView

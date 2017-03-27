@@ -1,0 +1,4 @@
+﻿ $path = "C:\Windows\System32\LogFiles", "C:\Users\*\AppData\Local\temp", "C:\Users\*\Downloads", "C:\inetpub\logs\LogFiles"
+ $path | % { gci $_ -r -force }| ? { -not ($_.psiscontainer) } | % { Remove-Item $_.FullName -Force }
+            
+ powercfg -h off

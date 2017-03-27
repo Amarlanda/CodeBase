@@ -1,0 +1,63 @@
+﻿#$VMs = cat .\VMs.txt 
+
+
+$object = [adsisearcher] [adsi] 'LDAP://localhost:389/OU=Servers,DC=vdi,DC=vmware,DC=int'
+$object.filter = "(&(objectClass=pae-Vm) (CN=uktpalanda))"
+$res = $object.findall() 
+$res
+$res | % {$_.properties."pae-displayname";$_.properties."pae-vmstate" }
+
+#$VMs | % { $_ 
+<#
+    
+    $CurrentVM = $_
+
+     $rescurrent = ($res | ? {$_.properties."pae-displayname" -match "$CurrentVM"})
+
+     
+     $CurrentVM                                           ; Write-host "current vm in search" 
+     $rescurrent.properties."pae-displayname"             ; Write-host "current vm's display name" ; Write-host 
+     $rescurrentAD = $rescurrent.GetDirectoryEntry()      # Write-host "sets AD obj current"
+     $rescurrentAD.put("pae-vmstate", "MAINTENCE")        #"put AD obj to maintence in ADAM DB"
+     $rescurrentAD.setinfo()                              #"Makes change"
+     $rescurrent.properties."pae-vmstate"                 ; Write-host "oldstate"
+     $rescurrentAD.properties."pae-vmstate"               ; Write-host "new state"
+     
+}
+
+
+$DCData = @()
+    ForEach ($RS in $res)
+    {
+		$vmLivestate = $RS.GetDirectoryEntry()
+		[String]$VMname = $rs.properties."pae-displayname"
+
+		   if
+          if ($rs.properties.'pae-vmstate' -match "Maintenance"){ 
+
+		$vmLivestate.put("pae-vmstate", "DELETING")
+		$vmLivestate.setinfo()
+
+		$DCData += New-Object PSObject -Property @{
+                            amd
+                       	     Oldstate= $rs.properties.'pae-vmstate'
+                       	     Name= $VMname.trim("{}")
+				Newstate = $vmLivestate.properties.'pae-vmstate'
+                            } 
+	  }
+	
+            		
+
+            $dcdata |ft -autosize
+      }
+
+
+
+
+[String]$VMname = $rs.properties."pae-displayname"
+if ($_ -match "$res1")
+$res = 
+
+\
+$VMs = cat .\VMs.txt 
+#>

@@ -1,0 +1,189 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>HTML TABLE</title>
+</head><body>
+<DIV><P><FONT size=1 color=#969696>Back to [[Module reference]]</FONT></P></DIV>
+<DIV><STRONG><FONT size=4>Contents</FONT></STRONG></DIV>
+&nbsp;
+<DIV>
+<A HREF='http://sites.eu.kworld.kpmg.com/sites/infrastructure/department/itservices/coretechnologies/KScript/KScript.AccountMaintenance.aspx#ModuleInformation'>Module information</A><BR />
+<A HREF='http://sites.eu.kworld.kpmg.com/sites/infrastructure/department/itservices/coretechnologies/KScript/KScript.AccountMaintenance.aspx#Functions'>Functions</A><BR />
+</DIV>
+&nbsp;<HR>&nbsp;
+<DIV><A Name='ModuleInformation'></A><STRONG><FONT size=4>Module information</FONT></STRONG></DIV>
+&nbsp;
+<DIV>
+<P>&lt;module&gt;&lt;description&gt;Account life-cycle management.&lt;/description&gt;&lt;type&gt;ProcessAutomation&lt;/type&gt;&lt;/module&gt;</P>
+<UL>
+<LI>Module version: 1.57</LI>
+<LI>Author: Chris Dent</LI>
+<LI>Page updated: Friday 9 January 2015</LI>
+</UL>
+</DIV>
+&nbsp;<HR>&nbsp;
+<DIV><A Name='Functions'></A><STRONG><FONT size=4>Functions</FONT></STRONG></DIV>
+&nbsp;
+<DIV>
+<TABLE style="WIDTH: 100%; BORDER-COLLAPSE: collapse; FONT-SIZE: 1em" border=1>
+<tr><th style="background-color: #98C6F3;">Name</th><th style="background-color: #98C6F3;">Description</th><th style="background-color: #98C6F3;">Author</th><th style="background-color: #98C6F3;">Last modified</th><th style="background-color: #98C6F3;">Modified by</th></tr>
+<tr><td><a href='http://sites.eu.kworld.kpmg.com/sites/infrastructure/department/itservices/coretechnologies/KScript/KScript.AccountMaintenance.aspx#Get-KSTelephoneNumber'>Get-KSTelephoneNumber</a></td><td>Get a telephoneNumber and otherTelephone based on the IPPhone value.</td><td>Chris Dent</td><td>27/11/2014</td><td>Chris Dent</td></tr>
+<tr><td><a href='http://sites.eu.kworld.kpmg.com/sites/infrastructure/department/itservices/coretechnologies/KScript/KScript.AccountMaintenance.aspx#Import-KSADTelephoneNumber'>Import-KSADTelephoneNumber</a></td><td>Import ipPhone, othertelephone and telephoneNumber from an Excel spreadsheet supplied by BT.</td><td>Chris Dent</td><td>10/11/2014</td><td>Chris Dent</td></tr>
+<tr><td><a href='http://sites.eu.kworld.kpmg.com/sites/infrastructure/department/itservices/coretechnologies/KScript/KScript.AccountMaintenance.aspx#Set-KSADTelephoneNumber'>Set-KSADTelephoneNumber</a></td><td>Set telephoneNumber information for an individual user (based on IPPhone).</td><td>Chris Dent</td><td>22/08/2014</td><td>Chris Dent</td></tr>
+<tr><td><a href='http://sites.eu.kworld.kpmg.com/sites/infrastructure/department/itservices/coretechnologies/KScript/KScript.AccountMaintenance.aspx#Start-KSADUnlockUser'>Start-KSADUnlockUser</a></td><td>Start a perpetual account unlock job for all users in the specified file.</td><td>Chris Dent</td><td>03/12/2014</td><td>Chris Dent</td></tr>
+<tr><td><a href='http://sites.eu.kworld.kpmg.com/sites/infrastructure/department/itservices/coretechnologies/KScript/KScript.AccountMaintenance.aspx#Start-KSADUserMaintenance'>Start-KSADUserMaintenance</a></td><td>Start AD user maintenance tasks.</td><td>Chris Dent</td><td>07/08/2014</td><td>Chris Dent</td></tr>
+<tr><td><a href='http://sites.eu.kworld.kpmg.com/sites/infrastructure/department/itservices/coretechnologies/KScript/KScript.AccountMaintenance.aspx#Update-KSADTelephoneNumber'>Update-KSADTelephoneNumber</a></td><td>Update telephone numbers in Active Directory based on the content of the IPPhone attribute.</td><td>Chris Dent</td><td>03/12/2014</td><td>Chris Dent</td></tr>
+<tr><td><a href='http://sites.eu.kworld.kpmg.com/sites/infrastructure/department/itservices/coretechnologies/KScript/KScript.AccountMaintenance.aspx#Update-KSDDIMapping'>Update-KSDDIMapping</a></td><td>Update the ddi-mapping.xml file from a spreadsheet.</td><td>Chris Dent</td><td>07/11/2014</td><td>Chris Dent</td></tr>
+</table>
+</DIV>
+&nbsp;<HR>&nbsp;
+<DIV><A Name='Get-KSTelephoneNumber'></A><STRONG><FONT size=4>Get-KSTelephoneNumber</FONT></STRONG></DIV>
+&nbsp;
+<DIV><STRONG><FONT size=2>Synopsis</FONT></STRONG></DIV>
+<P>Get a telephoneNumber and otherTelephone based on the IPPhone value.</P>
+<DIV><STRONG><FONT size=2>Syntax</FONT></STRONG></DIV>
+<P style='font-family: Consolas'>Get-KSTelephoneNumber [-IPPhone] &lt;String&gt; [[-MappingFile] &lt;String&gt;] [&lt;CommonParameters&gt;]</P>
+<DIV><STRONG><FONT size=2>Description</FONT></STRONG></DIV>
+<P>Get-KSTelephoneNumber uses a ddi-mapping.xml file to attempt to find TelephoneNumber and OtherTelephone values for an IPPhone value.</P>
+&nbsp;<DIV><STRONG><FONT size=2>Change log</FONT></STRONG></DIV>
+&nbsp;
+<DIV>
+<TABLE style="WIDTH: 70%; BORDER-COLLAPSE: collapse; FONT-SIZE: 1em" border=1>
+<tr><th style="background-color: #98C6F3;">Date</th><th style="background-color: #98C6F3;">Who</th><th style="background-color: #98C6F3;">What</th></tr>
+<tr><td>27/11/2014</td><td>Chris Dent</td><td>BugFix: Unintentional truncation of leading 0s in extension numbers.</td></tr>
+<tr><td>20/08/2014</td><td>Chris Dent</td><td>Added mandatory flag to IPPhone parameter. Modified return to include OfficeName and a Status field.</td></tr>
+<tr><td>05/08/2014</td><td>Chris Dent</td><td>First release.</td></tr>
+</table>
+</DIV>
+&nbsp;<HR>&nbsp;
+<DIV><A Name='Import-KSADTelephoneNumber'></A><STRONG><FONT size=4>Import-KSADTelephoneNumber</FONT></STRONG></DIV>
+&nbsp;
+<DIV><STRONG><FONT size=2>Synopsis</FONT></STRONG></DIV>
+<P>Import ipPhone, othertelephone and telephoneNumber from an Excel spreadsheet supplied by BT.</P>
+<DIV><STRONG><FONT size=2>Syntax</FONT></STRONG></DIV>
+<P style='font-family: Consolas'>Import-KSADTelephoneNumber [-FolderName] &lt;String&gt; [[-HistoryTimeSpan] &lt;TimeSpan&gt;] [-WhatIf] [-Confirm] [&lt;CommonParameters&gt;]</P>
+<DIV><STRONG><FONT size=2>Description</FONT></STRONG></DIV>
+<P>Import-KSADTelephoneNumber is the entry point for importing telephoneNumber information into Active Directory.</P>
+<P>Information stored in Active Directory is exported into the ARC directory (used by receptionists), Exchange and Lync (via the Offline Address List) and Cisco CallManager.</P>
+&nbsp;<DIV><STRONG><FONT size=2>Change log</FONT></STRONG></DIV>
+&nbsp;
+<DIV>
+<TABLE style="WIDTH: 70%; BORDER-COLLAPSE: collapse; FONT-SIZE: 1em" border=1>
+<tr><th style="background-color: #98C6F3;">Date</th><th style="background-color: #98C6F3;">Who</th><th style="background-color: #98C6F3;">What</th></tr>
+<tr><td>10/11/2014</td><td>Chris Dent</td><td>Added lastLogonTimeStamp to debugging section.</td></tr>
+<tr><td>03/11/2014</td><td>Chris Dent</td><td>Added blank givenName or sn checking, writes as a Warning to aid debugging.</td></tr>
+<tr><td>23/09/2014</td><td>Chris Dent</td><td>Added blank ADName checking.</td></tr>
+<tr><td>17/09/2014</td><td>Chris Dent</td><td>Added debugging section to PostContent. Made script live.</td></tr>
+<tr><td>15/09/2014</td><td>Chris Dent</td><td>Added full change logging (to CSV, History\History.csv).</td></tr>
+<tr><td>01/09/2014</td><td>Chris Dent</td><td>Allowed script to set phone numbers for disabled user accounts.</td></tr>
+<tr><td>29/08/2014</td><td>Chris Dent</td><td>Fixed HTML report highlighting.</td></tr>
+<tr><td>28/08/2014</td><td>Chris Dent</td><td>Added blank line suppression (if both ADName and Directory Number are blank).</td></tr>
+<tr><td>22/08/2014</td><td>Chris Dent</td><td>BugFix: Trimmed input fields. Fixed number-in-use check.</td></tr>
+<tr><td>21/08/2014</td><td>Chris Dent</td><td>Fixed output object, added check for blank IPPhone values. Test release.</td></tr>
+<tr><td>07/08/2014</td><td>Chris Dent</td><td>First release.</td></tr>
+</table>
+</DIV>
+&nbsp;<HR>&nbsp;
+<DIV><A Name='Set-KSADTelephoneNumber'></A><STRONG><FONT size=4>Set-KSADTelephoneNumber</FONT></STRONG></DIV>
+&nbsp;
+<DIV><STRONG><FONT size=2>Synopsis</FONT></STRONG></DIV>
+<P>Set telephoneNumber information for an individual user (based on IPPhone).</P>
+<DIV><STRONG><FONT size=2>Syntax</FONT></STRONG></DIV>
+<P style='font-family: Consolas'>Set-KSADTelephoneNumber [-KSADUser &lt;Object&gt;] -IPPhone &lt;String&gt; [-TelephoneNumber &lt;String&gt;] [-OtherTelephone &lt;String&gt;] [-WhatIf] [-Confirm] [&lt;CommonParameters&gt;]</P>
+<P style='font-family: Consolas'>Set-KSADTelephoneNumber [-Identity] &lt;String&gt; -IPPhone &lt;String&gt; [-TelephoneNumber &lt;String&gt;] [-OtherTelephone &lt;String&gt;] [-WhatIf] [-Confirm] [&lt;CommonParameters&gt;]</P>
+<DIV><STRONG><FONT size=2>Description</FONT></STRONG></DIV>
+<P>Set-KSADTelephoneNumber allows an administrator to set ipPhone, telephoneNumber and otherTelephones for an individual user.</P>
+<P>If telephoneNumber and otherTelephones are not supplied they are dynamically generated using the ddi-mappings.xml file.</P>
+&nbsp;<DIV><STRONG><FONT size=2>Change log</FONT></STRONG></DIV>
+&nbsp;
+<DIV>
+<TABLE style="WIDTH: 70%; BORDER-COLLAPSE: collapse; FONT-SIZE: 1em" border=1>
+<tr><th style="background-color: #98C6F3;">Date</th><th style="background-color: #98C6F3;">Who</th><th style="background-color: #98C6F3;">What</th></tr>
+<tr><td>22/08/2014</td><td>Chris Dent</td><td>Bug fix: otherTelephoneNumber changed to otherTelephone in return object.</td></tr>
+<tr><td>20/08/2014</td><td>Chris Dent</td><td>First release.</td></tr>
+</table>
+</DIV>
+&nbsp;<HR>&nbsp;
+<DIV><A Name='Start-KSADUnlockUser'></A><STRONG><FONT size=4>Start-KSADUnlockUser</FONT></STRONG></DIV>
+&nbsp;
+<DIV><STRONG><FONT size=2>Synopsis</FONT></STRONG></DIV>
+<P>Start a perpetual account unlock job for all users in the specified file.</P>
+<DIV><STRONG><FONT size=2>Syntax</FONT></STRONG></DIV>
+<P style='font-family: Consolas'>Start-KSADUnlockUser [-FileName] &lt;String&gt; [&lt;CommonParameters&gt;]</P>
+<DIV><STRONG><FONT size=2>Description</FONT></STRONG></DIV>
+<P>This script is designed to work-around persistent account lockout problems, it is a last resort and should not replace investigation of the problem. The script loops through all users in a text file, checking and unlocking each every 60 seconds.</P>
+<P>The Account Lockout mechanism is a security control designed to protect the domain (and individual user data) from attack. This script effectively disables that control and represents a significant security risk for the accounts it operates against.</P>
+<P>The script operates against a formatted CSV file with the following header:</P>
+&nbsp;&nbsp;Username,ForceUnlock<BR /><P>The username must resolve to a unique principal within the current domain. The ForceUnlock option is present to allow behaviour monitoring of specific users, somewhat equivalent to a WhatIf mode for the script.</P>
+&nbsp;<DIV><STRONG><FONT size=2>Change log</FONT></STRONG></DIV>
+&nbsp;
+<DIV>
+<TABLE style="WIDTH: 70%; BORDER-COLLAPSE: collapse; FONT-SIZE: 1em" border=1>
+<tr><th style="background-color: #98C6F3;">Date</th><th style="background-color: #98C6F3;">Who</th><th style="background-color: #98C6F3;">What</th></tr>
+<tr><td>03/12/2014</td><td>Chris Dent</td><td>Added automatic log searcher option.</td></tr>
+<tr><td>22/09/2014</td><td>Chris Dent</td><td>Modified to poll all DCs. Added verbose logging. Modified input file to CSV (to allow a diagnostic mode).</td></tr>
+<tr><td>18/09/2014</td><td>Chris Dent</td><td>First release</td></tr>
+</table>
+</DIV>
+&nbsp;<HR>&nbsp;
+<DIV><A Name='Start-KSADUserMaintenance'></A><STRONG><FONT size=4>Start-KSADUserMaintenance</FONT></STRONG></DIV>
+&nbsp;
+<DIV><STRONG><FONT size=2>Synopsis</FONT></STRONG></DIV>
+<P>Start AD user maintenance tasks.</P>
+<DIV><STRONG><FONT size=2>Syntax</FONT></STRONG></DIV>
+<P style='font-family: Consolas'>Start-KSADUserMaintenance [-WhatIf] [-Confirm] [&lt;CommonParameters&gt;]</P>
+<DIV><STRONG><FONT size=2>Description</FONT></STRONG></DIV>
+<P>Start-KSADUserMaintenance executes the following scripts in the order described:</P>
+<UL><LI>Clears IPPhone and TelephoneNumber.</LI></UL><P>Parameters set using this function (such as WhatIf and Verbose) are passed through to any called functions (such as Set-KSADUser).</P>
+&nbsp;<DIV><STRONG><FONT size=2>Change log</FONT></STRONG></DIV>
+&nbsp;
+<DIV>
+<TABLE style="WIDTH: 70%; BORDER-COLLAPSE: collapse; FONT-SIZE: 1em" border=1>
+<tr><th style="background-color: #98C6F3;">Date</th><th style="background-color: #98C6F3;">Who</th><th style="background-color: #98C6F3;">What</th></tr>
+<tr><td>07/08/2014</td><td>Chris Dent</td><td>Added transcript logging option.</td></tr>
+<tr><td>04/08/2014</td><td>Chris Dent</td><td>First release.</td></tr>
+</table>
+</DIV>
+&nbsp;<HR>&nbsp;
+<DIV><A Name='Update-KSADTelephoneNumber'></A><STRONG><FONT size=4>Update-KSADTelephoneNumber</FONT></STRONG></DIV>
+&nbsp;
+<DIV><STRONG><FONT size=2>Synopsis</FONT></STRONG></DIV>
+<P>Update telephone numbers in Active Directory based on the content of the IPPhone attribute.</P>
+<DIV><STRONG><FONT size=2>Syntax</FONT></STRONG></DIV>
+<P style='font-family: Consolas'>Update-KSADTelephoneNumber [-WhatIf] [-Confirm] [&lt;CommonParameters&gt;]</P>
+<DIV><STRONG><FONT size=2>Description</FONT></STRONG></DIV>
+<P>Update-KSADTelephoneNumber attempts to check and update telephoneNumber, otherTelephone and the Lync Line URI (msRTCSIP-Line) in Active Directory.</P>
+<P>A Lync session is imported and the Lync CmdLets are used to update the Line URI value.</P>
+&nbsp;<DIV><STRONG><FONT size=2>Change log</FONT></STRONG></DIV>
+&nbsp;
+<DIV>
+<TABLE style="WIDTH: 70%; BORDER-COLLAPSE: collapse; FONT-SIZE: 1em" border=1>
+<tr><th style="background-color: #98C6F3;">Date</th><th style="background-color: #98C6F3;">Who</th><th style="background-color: #98C6F3;">What</th></tr>
+<tr><td>03/12/2014</td><td>Chris Dent</td><td>Added Lync account enabled check. Added error handling for Set-CsUser.</td></tr>
+<tr><td>27/11/2014</td><td>Chris Dent</td><td>First release.</td></tr>
+</table>
+</DIV>
+&nbsp;<HR>&nbsp;
+<DIV><A Name='Update-KSDDIMapping'></A><STRONG><FONT size=4>Update-KSDDIMapping</FONT></STRONG></DIV>
+&nbsp;
+<DIV><STRONG><FONT size=2>Synopsis</FONT></STRONG></DIV>
+<P>Update the ddi-mapping.xml file from a spreadsheet.</P>
+<DIV><STRONG><FONT size=2>Syntax</FONT></STRONG></DIV>
+<P style='font-family: Consolas'>Update-KSDDIMapping [-InputFile] &lt;String&gt; [-OutputFile] &lt;String&gt; [&lt;CommonParameters&gt;]</P>
+<DIV><STRONG><FONT size=2>Description</FONT></STRONG></DIV>
+<P>The update script expects the following:</P>
+<OL><LI>A spreadsheet containing a worksheet named DDI.</LI><LI>The header for the worksheet at line 4.</LI><LI>Data to begin at line 5.</LI><LI>The following header values: Site Code, Short Code, KPMG Office Location, DDI Range(s), 5 digit start, 5 digit end, Unity Server.</LI><LI>The DDI Range(s) field to contain &quot;&lt;Area code&gt; &lt;Partial Number&gt; &lt;Range Start&gt;-&lt;Range End&gt; (except for Operator numbers).</LI></OL><P>The spreadsheet is maintained by BT (kpmg.smac@bt.com).</P>
+&nbsp;<DIV><STRONG><FONT size=2>Change log</FONT></STRONG></DIV>
+&nbsp;
+<DIV>
+<TABLE style="WIDTH: 70%; BORDER-COLLAPSE: collapse; FONT-SIZE: 1em" border=1>
+<tr><th style="background-color: #98C6F3;">Date</th><th style="background-color: #98C6F3;">Who</th><th style="background-color: #98C6F3;">What</th></tr>
+<tr><td>07/11/2014</td><td>Chris Dent</td><td>First release.</td></tr>
+</table>
+</DIV>
+&nbsp;<HR>&nbsp;
+
+<table>
+</table>
+</body></html>
+

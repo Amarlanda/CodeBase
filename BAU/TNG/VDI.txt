@@ -1,0 +1,13 @@
+
+Custom AD attuittbutes to link AD objects,
+
+event for failed login
+does pool have enough VMS
+is pool over commited (which pool has free VMs)
+is desktop's agent in mantience mode.
+
+is the a problem wiht the vmware servers
+
+
+has the vm's desktop run out of space
+

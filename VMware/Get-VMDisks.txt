@@ -1,0 +1,26 @@
+
+<#
+$Disks = $VM | Get-HardDisk | Where {$_.DiskType -eq “RawPhysical”}
+
+$diskAqheel = Foreach ($Disk in $Disks) {
+$Lun = Get-SCSILun $Disk.SCSICanonicalName -VMHost (Get-VM $VM).VMHost
+$Lun.RuntimeName.Substring($Lun.RuntimeName.LastIndexof(“L”)+1)
+
+}
+
+
+$Disks | %{ 
+
+$disk = $_
+}
+
+
+
+$diskAqheel | %{
+
+$_ $disk 
+
+select *, @{'n'= ''e={}}, 
+#>
+
+for($i=1; $i -le $Disks.length; $i++){Write-Host $i}

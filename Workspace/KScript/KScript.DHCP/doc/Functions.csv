@@ -1,0 +1,3 @@
+"Name","Access","Description","Author","Team","LastModified","ModifiedBy"
+"Get-KSDhcpClient","Public","Get clients from the specified scope from a DHCP server.","Chris Dent","Core Technologies","08/01/2015","Chris Dent"
+"Get-KSDhcpScope","Public","Get configured scopes from a DHCP server.","Chris Dent","Core Technologies","08/01/2015","Chris Dent"

@@ -1,0 +1,155 @@
+<?xml version='1.0'?>
+<Attributes>
+  <!-- DateTime -->
+
+  <Attribute>
+    <Name>KPMG-User-HireDate</Name>
+    <Type>DateTime</Type>
+  </Attribute>
+  
+  <!-- Lists -->
+
+  <Attribute>
+    <Name>kPMG-User-GOAccountType</Name>
+    <Type>List</Type>
+    <Values>
+      <Value Name='Not Currently Assigned'>1</Value>
+      <Value Name='Employee'>2</Value>
+      <Value Name='contractor'>3</Value>
+      <Value Name='Temporary'>4</Value>
+      <Value Name='Service Account'>5</Value>
+      <Value Name='Functional Mailbox'>6</Value>
+    </Values>
+  </Attribute>
+  <Attribute>
+    <Name>kPMG-User-GOCompanyGroup</Name>
+    <Type>List</Type>
+    <Values>
+      <Value Name='Not Currently Assigned'>1</Value>
+      <Value Name='KPMG'>2</Value>
+      <Value Name='BearingPoint'>3</Value>
+      <Value Name='ATOS'>4</Value>
+      <Value Name='KLegal'>5</Value>
+    </Values>
+  </Attribute>
+  <Attribute>
+    <Name>kPMG-User-GOEmployeeStatus</Name>
+    <Type>List</Type>
+    <Values>
+      <Value Name='Not Currently Assigned'>1</Value>
+      <Value Name='Active'>2</Value>
+      <Value Name='Leave'>3</Value>
+      <Value Name='Separated'>4</Value>
+      <Value Name='Future'>5</Value>
+    </Values>
+  </Attribute>
+  <Attribute>
+    <Name>kPMG-User-GOFunction</Name>
+    <Type>List</Type>
+    <Values>
+      <Value Name='Not Currently Assigned'>1</Value>
+      <Value Name='Audit'>2</Value>
+      <Value Name='Consulting'>3</Value>
+      <Value Name='Tax'>4</Value>
+      <Value Name='Advisory'>5</Value>
+      <Value Name='Shared Services'>6</Value>
+    </Values>
+  </Attribute>
+  <Attribute>
+    <Name>kPMG-User-GOLineOfBusiness</Name>
+    <Type>List</Type>
+    <Values>
+      <Value Name='Not Currently Assigned'>1</Value>
+      <Value Name='Financial Services'>2</Value>
+      <Value Name='Industrial Markets'>3</Value>
+      <Value Name='Consumer Markets'>4</Value>
+      <Value Name='Information, Communication and Entertainment'>5</Value>
+      <Value Name='Infrastructure &amp; Government'>6</Value>
+      <Value Name='Owner Managed Business'>7</Value>
+    </Values>
+  </Attribute>
+  <Attribute>
+    <Name>kPMG-User-GOManagementLevel</Name>
+    <Type>List</Type>
+    <Values>
+      <Value Name='Not Currently Assigned'>1</Value>
+      <Value Name='Partner/Managing Director'>2</Value>
+      <Value Name='Management'>3</Value>
+      <Value Name='Non Management'>4</Value>
+    </Values>
+  </Attribute>
+  <Attribute>
+    <Name>kPMG-User-GOSegment</Name>
+    <Type>List</Type>
+    <Values>
+      <Value Name='Not Currently Assigned'>1</Value>
+      <Value Name='Banking and Finance'>2</Value>
+      <Value Name='Insurance'>3</Value>
+      <Value Name='Real Estate and Property'>4</Value>
+      <Value Name='Automotive'>5</Value>
+      <Value Name='Chemicals &amp; Pharmaceuticals'>6</Value>
+      <Value Name='Energy, Power &amp; Natural Resources'>7</Value>
+      <Value Name='Other Industrial Products'>8</Value>
+      <Value Name='Food &amp; Drink'>9</Value>
+      <Value Name='Other Consumer Products'>10</Value>
+      <Value Name='Retail'>11</Value>
+      <Value Name='Communications'>12</Value>
+      <Value Name='Electronics'>13</Value>
+      <Value Name='Media'>14</Value>
+      <Value Name='Software'>15</Value>
+      <Value Name='Travel, Leisure &amp; Tourism'>16</Value>
+      <Value Name='Building &amp; Construction'>17</Value>
+      <Value Name='Business Services'>18</Value>
+      <Value Name='Educational Institutions'>19</Value>
+      <Value Name='Global Multipliers'>20</Value>
+      <Value Name='Local &amp; Regional Government'>21</Value>
+      <Value Name='National Government'>22</Value>
+      <Value Name='Healthcare'>23</Value>
+      <Value Name='Transport'>24</Value>
+      <Value Name='Owner Managed Business'>25</Value>
+    </Values>
+  </Attribute>
+  <Attribute>
+    <Name>kPMG-User-GOServiceArea</Name>
+    <Type>List</Type>
+    <Values>
+      <Value Name='Not Currently Assigned'>1</Value>
+      <Value Name='Audit'>2</Value>
+      <Value Name='Transaction Services'>21</Value>
+      <Value Name='Corporate Finance'>23</Value>
+      <Value Name='Forensic'>24</Value>
+      <Value Name='IT Services'>25</Value>
+      <Value Name='Finance'>26</Value>
+      <Value Name='Facilities'>27</Value>
+      <Value Name='Risk management'>28</Value>
+      <Value Name='People'>29</Value>
+      <Value Name='Markets'>30</Value>
+      <Value Name='Internal Audit, Risk and Compliance Services'>40</Value>
+      <Value Name='IT Advisory in Management Consulting'>41</Value>
+      <Value Name='Accounting Advisory Services'>42</Value>
+      <Value Name='Financial Risk Management'>43</Value>
+      <Value Name='Restructuring'>44</Value>
+      <Value Name='Advisory - Non-core Services'>45</Value>
+      <Value Name='Business Performance Services'>46</Value>
+      <Value Name='Knowledge Management'>47</Value>
+      <Value Name='Corporate Tax Compliance'>49</Value>
+      <Value Name='Domestic Corporate Tax Advisory'>50</Value>
+      <Value Name='International Corporate Tax Advisory'>51</Value>
+      <Value Name='Mergers &amp; Acquisitions'>52</Value>
+      <Value Name='R&amp;D'>53</Value>
+      <Value Name='Tax Valuations'>54</Value>
+      <Value Name='Statutory Audit'>55</Value>
+      <Value Name='Indirect Tax Advisory'>56</Value>
+      <Value Name='Indirect Tax Compliance'>57</Value>
+      <Value Name='IES Advisory'>58</Value>
+      <Value Name='IES Compliance'>59</Value>
+      <Value Name='Employment Tax Advisory (ex IES)'>60</Value>
+      <Value Name='Tax Services to Individuals (excluding IES)'>61</Value>
+      <Value Name='Pensions &amp; Retirement Funds'>62</Value>
+      <Value Name='Tax Process &amp; Technology'>63</Value>
+      <Value Name='Tax Secondments'>64</Value>
+      <Value Name='Legal Services'>65</Value>
+      <Value Name='Central'>66</Value>
+    </Values>
+  </Attribute>
+</Attributes>

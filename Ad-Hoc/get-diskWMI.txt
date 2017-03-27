@@ -1,0 +1,25 @@
+$DCData = @()
+    ForEach ($DC in $(Get-DataCenter)) {
+        
+        $VMHosts = @($DC | Get-VMHost)
+        $a =@($VMHosts |Sort Name |Get-View)
+        $a.name
+        
+            $HostCount = $VMHosts.count
+            $physicalcpus = ($a.Hardware.CpuInfo| Measure-Object -Property NumCpuPackages -sum).sum
+            $ClusterCoreTotal = ($a.Hardware.CpuInfo| Measure-Object -Property numcpucores -sum).sum
+            if( $ClusterCoreTotal -gt 0 ) {CoresPerCPUperHost = $ClusterCoreTotal / $HostCount / $CPUavgPerHost}
+            $CPUavgPerHost = $physicalcpus / $HostCount
+            $DCData += New-Object PSObject -Property @{
+                    clustername= $DC.name
+                    HostCount = $HostCount
+                    CPUavgPerHost= $CPUavgPerHost
+                    CoresPerCPUperHost = "0"
+                    CPUsCluster = $physicalcpus
+                    ClusterCoreTotal = $ClusterCoreTotal
+                    vm = ($DC |Get-VM).count
+
+                    }
+
+    $DCData |ft -AutoSize -Property clustername, hostcount, CPUavgPerHost,CoresPerCPUperHost, CPUsCluster, clustercoretotal,vm
+    }

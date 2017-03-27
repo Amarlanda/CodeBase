@@ -1,0 +1,28 @@
+﻿$searcher = [adsisearcher] [adsi] "LDAP://UK"
+$username = "uktpalanda"
+$i = 0
+[bool]$accountlocked = $false
+$searcher.filter = "(&(objectClass=user) (CN=$username))"
+$ADobj = $searcher.findone().GetDirectoryEntry()
+
+    while($i -lt 9999)
+    {
+       start-sleep -s 1
+        
+            $de = [ADSI]$ADobj.path
+            if ($de.psbase.invokeGet("IsAccountLocked")){
+            Write-host (get-date) "$username locked - loop id $i” -foreground "red"
+
+            $ADobj.lockoutTime = 0
+			$ADobj.CommitChanges()
+			$ADobj.Close() 
+
+            } 
+            else {
+                Write-host (get-date) "$username locked - loop id $i”
+            }
+
+        $i++
+    }
+ 
+    

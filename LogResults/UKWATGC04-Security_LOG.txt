@@ -1,0 +1,2 @@
+675,AUDIT FAILURE,Security,Thu Jul 10 09:30:57 2014,NT AUTHORITY\SYSTEM,Pre-authentication failed:     User Name: Kpamulapati     User ID:  %{S-1-5-21-1965243242-631715425-1848903544-312453}     Service Name: krbtgt/UK.KWORLD.KPMG.COM     Pre-Authentication Type: 0x2     Failure Code: 0x18     Client Address: 10.216.94.97     Certificate Issuer Name: %7     Certificate Serial Number: %8     Certificate Thumbprint: %9    
+C:\_aj\scripts\LogResults\UKWATGC04-Security_LOG.txt contains 1 parsed events.
